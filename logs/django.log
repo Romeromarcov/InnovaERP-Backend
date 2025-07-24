@@ -1,0 +1,313 @@
+INFO 2025-07-23 22:32:22,605 autoreload 5140 13700 Watching for file changes with StatReloader
+WARNING 2025-07-23 22:32:31,471 log 5140 9096 Not Found: /
+WARNING 2025-07-23 22:32:31,471 basehttp 5140 9096 "GET / HTTP/1.1" 404 4115
+WARNING 2025-07-23 22:32:31,524 log 5140 9096 Not Found: /favicon.ico
+WARNING 2025-07-23 22:32:31,525 basehttp 5140 9096 "GET /favicon.ico HTTP/1.1" 404 4166
+INFO 2025-07-23 22:32:37,623 basehttp 5140 9096 "GET /admin/ HTTP/1.1" 200 108780
+INFO 2025-07-23 22:32:52,239 basehttp 5140 9096 "GET /admin/core/usuarios/ HTTP/1.1" 200 88721
+INFO 2025-07-23 22:32:52,269 basehttp 5140 9096 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 11:52:30,823 autoreload 13212 5840 Watching for file changes with StatReloader
+INFO 2025-07-24 11:52:47,022 basehttp 13212 4836 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+WARNING 2025-07-24 11:52:47,768 auth_views 13212 4836 Failed login attempt for user: admin
+WARNING 2025-07-24 11:52:47,777 log 13212 4836 Unauthorized: /api/auth/login/
+WARNING 2025-07-24 11:52:47,777 basehttp 13212 4836 "POST /api/auth/login/ HTTP/1.1" 401 31
+ERROR 2025-07-24 11:52:57,337 log 13212 4836 Internal Server Error: /api/auth/login/
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: token_blacklist_outstandingtoken
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\generic\base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\innovaerp\backend\apps\core\auth_views.py", line 95, in login_view
+    refresh = RefreshToken.for_user(user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework_simplejwt\tokens.py", line 331, in for_user
+    OutstandingToken.objects.create(
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: token_blacklist_outstandingtoken
+ERROR 2025-07-24 11:52:57,354 basehttp 13212 4836 "POST /api/auth/login/ HTTP/1.1" 500 211480
+INFO 2025-07-24 11:54:43,971 autoreload 176 5576 Watching for file changes with StatReloader
+INFO 2025-07-24 11:55:55,624 auth_views 176 10748 Successful login for user: admin
+INFO 2025-07-24 11:55:55,625 basehttp 176 10748 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 11:56:04,175 auth_views 176 10748 Successful login for user: admin
+INFO 2025-07-24 11:56:04,175 basehttp 176 10748 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 11:56:13,823 auth_views 176 10748 Successful login for user: admin
+INFO 2025-07-24 11:56:13,823 basehttp 176 10748 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 11:56:24,256 auth_views 176 10748 Successful login for user: admin
+INFO 2025-07-24 11:56:24,256 basehttp 176 10748 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 12:02:02,330 auth_views 176 16028 Successful login for user: admin
+INFO 2025-07-24 12:02:02,330 basehttp 176 16028 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 16:33:47,471 autoreload 5904 6564 Watching for file changes with StatReloader
+INFO 2025-07-24 16:53:14,357 basehttp 5904 5312 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-24 16:53:15,216 auth_views 5904 5312 Successful login for user: admin
+INFO 2025-07-24 16:53:15,216 basehttp 5904 5312 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 16:53:20,491 auth_views 5904 5312 Successful login for user: admin
+INFO 2025-07-24 16:53:20,491 basehttp 5904 5312 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 16:53:36,426 basehttp 5904 14956 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-07-24 16:53:36,624 basehttp 5904 14956 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+INFO 2025-07-24 16:53:36,651 basehttp 5904 14956 "GET /static/admin/css/base.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:36,651 basehttp 5904 1748 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:36,652 basehttp 5904 14448 "GET /static/admin/js/theme.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:36,654 basehttp 5904 14956 "GET /static/admin/css/login.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:36,654 basehttp 5904 1748 "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:36,655 basehttp 5904 14448 "GET /static/admin/css/dark_mode.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:36,661 basehttp 5904 14448 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 304 0
+WARNING 2025-07-24 16:53:36,713 log 5904 14448 Not Found: /favicon.ico
+WARNING 2025-07-24 16:53:36,713 basehttp 5904 14448 "GET /favicon.ico HTTP/1.1" 404 4166
+INFO 2025-07-24 16:53:38,745 basehttp 5904 14448 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4341
+INFO 2025-07-24 16:53:44,190 basehttp 5904 14448 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-07-24 16:53:44,278 basehttp 5904 14448 "GET /admin/ HTTP/1.1" 200 108780
+INFO 2025-07-24 16:53:44,301 basehttp 5904 14448 "GET /static/admin/css/dashboard.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:44,308 basehttp 5904 1748 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:44,309 basehttp 5904 14448 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,177 basehttp 5904 14448 "GET /admin/core/usuarios/ HTTP/1.1" 200 88721
+INFO 2025-07-24 16:53:57,201 basehttp 5904 14448 "GET /static/admin/css/changelists.css HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,202 basehttp 5904 1748 "GET /static/admin/js/jquery.init.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,202 basehttp 5904 14956 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,202 basehttp 5904 9164 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,201 basehttp 5904 4760 "GET /static/admin/js/actions.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,202 basehttp 5904 9844 "GET /static/admin/js/urlify.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,209 basehttp 5904 1748 "GET /static/admin/js/prepopulate.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,212 basehttp 5904 9164 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,213 basehttp 5904 4760 "GET /static/admin/js/core.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,213 basehttp 5904 14956 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,214 basehttp 5904 9844 "GET /static/admin/img/search.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,220 basehttp 5904 9844 "GET /static/admin/js/filters.js HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,240 basehttp 5904 14448 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 16:53:57,266 basehttp 5904 14448 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,267 basehttp 5904 14956 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:53:57,267 basehttp 5904 9844 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 304 0
+INFO 2025-07-24 16:54:08,389 auth_views 5904 5312 Successful login for user: admin
+INFO 2025-07-24 16:54:08,389 basehttp 5904 5312 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 16:55:30,521 auth_views 5904 5312 Successful login for user: admin
+INFO 2025-07-24 16:55:30,521 basehttp 5904 5312 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 16:56:33,078 auth_views 5904 5312 Successful login for user: admin
+INFO 2025-07-24 16:56:33,078 basehttp 5904 5312 "POST /api/auth/login/ HTTP/1.1" 200 847
+INFO 2025-07-24 16:57:58,081 auth_views 5904 5312 Successful login for user: admin
+INFO 2025-07-24 16:57:58,082 basehttp 5904 5312 "POST /api/auth/login/ HTTP/1.1" 200 847
+WARNING 2025-07-24 17:15:33,673 log 5904 10724 Not Found: /api/empresas/
+WARNING 2025-07-24 17:15:33,673 basehttp 5904 10724 "GET /api/empresas/ HTTP/1.1" 404 4172
+WARNING 2025-07-24 17:15:33,688 log 5904 10724 Not Found: /api/empresas/
+WARNING 2025-07-24 17:15:33,688 basehttp 5904 10724 "GET /api/empresas/ HTTP/1.1" 404 4172
+INFO 2025-07-24 17:16:52,055 basehttp 5904 12788 "GET /admin/core/usuarios/ HTTP/1.1" 200 88721
+INFO 2025-07-24 17:16:52,082 basehttp 5904 12788 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 17:16:55,606 basehttp 5904 12788 "GET /admin/core/ HTTP/1.1" 200 10324
+INFO 2025-07-24 17:16:57,653 basehttp 5904 12788 "GET /admin/core/empresa/ HTTP/1.1" 200 88779
+INFO 2025-07-24 17:16:57,674 basehttp 5904 12788 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 17:17:01,673 basehttp 5904 12788 "GET /admin/core/ HTTP/1.1" 200 10324
+WARNING 2025-07-24 17:21:02,005 log 5904 15016 Not Found: /api/empresas/
+WARNING 2025-07-24 17:21:02,005 basehttp 5904 15016 "GET /api/empresas/ HTTP/1.1" 404 4172
+WARNING 2025-07-24 17:21:02,018 log 5904 15016 Not Found: /api/empresas/
+WARNING 2025-07-24 17:21:02,019 basehttp 5904 15016 "GET /api/empresas/ HTTP/1.1" 404 4172
+WARNING 2025-07-24 17:24:59,364 log 5904 15016 Unauthorized: /api/core/empresas/
+WARNING 2025-07-24 17:24:59,367 basehttp 5904 15016 "GET /api/core/empresas/ HTTP/1.1" 401 58
+WARNING 2025-07-24 17:24:59,371 log 5904 15016 Unauthorized: /api/core/empresas/
+WARNING 2025-07-24 17:24:59,374 basehttp 5904 15016 "GET /api/core/empresas/ HTTP/1.1" 401 58
+INFO 2025-07-24 17:27:50,012 autoreload 5904 6564 C:\Users\PC\innovaerp\backend\apps\core\models.py changed, reloading.
+INFO 2025-07-24 17:27:54,434 autoreload 13636 9968 Watching for file changes with StatReloader
+INFO 2025-07-24 17:28:55,775 autoreload 15296 9780 Watching for file changes with StatReloader
+INFO 2025-07-24 17:29:00,961 autoreload 15296 9780 C:\Users\PC\innovaerp\backend\apps\core\models.py changed, reloading.
+INFO 2025-07-24 17:29:01,776 autoreload 8600 300 Watching for file changes with StatReloader
+INFO 2025-07-24 17:29:47,140 autoreload 8600 300 C:\Users\PC\innovaerp\backend\apps\core\auth_views.py changed, reloading.
+INFO 2025-07-24 17:29:47,949 autoreload 14764 1576 Watching for file changes with StatReloader
+INFO 2025-07-24 17:29:53,139 autoreload 14764 1576 C:\Users\PC\innovaerp\backend\apps\core\auth_views.py changed, reloading.
+INFO 2025-07-24 17:29:53,929 autoreload 8888 11056 Watching for file changes with StatReloader
+INFO 2025-07-24 17:59:56,388 auth_views 8888 6088 Successful login for user: admin
+INFO 2025-07-24 17:59:56,410 basehttp 8888 6088 "POST /api/auth/login/ HTTP/1.1" 200 1156
+INFO 2025-07-24 18:01:06,477 basehttp 8888 6956 "GET /admin/core/usuarios/ HTTP/1.1" 200 88721
+INFO 2025-07-24 18:01:06,507 basehttp 8888 6956 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+ERROR 2025-07-24 18:01:07,997 log 8888 6956 Internal Server Error: /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 840, in get_form
+    return modelform_factory(self.model, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\forms\models.py", line 654, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\forms\models.py", line 334, in __new__
+    raise FieldError(message)
+django.core.exceptions.FieldError: Unknown field(s) (id_empresa) specified for Usuarios
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 1987, in change_view
+    return self.changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 1840, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 1878, in _changeform_view
+    ModelForm = self.get_form(
+                ^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\auth\admin.py", line 98, in get_form
+    return super().get_form(request, obj, **defaults)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 842, in get_form
+    raise FieldError(
+django.core.exceptions.FieldError: Unknown field(s) (id_empresa) specified for Usuarios. Check fields/fieldsets/exclude attributes of class UsuariosAdmin.
+ERROR 2025-07-24 18:01:08,001 basehttp 8888 6956 "GET /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 500 163942
+INFO 2025-07-24 18:02:14,283 autoreload 8888 11056 C:\Users\PC\innovaerp\backend\apps\core\admin.py changed, reloading.
+INFO 2025-07-24 18:02:15,151 autoreload 14388 3036 Watching for file changes with StatReloader
+INFO 2025-07-24 18:02:38,814 autoreload 14388 3036 C:\Users\PC\innovaerp\backend\apps\core\admin.py changed, reloading.
+INFO 2025-07-24 18:02:39,648 autoreload 5300 9584 Watching for file changes with StatReloader
+INFO 2025-07-24 18:02:43,314 basehttp 5300 6500 "GET /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 200 149983
+INFO 2025-07-24 18:02:43,344 basehttp 5300 6500 "GET /static/admin/css/forms.css HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,352 basehttp 5300 6708 "GET /static/admin/js/calendar.js HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,354 basehttp 5300 7700 "GET /static/admin/js/SelectBox.js HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,355 basehttp 5300 6708 "GET /static/admin/css/widgets.css HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,357 basehttp 5300 7700 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,359 basehttp 5300 6708 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,359 basehttp 5300 7700 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,361 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:02:43,363 basehttp 5300 7700 "GET /static/admin/js/change_form.js HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,421 basehttp 5300 7700 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,421 basehttp 5300 6708 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 304 0
+INFO 2025-07-24 18:02:43,421 basehttp 5300 6500 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 304 0
+INFO 2025-07-24 18:03:02,180 basehttp 5300 6500 "GET /admin/core/ HTTP/1.1" 200 10324
+INFO 2025-07-24 18:03:04,457 basehttp 5300 6500 "GET /admin/core/empresa/ HTTP/1.1" 200 88779
+INFO 2025-07-24 18:03:04,482 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:03:06,996 basehttp 5300 6500 "GET /admin/core/ HTTP/1.1" 200 10324
+INFO 2025-07-24 18:03:09,129 basehttp 5300 6500 "GET /admin/core/sucursal/ HTTP/1.1" 200 85991
+INFO 2025-07-24 18:03:09,163 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:03:10,896 basehttp 5300 6500 "GET /admin/core/sucursal/add/ HTTP/1.1" 200 91095
+INFO 2025-07-24 18:03:10,936 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:03:16,392 basehttp 5300 6500 "GET /admin/core/empresa/?_to_field=id_empresa&_popup=1 HTTP/1.1" 200 7497
+INFO 2025-07-24 18:03:38,308 basehttp 5300 6500 "POST /admin/core/sucursal/add/ HTTP/1.1" 302 0
+INFO 2025-07-24 18:03:38,344 basehttp 5300 6500 "GET /admin/core/sucursal/ HTTP/1.1" 200 88831
+INFO 2025-07-24 18:03:38,374 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:03:43,752 basehttp 5300 6500 "GET /admin/core/ HTTP/1.1" 200 10324
+INFO 2025-07-24 18:03:47,110 basehttp 5300 6500 "GET /admin/core/usuarios/ HTTP/1.1" 200 88721
+INFO 2025-07-24 18:03:47,139 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:03:48,496 basehttp 5300 6500 "GET /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 200 150065
+INFO 2025-07-24 18:03:48,524 basehttp 5300 6500 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:04:01,322 auth_views 5300 6800 Successful login for user: admin
+INFO 2025-07-24 18:04:01,338 basehttp 5300 6800 "POST /api/auth/login/ HTTP/1.1" 200 1156
+INFO 2025-07-24 18:08:09,976 basehttp 5300 2188 "POST /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 200 150408
+INFO 2025-07-24 18:08:10,008 basehttp 5300 2188 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:08:19,910 basehttp 5300 2188 "POST /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 302 0
+INFO 2025-07-24 18:08:19,943 basehttp 5300 2188 "GET /admin/core/usuarios/ HTTP/1.1" 200 88956
+INFO 2025-07-24 18:08:19,976 basehttp 5300 2188 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:08:28,309 basehttp 5300 2188 "GET /admin/core/usuarios/ HTTP/1.1" 200 88721
+INFO 2025-07-24 18:08:28,333 basehttp 5300 2188 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:08:33,441 auth_views 5300 15080 Successful login for user: admin
+INFO 2025-07-24 18:08:33,444 basehttp 5300 15080 "POST /api/auth/login/ HTTP/1.1" 200 2007
+INFO 2025-07-24 18:11:55,223 auth_views 5300 15080 Successful login for user: admin
+INFO 2025-07-24 18:11:55,223 basehttp 5300 15080 "POST /api/auth/login/ HTTP/1.1" 200 2007
+INFO 2025-07-24 18:12:04,594 basehttp 5300 2188 "GET /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 200 150083
+INFO 2025-07-24 18:12:04,619 basehttp 5300 2188 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:12:13,170 basehttp 5300 2188 "GET /admin/core/empresa/add/?_to_field=id_empresa&_popup=1 HTTP/1.1" 200 14389
+INFO 2025-07-24 18:12:13,183 basehttp 5300 12924 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 304 0
+INFO 2025-07-24 18:12:13,187 basehttp 5300 2188 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:12:23,413 basehttp 5300 2188 "POST /admin/core/usuarios/e6c964c8-d549-4735-a9cd-e0f583583fdd/change/ HTTP/1.1" 302 0
+INFO 2025-07-24 18:12:23,444 basehttp 5300 2188 "GET /admin/core/usuarios/ HTTP/1.1" 200 88956
+INFO 2025-07-24 18:12:23,477 basehttp 5300 2188 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-24 18:12:29,261 auth_views 5300 15080 Successful login for user: admin
+INFO 2025-07-24 18:12:29,267 basehttp 5300 15080 "POST /api/auth/login/ HTTP/1.1" 200 1983
+INFO 2025-07-24 18:13:23,656 autoreload 5300 9584 C:\Users\PC\innovaerp\backend\apps\core\admin.py changed, reloading.
+INFO 2025-07-24 18:13:24,532 autoreload 7048 14684 Watching for file changes with StatReloader
+INFO 2025-07-24 18:13:35,157 autoreload 7048 14684 C:\Users\PC\innovaerp\backend\apps\core\admin.py changed, reloading.
+INFO 2025-07-24 18:13:35,933 autoreload 10768 10844 Watching for file changes with StatReloader
