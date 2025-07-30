@@ -11,30 +11,22 @@ from .models import Usuarios, Roles, Permisos, RolPermisos, UsuarioRoles, Regist
 @admin.register(Usuarios)
 class UsuariosAdmin(BaseUserAdmin):
     filter_horizontal = ('empresas', 'sucursales')
-    # Campos que se muestran en la lista de usuarios
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active')
-    # Campos por los que se puede buscar
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_active', 'es_superusuario_innova')
     search_fields = ('username', 'email', 'first_name', 'last_name')
-    # Filtros en la barra lateral
-    list_filter = ('is_staff', 'is_active', 'is_superuser', 'groups')
-    # Campos para añadir/editar usuarios
+    list_filter = ('is_staff', 'is_active', 'is_superuser', 'es_superusuario_innova', 'groups')
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
         ('Personal info', {'fields': ('first_name', 'last_name', 'email', 'empresas', 'sucursales')}),
-        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'es_superusuario_innova', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'email', 'first_name', 'last_name', 'empresas', 'sucursales', 'password1', 'password2'),
+            'fields': ('username', 'email', 'first_name', 'last_name', 'empresas', 'sucursales', 'es_superusuario_innova', 'password1', 'password2'),
         }),
     )
     # Puedes añadir tus campos personalizados aquí si los agregaste al modelo Usuarios
-    # Por ejemplo:
-    # fieldsets += (
-    #     ('Información adicional', {'fields': ('telefono', 'direccion')}),
-    # )
 
 @admin.register(Roles)
 class RolesAdmin(admin.ModelAdmin):

@@ -24,6 +24,7 @@ except ImportError:
 # 1. Modelo de Empresa (Tabla Maestra de las Empresas Clientes de InnovaERP - Multi-tenant)
 # Esta tabla es fundamental para la arquitectura multi-tenant.
 class Empresa(models.Model):
+    empresa_matriz = models.ForeignKey('self', null=True, blank=True, related_name='subsidiarias', on_delete=models.SET_NULL, verbose_name="Empresa Matriz")
     id_empresa = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) # PK, UUIDField
     nombre_legal = models.CharField(max_length=255, verbose_name="Nombre Legal")
     nombre_comercial = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nombre Comercial")
@@ -52,6 +53,7 @@ class Empresa(models.Model):
 
 # 2. Modelo de Sucursal
 class Sucursal(models.Model):
+    sucursal_matriz = models.ForeignKey('self', null=True, blank=True, related_name='subsucursales', on_delete=models.SET_NULL, verbose_name="Sucursal Matriz")
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
     id_sucursal = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -77,6 +79,7 @@ class Sucursal(models.Model):
 
 # 3. Modelo de Departamento (Organización interna de la empresa)
 class Departamento(models.Model):
+    departamento_general = models.ForeignKey('self', null=True, blank=True, related_name='subdepartamentos', on_delete=models.SET_NULL, verbose_name="Dirección General")
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
     id_departamento = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -111,6 +114,7 @@ class Usuarios(AbstractUser):
     # Eliminamos el campo 'id_rol' directo aquí, ya que se maneja con la tabla intermedia UsuarioRoles
     sucursales = models.ManyToManyField(Sucursal, related_name='usuarios')
     es_superusuario_innova = models.BooleanField(default=False, verbose_name="Es Superusuario InnovaERP") # Para usuarios administradores de InnovaERP, no de la empresa cliente.
+    id_sucursal_predeterminada = models.ForeignKey('Sucursal', on_delete=models.SET_NULL, null=True, blank=True, related_name='usuarios_predeterminados', verbose_name="Sucursal predeterminada")
     fecha_ultimo_login = models.DateTimeField(null=True, blank=True, verbose_name="Fecha Último Login")
     token_sesion = models.CharField(max_length=255, null=True, blank=True, verbose_name="Token de Sesión")
     # id_empleado = models.ForeignKey(Empleado, on_delete=models.SET_NULL, db_column='id_empleado', blank=True, null=True, related_name='usuario_erp', verbose_name="Empleado Asociado")

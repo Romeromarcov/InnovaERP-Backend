@@ -12,18 +12,65 @@ class EmpresaSerializer(BaseModelSerializer):
         fields = '__all__'
 
 class SucursalSerializer(BaseModelSerializer):
+    id_sucursal = serializers.UUIDField(read_only=True)
+    id_empresa = serializers.UUIDField(source='id_empresa.id_empresa')
+
     class Meta:
         model = Sucursal
-        fields = '__all__'
+        fields = [
+            'id_sucursal', 'id_empresa', 'nombre', 'codigo_sucursal', 'direccion', 'telefono',
+            'email_contacto', 'ubicacion_gps_json', 'activo', 'fecha_creacion', 'referencia_externa', 'documento_json'
+        ]
+
+    def create(self, validated_data):
+        # Extraer el UUID de empresa correctamente
+        empresa_id = validated_data.pop('id_empresa', None)
+        if isinstance(empresa_id, dict):
+            empresa_id = empresa_id.get('id_empresa')
+        from .models import Empresa
+        empresa = Empresa.objects.get(id_empresa=empresa_id)
+        sucursal = Sucursal.objects.create(id_empresa=empresa, **validated_data)
+        return sucursal
 
 class DepartamentoSerializer(BaseModelSerializer):
     class Meta:
         model = Departamento
         fields = '__all__'
 
+
 class UsuariosSerializer(BaseModelSerializer):
-    empresas = EmpresaSerializer(many=True, read_only=True)
-    sucursales = SucursalSerializer(many=True, read_only=True)
+    empresas = serializers.PrimaryKeyRelatedField(queryset=Empresa.objects.all(), many=True, required=False)
+    sucursales = serializers.PrimaryKeyRelatedField(queryset=Sucursal.objects.all(), many=True, required=False)
+    departamentos = serializers.PrimaryKeyRelatedField(queryset=Departamento.objects.all(), many=True, required=False)
+    roles = serializers.SerializerMethodField()
+    es_superusuario_innova = serializers.BooleanField(required=False)
+
+    def get_roles(self, obj):
+        from .models import UsuarioRoles
+        roles_qs = UsuarioRoles.objects.filter(id_usuario=obj)
+        return [
+            {
+                'id': str(ur.id_rol.id_rol),
+                'name': ur.id_rol.nombre_rol
+            }
+            for ur in roles_qs.select_related('id_rol')
+        ]
+
+    def update(self, instance, validated_data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Solo superusuarios Innova pueden modificar este campo
+        if 'es_superusuario_innova' in validated_data:
+            if not user or not getattr(user, 'es_superusuario_innova', False):
+                validated_data.pop('es_superusuario_innova')
+        return super().update(instance, validated_data)
+
+    def create(self, validated_data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Solo superusuarios Innova pueden asignar este campo
+        if 'es_superusuario_innova' in validated_data:
+            if not user or not getattr(user, 'es_superusuario_innova', False):
+                validated_data.pop('es_superusuario_innova')
+        return super().create(validated_data)
 
     class Meta:
         model = Usuarios

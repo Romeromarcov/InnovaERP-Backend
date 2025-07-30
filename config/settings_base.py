@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'apps.migracion_datos',
     'apps.despacho',
     'apps.costos',
-    'apps.pruebas_funcionales',
 ]
 
 MIDDLEWARE = [
@@ -237,3 +236,7 @@ LOGGING = {
 
 # Create logs directory if it doesn't exist
 os.makedirs(BASE_DIR / 'logs', exist_ok=True)
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

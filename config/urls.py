@@ -36,10 +36,10 @@ urlpatterns = [
     # path('api/inventario/', include('apps.inventario.urls')),
     # path('api/ventas/', include('apps.ventas.urls')),
     # path('api/compras/', include('apps.compras.urls')),
-    # path('api/finanzas/', include('apps.finanzas.urls')),
+    path('api/finanzas/', include('apps.finanzas.urls')),
     # path('api/crm/', include('apps.crm.urls')),
     # path('api/rrhh/', include('apps.rrhh.urls')),
-    # path('api/auditoria/', include('apps.auditoria.urls')),
+    path('api/auditoria/', include('apps.auditoria.urls')),
 ]
 
 # Serve media files in development

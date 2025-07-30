@@ -4,7 +4,7 @@ from .views import (
     MonedaViewSet, TasaCambioViewSet, MetodoPagoViewSet, TipoImpuestoViewSet,
     ConfiguracionImpuestoViewSet, RetencionImpuestoViewSet,
     TransaccionFinancieraViewSet, MovimientoCajaBancoViewSet, CajaViewSet,
-    CuentaBancariaEmpresaViewSet
+    CuentaBancariaEmpresaViewSet, MonedaEmpresaActivaViewSet
 )
 
 router = DefaultRouter()
@@ -18,6 +18,7 @@ router.register(r'transacciones-financieras', TransaccionFinancieraViewSet)
 router.register(r'movimientos-caja-banco', MovimientoCajaBancoViewSet)
 router.register(r'cajas', CajaViewSet)
 router.register(r'cuentas-bancarias-empresa', CuentaBancariaEmpresaViewSet)
+router.register(r'monedas-empresa-activas', MonedaEmpresaActivaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

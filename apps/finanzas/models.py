@@ -1,9 +1,27 @@
+
 from django.db import models
 import uuid
+# Relación para activar/desactivar monedas por empresa
+class MonedaEmpresaActiva(models.Model):
+    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='monedas_activas')
+    moneda = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='empresas_activas')
+    activa = models.BooleanField(default=True)
+    class Meta:
+        unique_together = ('empresa', 'moneda')
+        verbose_name = 'Moneda activa por empresa'
+        verbose_name_plural = 'Monedas activas por empresa'
+    def __str__(self):
+        return f"{self.moneda.codigo_iso} - {self.empresa.nombre_comercial or self.empresa.nombre_legal} ({'Activa' if self.activa else 'Inactiva'})"
 
 class Moneda(models.Model):
     id_moneda = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    codigo_iso = models.CharField(max_length=3, unique=True)  # Ej: 'USD', 'EUR', 'VES'
+    TIPO_MONEDA_CHOICES = [
+        ('fiat', 'Fiat'),
+        ('crypto', 'Cripto'),
+        ('otro', 'Otro'),
+    ]
+    tipo_moneda = models.CharField(max_length=10, choices=TIPO_MONEDA_CHOICES, default='fiat')
+    codigo_iso = models.CharField(max_length=5, unique=True)  # Ej: 'USD', 'EUR', 'VES', 'USDT', 'WBTC'
     nombre = models.CharField(max_length=50)
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
@@ -13,6 +31,10 @@ class Moneda(models.Model):
     decimales = models.IntegerField(default=2)
     activo = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    # NUEVOS CAMPOS PARA MULTI-TENANT Y VISIBILIDAD
+    es_generica = models.BooleanField(default=False, help_text="Si es True, es una moneda global del sistema, no editable por usuarios normales.")
+    es_publica = models.BooleanField(default=False, help_text="Si es True, la moneda es visible para todas las empresas.")
+    empresa = models.ForeignKey('core.Empresa', null=True, blank=True, on_delete=models.CASCADE, related_name='monedas_empresa', help_text="Empresa propietaria de la moneda. Null si es genérica.")
 
     def __str__(self):
         return f"{self.nombre} ({self.codigo_iso})"

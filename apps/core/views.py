@@ -1,3 +1,62 @@
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.response import Response
+from .models import Usuarios
+from .serializers import UsuariosSerializer
+# Endpoint para obtener el usuario autenticado
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def me_view(request):
+    user = request.user
+    try:
+        usuario = Usuarios.objects.get(id=user.id)
+    except Usuarios.DoesNotExist:
+        return Response({'detail': 'Usuario no encontrado.'}, status=404)
+    serializer = UsuariosSerializer(usuario)
+    return Response(serializer.data)
+from .models import UsuarioRoles
+from .serializers import UsuarioRolesSerializer
+
+# Endpoint para consultar roles asignados a un usuario
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def usuario_roles_view(request):
+    id_usuario = request.GET.get('id_usuario')
+    queryset = UsuarioRoles.objects.all()
+    if id_usuario:
+        queryset = queryset.filter(id_usuario__id=id_usuario)
+    serializer = UsuarioRolesSerializer(queryset, many=True)
+    return Response(serializer.data)
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from .models import Usuarios
+from .serializers import UsuariosSerializer
+
+class UsuarioDetailView(RetrieveUpdateDestroyAPIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            usuario = self.get_object()
+        except Exception:
+            return Response({"detail": "Usuario no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(usuario)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    queryset = Usuarios.objects.all()
+    serializer_class = UsuariosSerializer
+    lookup_field = 'id'
+
+    def put(self, request, *args, **kwargs):
+        try:
+            usuario = self.get_object()
+        except Exception:
+            return Response({"detail": "Usuario no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(usuario, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 """
 Views for the Core module
 """
@@ -7,7 +66,22 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 import logging
+from rest_framework.generics import RetrieveAPIView
+from .models import Empresa
+from .serializers import EmpresaSerializer
 
+class EmpresaDetailView(RetrieveAPIView):
+    queryset = Empresa.objects.all()
+    serializer_class = EmpresaSerializer
+    lookup_field = 'id_empresa'
+
+    def put(self, request, *args, **kwargs):
+        empresa = self.get_object()
+        serializer = self.get_serializer(empresa, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 logger = logging.getLogger(__name__)
 
 @api_view(['GET'])
@@ -58,143 +132,115 @@ def dashboard_stats_view(request):
 @permission_classes([IsAuthenticated])
 def placeholder_usuarios_view(request):
     """Placeholder for usuarios endpoint"""
+    from .models import Usuarios, Empresa
+    from .serializers import UsuariosSerializer
     if request.method == 'GET':
-        # Mock users data
-        users = [
-            {
-                'id': 1,
-                'username': 'admin',
-                'email': 'admin@innovaerp.com',
-                'first_name': 'Admin',
-                'last_name': 'User',
-                'is_active': True,
-                'id_empresa': 1,
-                'id_sucursal_predeterminada': 1,
-                'es_superusuario_innova': True
-            },
-            {
-                'id': 2,
-                'username': 'usuario1',
-                'email': 'usuario1@innovaerp.com',
-                'first_name': 'Usuario',
-                'last_name': 'Prueba',
-                'is_active': True,
-                'id_empresa': 1,
-                'id_sucursal_predeterminada': 1,
-                'es_superusuario_innova': False
-            }
-        ]
-        return Response(users, status=status.HTTP_200_OK)
-    
+        id_empresa = request.GET.get('id_empresa')
+        queryset = Usuarios.objects.all()
+        if id_empresa:
+            queryset = queryset.filter(empresas__id_empresa=id_empresa)
+        serializer = UsuariosSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'POST':
-        # Mock user creation
-        return Response({
-            'id': 3,
-            'message': 'Usuario creado exitosamente (mock)'
-        }, status=status.HTTP_201_CREATED)
+        serializer = UsuariosSerializer(data=request.data)
+        if serializer.is_valid():
+            usuario = serializer.save()
+            # Si se pasa id_empresa, asociar el usuario a la empresa
+            id_empresa = request.data.get('id_empresa')
+            if id_empresa:
+                empresa = Empresa.objects.get(id_empresa=id_empresa)
+                usuario.empresas.add(empresa)
+            return Response(UsuariosSerializer(usuario).data, status=status.HTTP_201_CREATED)
+        # Log the serializer errors for debugging
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"User creation failed: {serializer.errors}")
+        return Response({'detail': 'Validation error', 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def placeholder_empresas_view(request):
-    """Placeholder for empresas endpoint"""
+    """Endpoint real para empresas: lista y creación"""
+    from .models import Empresa
+    from .serializers import EmpresaSerializer
     if request.method == 'GET':
-        empresas = [
-            {
-                'id': 1,
-                'nombre_legal': 'InnovaERP S.A.',
-                'identificador_fiscal': '12345678901',
-                'direccion_fiscal': 'Av. Principal 123, Ciudad',
-                'telefono': '+1234567890',
-                'id_moneda_base': 1
-            }
-        ]
-        return Response(empresas, status=status.HTTP_200_OK)
-    
+        queryset = Empresa.objects.all()
+        serializer = EmpresaSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'POST':
-        return Response({
-            'id': 2,
-            'message': 'Empresa creada exitosamente (mock)'
-        }, status=status.HTTP_201_CREATED)
+        serializer = EmpresaSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from .models import Sucursal
+from .serializers import SucursalSerializer
+
+class SucursalDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Sucursal.objects.all()
+    serializer_class = SucursalSerializer
+    lookup_field = 'id_sucursal'
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def placeholder_sucursales_view(request):
     """Placeholder for sucursales endpoint"""
     if request.method == 'GET':
-        sucursales = [
-            {
-                'id': 1,
-                'nombre': 'Sucursal Principal',
-                'direccion': 'Av. Principal 123, Ciudad',
-                'telefono': '+1234567890',
-                'email': 'principal@innovaerp.com',
-                'id_empresa': 1,
-                'es_activa': True
-            }
-        ]
-        return Response(sucursales, status=status.HTTP_200_OK)
+        from .models import Sucursal
+        from .serializers import SucursalSerializer
+        id_empresa = request.GET.get('id_empresa')
+        queryset = Sucursal.objects.all()
+        if id_empresa:
+            queryset = queryset.filter(id_empresa=id_empresa)
+        serializer = SucursalSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
     elif request.method == 'POST':
-        return Response({
-            'id': 2,
-            'message': 'Sucursal creada exitosamente (mock)'
-        }, status=status.HTTP_201_CREATED)
+        from .models import Sucursal
+        from .serializers import SucursalSerializer
+        serializer = SucursalSerializer(data=request.data)
+        if serializer.is_valid():
+            sucursal = serializer.save()
+            return Response(SucursalSerializer(sucursal).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def placeholder_departamentos_view(request):
-    """Placeholder for departamentos endpoint"""
+    """Endpoint real para departamentos: lista y creación"""
+    from .models import Departamento
+    from .serializers import DepartamentoSerializer
     if request.method == 'GET':
-        departamentos = [
-            {
-                'id': 1,
-                'nombre': 'Administración',
-                'descripcion': 'Departamento de administración general',
-                'id_sucursal': 1,
-                'es_activo': True
-            },
-            {
-                'id': 2,
-                'nombre': 'Ventas',
-                'descripcion': 'Departamento de ventas y marketing',
-                'id_sucursal': 1,
-                'es_activo': True
-            }
-        ]
-        return Response(departamentos, status=status.HTTP_200_OK)
-    
+        id_empresa = request.GET.get('id_empresa')
+        queryset = Departamento.objects.all()
+        if id_empresa:
+            queryset = queryset.filter(id_empresa=id_empresa)
+        serializer = DepartamentoSerializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'POST':
-        return Response({
-            'id': 3,
-            'message': 'Departamento creado exitosamente (mock)'
-        }, status=status.HTTP_201_CREATED)
+        serializer = DepartamentoSerializer(data=request.data)
+        if serializer.is_valid():
+            departamento = serializer.save()
+            return Response(DepartamentoSerializer(departamento).data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticated])
-def placeholder_roles_view(request):
-    """Placeholder for roles endpoint"""
-    if request.method == 'GET':
-        roles = [
-            {
-                'id': 1,
-                'nombre': 'Administrador',
-                'descripcion': 'Acceso completo al sistema',
-                'es_activo': True
-            },
-            {
-                'id': 2,
-                'nombre': 'Usuario',
-                'descripcion': 'Acceso básico al sistema',
-                'es_activo': True
-            }
-        ]
-        return Response(roles, status=status.HTTP_200_OK)
-    
-    elif request.method == 'POST':
-        return Response({
-            'id': 3,
-            'message': 'Rol creado exitosamente (mock)'
-        }, status=status.HTTP_201_CREATED)
+
+# ENDPOINTS REALES PARA ROLES
+from rest_framework import generics
+from .models import Roles
+from .serializers import RolesSerializer
+
+class RoleListCreateView(generics.ListCreateAPIView):
+    queryset = Roles.objects.all()
+    serializer_class = RolesSerializer
+    permission_classes = [IsAuthenticated]
+
+class RoleRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Roles.objects.all()
+    serializer_class = RolesSerializer
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'id_rol'
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
@@ -262,3 +308,11 @@ def placeholder_monedas_view(request):
             'id': 4,
             'message': 'Moneda creada exitosamente (mock)'
         }, status=status.HTTP_201_CREATED)
+from rest_framework.generics import RetrieveUpdateDestroyAPIView
+from .models import Departamento
+from .serializers import DepartamentoSerializer
+
+class DepartamentoDetailView(RetrieveUpdateDestroyAPIView):
+    queryset = Departamento.objects.all()
+    serializer_class = DepartamentoSerializer
+    lookup_field = 'id_departamento'

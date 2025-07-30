@@ -6,8 +6,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from django.contrib.auth import authenticate
-from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, get_user_model
 from django.utils import timezone
 import logging
 
@@ -63,10 +62,10 @@ class CustomTokenObtainPairView(TokenObtainPairView):
             
             # Update last login
             try:
-                user = User.objects.get(username=username)
+                user = get_user_model().objects.get(username=username)
                 user.last_login = timezone.now()
                 user.save(update_fields=['last_login'])
-            except User.DoesNotExist:
+            except get_user_model().DoesNotExist:
                 pass
         else:
             username = request.data.get('username', 'unknown')
@@ -82,24 +81,20 @@ def login_view(request):
     """
     username = request.data.get('username')
     password = request.data.get('password')
-    
+    logger.info(f"LoginView received username: {username}, password: {'***' if password else None}")
     if not username or not password:
+        logger.warning("Username or password missing in request data")
         return Response({
             'error': 'Username and password are required'
         }, status=status.HTTP_400_BAD_REQUEST)
-    
     user = authenticate(username=username, password=password)
-    
+    logger.info(f"Authenticate result: {user}")
     if user is not None:
         if user.is_active:
             refresh = RefreshToken.for_user(user)
-            
-            # Update last login
             user.last_login = timezone.now()
             user.save(update_fields=['last_login'])
-            
             logger.info(f"Successful login for user: {username}")
-            
             from .serializers import UsuariosSerializer
             user_data = UsuariosSerializer(user).data
             return Response({
@@ -149,18 +144,9 @@ def user_profile_view(request):
     """
     user = request.user
     
-    return Response({
-        'id': user.id,
-        'username': user.username,
-        'email': user.email,
-        'first_name': user.first_name,
-        'last_name': user.last_name,
-        'is_staff': user.is_staff,
-        'is_superuser': user.is_superuser,
-        'last_login': user.last_login,
-        'date_joined': user.date_joined,
-        'is_active': user.is_active,
-    }, status=status.HTTP_200_OK)
+    from .serializers import UsuariosSerializer
+    user_data = UsuariosSerializer(user).data
+    return Response(user_data, status=status.HTTP_200_OK)
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
