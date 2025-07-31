@@ -41,7 +41,8 @@ class Moneda(models.Model):
 
 class TasaCambio(models.Model):
     id_tasa_cambio = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE)
+    # Para tipo_tasa='OFICIAL_BCV', id_empresa puede ser null (tasa global)
+    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, null=True, blank=True, help_text="Para OFICIAL_BCV puede ser null y será global para todas las empresas.")
     id_moneda_origen = models.ForeignKey(Moneda, related_name='tasa_origen', on_delete=models.CASCADE)
     id_moneda_destino = models.ForeignKey(Moneda, related_name='tasa_destino', on_delete=models.CASCADE)
     tipo_tasa = models.CharField(max_length=20, choices=[
@@ -155,14 +156,29 @@ class TransaccionFinanciera(models.Model):
         return f"{self.tipo_transaccion} - {self.monto_transaccion}"
 
 
+
+# Modelo unificado y flexible para todo tipo de caja (registradora, gerencia, matriz, etc.)
+
 class Caja(models.Model):
+    TIPO_CAJA_CHOICES = [
+        ('REGISTRADORA', 'Caja Registradora'),
+        ('GERENCIA', 'Caja Gerente Sucursal'),
+        ('MATRIZ', 'Caja Matriz/Principal'),
+        ('OTRO', 'Otro')
+    ]
+
     id_caja = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='cajas_finanzas')
-    id_sucursal = models.ForeignKey('core.Sucursal', on_delete=models.CASCADE, related_name='cajas_finanzas')
-    nombre_caja = models.CharField(max_length=100)
-    id_moneda = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='cajas_finanzas')
-    saldo_actual = models.DecimalField(max_digits=18, decimal_places=2, default=0.00)
-    activo = models.BooleanField(default=True)
+    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='cajas', null=True, blank=True)
+    sucursal = models.ForeignKey('core.Sucursal', on_delete=models.SET_NULL, null=True, blank=True, related_name='cajas')
+    nombre = models.CharField(max_length=100)
+    tipo_caja = models.CharField(max_length=20, choices=TIPO_CAJA_CHOICES, default='REGISTRADORA')
+    descripcion = models.TextField(blank=True, null=True)
+    moneda = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='cajas')
+    saldo_inicial = models.DecimalField(max_digits=18, decimal_places=2, default=0)
+    saldo_actual = models.DecimalField(max_digits=18, decimal_places=2, default=0)
+    activa = models.BooleanField(default=True)
+    referencia_externa = models.CharField(max_length=100, null=True, blank=True)
+    documento_json = models.JSONField(null=True, blank=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -171,7 +187,7 @@ class Caja(models.Model):
         verbose_name_plural = 'Cajas'
 
     def __str__(self):
-        return f"{self.nombre_caja} - {self.saldo_actual}"
+        return f"{self.nombre} ({self.get_tipo_caja_display()}) - {self.moneda.codigo_iso} - {self.saldo_actual}"
 
 
 class CuentaBancariaEmpresa(models.Model):

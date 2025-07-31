@@ -1,11 +1,11 @@
 from django.contrib import admin
 from .models import (
-    Caja,
+    # Caja,
     MovimientoInternoFondo,
     OperacionCambioDivisa
 )
 
-admin.site.register(Caja)
+# admin.site.register(Caja)
 admin.site.register(MovimientoInternoFondo)
 
 # Registraciones agregadas automáticamente

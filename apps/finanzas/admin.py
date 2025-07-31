@@ -58,7 +58,7 @@ class TransaccionFinancieraAdmin(admin.ModelAdmin):
 
 @admin.register(Caja)
 class CajaAdmin(admin.ModelAdmin):
-    list_display = ['nombre_caja', 'saldo_actual', 'activo']
+    list_display = ['nombre', 'saldo_actual', 'activa']
     search_fields = ['nombre_caja']
 
 @admin.register(CuentaBancariaEmpresa)

@@ -1,11 +1,9 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import (
-    MonedaViewSet, TasaCambioViewSet, MetodoPagoViewSet, TipoImpuestoViewSet,
-    ConfiguracionImpuestoViewSet, RetencionImpuestoViewSet,
-    TransaccionFinancieraViewSet, MovimientoCajaBancoViewSet, CajaViewSet,
-    CuentaBancariaEmpresaViewSet, MonedaEmpresaActivaViewSet
-)
+from .views_extra.tasa_oficial_bcv import TasaCambioOficialBCVView
+from .views import MonedaViewSet, TasaCambioViewSet, MetodoPagoViewSet, TipoImpuestoViewSet, \
+    ConfiguracionImpuestoViewSet, RetencionImpuestoViewSet, TransaccionFinancieraViewSet, \
+    MovimientoCajaBancoViewSet, CajaViewSet, CuentaBancariaEmpresaViewSet, MonedaEmpresaActivaViewSet
 
 router = DefaultRouter()
 router.register(r'monedas', MonedaViewSet)
@@ -22,4 +20,5 @@ router.register(r'monedas-empresa-activas', MonedaEmpresaActivaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('tasa-oficial-bcv/', TasaCambioOficialBCVView.as_view(), name='tasa-oficial-bcv'),
 ]

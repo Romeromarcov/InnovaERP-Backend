@@ -1,20 +1,7 @@
 from django.db import models
+
 from apps.core.models import Empresa
-from apps.finanzas.models import Moneda
-
-class Caja(models.Model):
-    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='cajas')
-    referencia_externa = models.CharField(max_length=100, null=True, blank=True)
-    documento_json = models.JSONField(null=True, blank=True)
-    nombre = models.CharField(max_length=100)
-    descripcion = models.TextField(blank=True, null=True)
-    moneda = models.ForeignKey(Moneda, on_delete=models.CASCADE)
-    saldo_inicial = models.DecimalField(max_digits=18, decimal_places=2, default=0)
-    saldo_actual = models.DecimalField(max_digits=18, decimal_places=2, default=0)
-    activa = models.BooleanField(default=True)
-
-    def __str__(self):
-        return f"{self.nombre} ({self.empresa})"
+from apps.finanzas.models import Moneda, Caja
 
 class MovimientoInternoFondo(models.Model):
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)

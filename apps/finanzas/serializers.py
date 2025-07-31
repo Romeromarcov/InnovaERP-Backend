@@ -73,10 +73,16 @@ class MonedaSerializer(serializers.ModelSerializer):
             validated_data.pop('es_publica', None)
         return super().update(instance, validated_data)
 
+
 class TasaCambioSerializer(serializers.ModelSerializer):
+    moneda_origen_nombre = serializers.CharField(source='id_moneda_origen.nombre', read_only=True)
+    moneda_destino_nombre = serializers.CharField(source='id_moneda_destino.nombre', read_only=True)
+    usuario_registro_username = serializers.CharField(source='id_usuario_registro.username', read_only=True)
+
     class Meta:
         model = TasaCambio
         fields = '__all__'
+        read_only_fields = ('moneda_origen_nombre', 'moneda_destino_nombre', 'usuario_registro_username')
 
 class MetodoPagoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -112,10 +118,17 @@ class MovimientoCajaBancoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
 class CajaSerializer(serializers.ModelSerializer):
+    empresa_nombre = serializers.CharField(source='empresa.nombre_comercial', read_only=True)
+    sucursal_nombre = serializers.CharField(source='sucursal.nombre', read_only=True)
+    moneda_codigo_iso = serializers.CharField(source='moneda.codigo_iso', read_only=True)
+    tipo_caja_display = serializers.CharField(source='get_tipo_caja_display', read_only=True)
+
     class Meta:
         model = Caja
         fields = '__all__'
+        read_only_fields = ['empresa_nombre', 'sucursal_nombre', 'moneda_codigo_iso', 'tipo_caja_display']
 
 
 class CuentaBancariaEmpresaSerializer(serializers.ModelSerializer):
