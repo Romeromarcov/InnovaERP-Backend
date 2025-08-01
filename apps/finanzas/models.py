@@ -1,6 +1,31 @@
 
 from django.db import models
 import uuid
+
+# Relación para activar/desactivar tipos de impuesto por empresa
+class TipoImpuestoEmpresaActiva(models.Model):
+    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='tipos_impuesto_empresa_activas')
+    tipo_impuesto = models.ForeignKey('TipoImpuesto', on_delete=models.CASCADE, related_name='empresas_activas')
+    activa = models.BooleanField(default=True)
+    class Meta:
+        unique_together = ('empresa', 'tipo_impuesto')
+        verbose_name = 'Tipo de impuesto activo por empresa'
+        verbose_name_plural = 'Tipos de impuesto activos por empresa'
+    def __str__(self):
+        return f"{self.tipo_impuesto.nombre_impuesto} - {self.empresa.nombre_comercial or self.empresa.nombre_legal} ({'Activa' if self.activa else 'Inactiva'})"
+
+# Relación para activar/desactivar métodos de pago por empresa
+class MetodoPagoEmpresaActiva(models.Model):
+    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='metodos_pago_empresa_activas')
+    metodo_pago = models.ForeignKey('MetodoPago', on_delete=models.CASCADE, related_name='empresas_activas')
+    activa = models.BooleanField(default=True)
+    class Meta:
+        unique_together = ('empresa', 'metodo_pago')
+        verbose_name = 'Método de pago activo por empresa'
+        verbose_name_plural = 'Métodos de pago activos por empresa'
+    def __str__(self):
+        return f"{self.metodo_pago.nombre_metodo} - {self.empresa.nombre_comercial or self.empresa.nombre_legal} ({'Activa' if self.activa else 'Inactiva'})"
+
 # Relación para activar/desactivar monedas por empresa
 class MonedaEmpresaActiva(models.Model):
     empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='monedas_activas')
@@ -63,30 +88,39 @@ class TasaCambio(models.Model):
 
 class MetodoPago(models.Model):
     id_metodo_pago = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE)
+    empresa = models.ForeignKey('core.Empresa', null=True, blank=True, on_delete=models.CASCADE, related_name='metodos_pago_empresa', help_text="Empresa propietaria del método. Null si es genérico.")
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
     nombre_metodo = models.CharField(max_length=100)
     tipo_metodo = models.CharField(max_length=50, choices=[
         ('EFECTIVO', 'Efectivo'),
         ('ELECTRONICO', 'Electrónico'),
+        ('TARJETA', 'Tarjeta'),
         ('CHEQUE', 'Cheque'),
         ('CREDITO', 'Crédito'),
         ('OTRO', 'Otro')
     ])
     activo = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    # NUEVOS CAMPOS PARA MULTI-TENANT Y VISIBILIDAD
+    es_generico = models.BooleanField(default=False, help_text="Si es True, es un método global del sistema, no editable por usuarios normales.")
+    es_publico = models.BooleanField(default=False, help_text="Si es True, el método es visible para todas las empresas.")
 
 class TipoImpuesto(models.Model):
     id_tipo_impuesto = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE)
+    empresa = models.ForeignKey('core.Empresa', null=True, blank=True, on_delete=models.CASCADE, related_name='tipos_impuesto_empresa', help_text="Empresa propietaria del tipo de impuesto. Null si es genérico.")
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
     nombre_impuesto = models.CharField(max_length=100)
     codigo_impuesto = models.CharField(max_length=20, unique=True)
     es_retencion = models.BooleanField(default=False)
     activo = models.BooleanField(default=True)
+    es_generico = models.BooleanField(default=False, help_text="Si es True, es un tipo de impuesto global del sistema, no editable por usuarios normales.")
+    es_publico = models.BooleanField(default=False, help_text="Si es True, el tipo de impuesto es visible para todas las empresas.")
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nombre_impuesto} ({self.codigo_impuesto})"
 
 class ConfiguracionImpuesto(models.Model):
     id_configuracion_impuesto = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

@@ -4,11 +4,7 @@ from django.contrib.auth.models import AbstractUser
 import uuid # Importamos uuid para usar UUIDField como PK
 from django.utils import timezone
 
-# Importación condicional para evitar errores de importación circular
-try:
-    from apps.finanzas.models import Moneda
-except ImportError:
-    Moneda = None
+
 
 # Asegúrate de que finanzas.Moneda esté disponible.
 # Si el módulo 'finanzas' aún no existe como una app, esto podría dar un error.

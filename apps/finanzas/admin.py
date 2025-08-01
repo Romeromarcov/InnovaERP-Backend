@@ -23,16 +23,16 @@ class TasaCambioAdmin(admin.ModelAdmin):
 
 @admin.register(MetodoPago)
 class MetodoPagoAdmin(admin.ModelAdmin):
-    list_display = ('nombre_metodo', 'tipo_metodo', 'id_empresa', 'activo', 'fecha_creacion')
-    list_filter = ('tipo_metodo', 'activo', 'id_empresa')
+    list_display = ('nombre_metodo', 'tipo_metodo', 'empresa', 'activo', 'fecha_creacion')
+    list_filter = ('tipo_metodo', 'activo', 'empresa')
     search_fields = ('nombre_metodo',)
     readonly_fields = ('id_metodo_pago', 'fecha_creacion')
 
 
 @admin.register(TipoImpuesto)
 class TipoImpuestoAdmin(admin.ModelAdmin):
-    list_display = ('nombre_impuesto', 'codigo_impuesto', 'es_retencion', 'id_empresa', 'activo', 'fecha_creacion')
-    list_filter = ('es_retencion', 'activo', 'id_empresa')
+    list_display = ('nombre_impuesto', 'codigo_impuesto', 'es_retencion', 'empresa', 'activo', 'fecha_creacion')
+    list_filter = ('es_retencion', 'activo', 'empresa')
     search_fields = ('nombre_impuesto', 'codigo_impuesto')
     readonly_fields = ('id_tipo_impuesto', 'fecha_creacion')
 

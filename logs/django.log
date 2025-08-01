@@ -6662,3 +6662,1206 @@ INFO 2025-07-31 09:29:14,788 basehttp 14352 8148 "GET /api/finanzas/monedas/ HTT
 INFO 2025-07-31 09:29:14,796 basehttp 14352 9844 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3187
 INFO 2025-07-31 09:29:14,799 basehttp 14352 15404 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
 INFO 2025-07-31 09:29:14,817 basehttp 14352 9844 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3187
+INFO 2025-07-31 11:51:32,685 basehttp 14352 15056 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:32,685 basehttp 14352 15232 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:32,685 basehttp 14352 11700 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:32,685 basehttp 14352 15088 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:32,685 basehttp 14352 2844 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+WARNING 2025-07-31 11:51:32,685 log 14352 15232 Unauthorized: /api/finanzas/tasa-oficial-bcv/
+INFO 2025-07-31 11:51:32,685 basehttp 14352 5576 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+WARNING 2025-07-31 11:51:32,685 log 14352 15088 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 11:51:32,685 log 14352 2844 Unauthorized: /api/finanzas/tasas-cambio/
+WARNING 2025-07-31 11:51:32,685 basehttp 14352 15232 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:32,685 basehttp 14352 15088 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:32,699 log 14352 15232 Unauthorized: /api/finanzas/tasa-oficial-bcv/
+WARNING 2025-07-31 11:51:32,699 basehttp 14352 2844 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:32,700 log 14352 5576 Unauthorized: /api/finanzas/tasas-cambio/
+WARNING 2025-07-31 11:51:32,701 log 14352 15088 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 11:51:32,702 basehttp 14352 15232 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:32,703 basehttp 14352 15088 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:32,704 basehttp 14352 5576 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:34,886 log 14352 5576 Unauthorized: /api/finanzas/tasa-oficial-bcv/
+WARNING 2025-07-31 11:51:34,887 log 14352 15232 Unauthorized: /api/finanzas/tasas-cambio/
+WARNING 2025-07-31 11:51:34,889 log 14352 15088 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 11:51:34,890 basehttp 14352 15232 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:34,890 basehttp 14352 5576 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:34,890 basehttp 14352 15088 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:34,893 log 14352 15232 Unauthorized: /api/finanzas/tasas-cambio/
+WARNING 2025-07-31 11:51:34,894 log 14352 5576 Unauthorized: /api/finanzas/tasa-oficial-bcv/
+WARNING 2025-07-31 11:51:34,895 log 14352 15088 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 11:51:34,895 basehttp 14352 15232 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:34,896 basehttp 14352 5576 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 401 172
+WARNING 2025-07-31 11:51:34,896 basehttp 14352 15088 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+INFO 2025-07-31 11:51:41,169 basehttp 14352 15088 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:41,169 auth_views 14352 15088 LoginView received username: mromero, password: ***
+INFO 2025-07-31 11:51:41,886 auth_views 14352 15088 Authenticate result: mromero
+INFO 2025-07-31 11:51:41,919 auth_views 14352 15088 Successful login for user: mromero
+INFO 2025-07-31 11:51:41,919 basehttp 14352 15088 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 11:51:41,919 basehttp 14352 15088 "OPTIONS /api/core/usuarios/me/ HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:41,942 basehttp 14352 15088 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 11:51:41,954 basehttp 14352 15088 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:41,954 basehttp 14352 5576 "OPTIONS /api/core/sucursales/ HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:41,971 basehttp 14352 5576 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 11:51:41,975 basehttp 14352 15088 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 11:51:47,809 basehttp 14352 5576 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 11:51:47,815 basehttp 14352 15088 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-07-31 11:51:47,823 basehttp 14352 15232 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3187
+INFO 2025-07-31 11:51:47,827 basehttp 14352 5576 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 11:51:47,838 basehttp 14352 15088 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-07-31 11:51:47,840 basehttp 14352 2844 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3187
+INFO 2025-07-31 11:51:50,601 basehttp 14352 2844 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:50,602 basehttp 14352 15088 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-07-31 11:51:50,611 basehttp 14352 15088 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 11:51:50,618 basehttp 14352 15088 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 11:52:28,715 basehttp 14352 15088 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 11:52:28,719 basehttp 14352 15088 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 11:52:40,051 basehttp 14352 15088 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 11:52:40,053 basehttp 14352 15088 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 11:53:29,478 basehttp 14352 15088 "OPTIONS /api/finanzas/metodos-pago/ HTTP/1.1" 200 0
+WARNING 2025-07-31 11:53:29,478 log 14352 15088 Bad Request: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 11:53:29,478 basehttp 14352 15088 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 400 60
+INFO 2025-07-31 11:57:39,342 basehttp 14352 9028 "GET /admin/ HTTP/1.1" 200 112144
+WARNING 2025-07-31 11:57:39,465 log 14352 9028 Not Found: /favicon.ico
+WARNING 2025-07-31 11:57:39,465 basehttp 14352 9028 "GET /favicon.ico HTTP/1.1" 404 4479
+INFO 2025-07-31 11:57:55,212 basehttp 14352 9028 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 86053
+INFO 2025-07-31 11:57:55,270 basehttp 14352 9028 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 11:57:56,886 basehttp 14352 9028 "GET /admin/finanzas/metodopago/add/ HTTP/1.1" 200 90617
+INFO 2025-07-31 11:57:56,915 basehttp 14352 9028 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 11:58:06,545 basehttp 14352 9028 "GET /admin/finanzas/ HTTP/1.1" 200 11557
+INFO 2025-07-31 11:59:04,557 autoreload 14352 4564 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 11:59:07,328 autoreload 15028 6456 Watching for file changes with StatReloader
+INFO 2025-07-31 11:59:19,656 autoreload 15028 6456 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 11:59:20,489 autoreload 13548 8380 Watching for file changes with StatReloader
+INFO 2025-07-31 12:00:25,862 basehttp 13548 16036 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 268
+INFO 2025-07-31 12:00:25,896 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:00:25,904 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:00:30,174 basehttp 13548 16036 "OPTIONS /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 0
+INFO 2025-07-31 12:00:30,196 basehttp 13548 16036 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 269
+INFO 2025-07-31 12:00:37,688 basehttp 13548 16036 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 268
+INFO 2025-07-31 12:00:39,164 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 268
+INFO 2025-07-31 12:00:39,170 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 268
+INFO 2025-07-31 12:00:46,185 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:00:46,192 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:00:47,132 basehttp 13548 16036 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 269
+INFO 2025-07-31 12:00:47,935 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 269
+INFO 2025-07-31 12:00:47,942 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 269
+INFO 2025-07-31 12:00:49,408 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 321
+INFO 2025-07-31 12:00:49,420 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 321
+INFO 2025-07-31 12:00:50,367 basehttp 13548 16036 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 268
+INFO 2025-07-31 12:01:01,449 basehttp 13548 14788 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 88388
+INFO 2025-07-31 12:01:01,480 basehttp 13548 14708 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO 2025-07-31 12:01:01,482 basehttp 13548 14788 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 12:01:04,031 basehttp 13548 14788 "GET /admin/finanzas/ HTTP/1.1" 200 11557
+INFO 2025-07-31 12:03:17,449 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:03:17,457 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:07:06,706 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:07:06,716 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:07:28,996 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:07:28,996 basehttp 13548 16036 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:09:24,295 autoreload 13548 8380 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:09:25,155 autoreload 3316 8056 Watching for file changes with StatReloader
+INFO 2025-07-31 12:10:12,704 autoreload 3316 8056 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:10:13,567 autoreload 12352 6624 Watching for file changes with StatReloader
+INFO 2025-07-31 12:10:25,772 basehttp 12352 13920 "GET /api/finanzas/metodos-pago/?nombre_metodo=Zelle&tipo_metodo=ELECTRONICO HTTP/1.1" 200 320
+INFO 2025-07-31 12:10:28,822 basehttp 12352 6064 "GET /api/finanzas/metodos-pago/?nombre_metodo=Zelle&tipo_metodo=ELECTRONICO HTTP/1.1" 200 320
+INFO 2025-07-31 12:10:29,118 basehttp 12352 10992 "OPTIONS /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/reutilizar/ HTTP/1.1" 200 0
+WARNING 2025-07-31 12:10:29,166 log 12352 10992 Conflict: /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/reutilizar/
+WARNING 2025-07-31 12:10:29,166 basehttp 12352 10992 "POST /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/reutilizar/ HTTP/1.1" 409 66
+INFO 2025-07-31 12:10:49,513 basehttp 12352 10992 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:10:49,523 basehttp 12352 10992 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:10:57,045 basehttp 12352 16332 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 88388
+INFO 2025-07-31 12:10:57,071 basehttp 12352 16332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 12:10:58,656 basehttp 12352 16332 "GET /admin/finanzas/metodopago/add/ HTTP/1.1" 200 90661
+INFO 2025-07-31 12:10:58,686 basehttp 12352 16332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 12:11:13,937 basehttp 12352 16332 "POST /admin/finanzas/metodopago/add/ HTTP/1.1" 200 90914
+INFO 2025-07-31 12:11:13,965 basehttp 12352 16332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 12:11:21,429 basehttp 12352 16332 "POST /admin/finanzas/metodopago/add/ HTTP/1.1" 302 0
+INFO 2025-07-31 12:11:21,472 basehttp 12352 16332 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89330
+INFO 2025-07-31 12:11:21,496 basehttp 12352 16332 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 12:14:52,397 autoreload 12352 6624 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:14:53,281 autoreload 7512 15612 Watching for file changes with StatReloader
+INFO 2025-07-31 12:15:01,752 autoreload 7512 15612 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:15:02,672 autoreload 5808 10184 Watching for file changes with StatReloader
+INFO 2025-07-31 12:16:29,466 basehttp 5808 340 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=pago HTTP/1.1" 200 0
+INFO 2025-07-31 12:16:29,498 basehttp 5808 340 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=pago HTTP/1.1" 200 327
+INFO 2025-07-31 12:16:42,065 basehttp 5808 340 "OPTIONS /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 200 0
+WARNING 2025-07-31 12:16:42,075 log 5808 340 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:16:42,076 basehttp 5808 340 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:17:57,428 autoreload 5808 10184 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:17:58,322 autoreload 15324 9768 Watching for file changes with StatReloader
+INFO 2025-07-31 12:18:06,818 autoreload 15324 9768 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:18:07,703 autoreload 1396 6272 Watching for file changes with StatReloader
+ERROR 2025-07-31 12:18:09,397 log 1396 14648 Internal Server Error: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MetodoPagoViewSet.reutilizar() got an unexpected keyword argument 'id_metodo_pago'
+ERROR 2025-07-31 12:18:09,400 basehttp 1396 14648 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 500 23665
+INFO 2025-07-31 12:18:16,937 basehttp 1396 14648 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movil HTTP/1.1" 200 0
+INFO 2025-07-31 12:18:16,952 basehttp 1396 14648 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movil HTTP/1.1" 200 327
+ERROR 2025-07-31 12:18:18,313 log 1396 14648 Internal Server Error: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: MetodoPagoViewSet.reutilizar() got an unexpected keyword argument 'id_metodo_pago'
+ERROR 2025-07-31 12:18:18,314 basehttp 1396 14648 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 500 23665
+INFO 2025-07-31 12:19:07,581 autoreload 1396 6272 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:19:08,476 autoreload 15328 8016 Watching for file changes with StatReloader
+INFO 2025-07-31 12:19:22,415 autoreload 15328 8016 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:19:23,228 autoreload 4720 2084 Watching for file changes with StatReloader
+INFO 2025-07-31 12:19:37,649 basehttp 4720 9408 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 0
+INFO 2025-07-31 12:19:37,697 basehttp 4720 9408 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 327
+WARNING 2025-07-31 12:19:39,014 log 4720 9408 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:19:39,015 basehttp 4720 9408 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:21:51,521 autoreload 8596 7768 Watching for file changes with StatReloader
+INFO 2025-07-31 12:22:28,023 basehttp 8596 13980 "GET /admin/ HTTP/1.1" 200 112203
+INFO 2025-07-31 12:22:34,203 auth_views 8596 14384 LoginView received username: mromero, password: ***
+INFO 2025-07-31 12:22:34,935 auth_views 8596 14384 Authenticate result: mromero
+INFO 2025-07-31 12:22:34,952 auth_views 8596 14384 Successful login for user: mromero
+INFO 2025-07-31 12:22:34,971 basehttp 8596 14384 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 12:22:34,985 basehttp 8596 14384 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 12:22:35,003 basehttp 8596 14384 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 12:22:35,020 basehttp 8596 15912 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 12:22:43,618 basehttp 8596 15912 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:22:43,627 basehttp 8596 15912 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:23:04,743 basehttp 8596 15912 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 327
+WARNING 2025-07-31 12:23:05,936 log 8596 15912 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:23:05,936 basehttp 8596 15912 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:25:57,001 autoreload 9480 15288 Watching for file changes with StatReloader
+INFO 2025-07-31 12:26:46,836 basehttp 9480 6808 "GET /admin/ HTTP/1.1" 200 112203
+INFO 2025-07-31 12:26:53,143 auth_views 9480 2992 LoginView received username: mromero, password: ***
+INFO 2025-07-31 12:26:53,869 auth_views 9480 2992 Authenticate result: mromero
+INFO 2025-07-31 12:26:53,900 auth_views 9480 2992 Successful login for user: mromero
+INFO 2025-07-31 12:26:53,900 basehttp 9480 2992 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 12:26:53,916 basehttp 9480 2992 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 12:26:53,966 basehttp 9480 14628 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 12:26:53,971 basehttp 9480 2992 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 12:27:00,427 basehttp 9480 2992 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:27:00,435 basehttp 9480 2992 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:27:07,935 basehttp 9480 2992 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mov HTTP/1.1" 200 0
+INFO 2025-07-31 12:27:07,945 basehttp 9480 2992 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mov HTTP/1.1" 200 327
+WARNING 2025-07-31 12:27:08,953 log 9480 2992 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:27:08,953 basehttp 9480 2992 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:27:22,048 basehttp 9480 2992 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mo HTTP/1.1" 200 0
+INFO 2025-07-31 12:27:22,057 basehttp 9480 2992 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mo HTTP/1.1" 200 327
+WARNING 2025-07-31 12:27:24,713 log 9480 2992 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:27:24,714 basehttp 9480 2992 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:29:15,119 autoreload 9480 15288 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:29:15,959 autoreload 15332 15024 Watching for file changes with StatReloader
+INFO 2025-07-31 12:30:30,512 autoreload 15332 15024 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:30:31,338 autoreload 6160 1496 Watching for file changes with StatReloader
+INFO 2025-07-31 12:30:44,649 autoreload 15140 10888 Watching for file changes with StatReloader
+INFO 2025-07-31 12:30:57,457 basehttp 15140 12632 "GET /admin/ HTTP/1.1" 200 112203
+INFO 2025-07-31 12:31:02,171 basehttp 15140 16136 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:31:02,171 basehttp 15140 16136 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 320
+INFO 2025-07-31 12:31:10,559 basehttp 15140 16136 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mov HTTP/1.1" 200 327
+WARNING 2025-07-31 12:31:11,472 log 15140 16136 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:31:11,472 basehttp 15140 16136 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:31:26,256 basehttp 15140 16136 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mov HTTP/1.1" 200 327
+WARNING 2025-07-31 12:31:27,212 log 15140 16136 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:31:27,212 basehttp 15140 16136 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:32:44,209 autoreload 15140 10888 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:32:45,080 autoreload 14884 6992 Watching for file changes with StatReloader
+INFO 2025-07-31 12:50:15,884 autoreload 14884 6992 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 12:50:16,707 autoreload 15388 14616 Watching for file changes with StatReloader
+INFO 2025-07-31 12:58:04,395 basehttp 15388 1260 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 327
+WARNING 2025-07-31 12:58:05,590 log 15388 1260 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:58:05,590 basehttp 15388 1260 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 12:58:14,526 basehttp 15388 1260 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 327
+WARNING 2025-07-31 12:58:15,290 log 15388 1260 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 12:58:15,291 basehttp 15388 1260 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+WARNING 2025-07-31 13:00:12,662 log 15388 3740 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 13:00:12,662 basehttp 15388 3740 "GET /api/finanzas/metodos-pago/ HTTP/1.1" 401 58
+INFO 2025-07-31 13:01:20,385 basehttp 15388 1260 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movil HTTP/1.1" 200 327
+WARNING 2025-07-31 13:01:21,447 log 15388 1260 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:01:21,448 basehttp 15388 1260 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 13:01:42,938 basehttp 15388 1260 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 327
+WARNING 2025-07-31 13:01:45,082 log 15388 1260 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:01:45,083 basehttp 15388 1260 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+WARNING 2025-07-31 13:02:32,442 log 15388 1260 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:02:32,442 basehttp 15388 1260 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 13:03:19,018 basehttp 15388 13872 "GET /api/finanzas/metodos-pago/ HTTP/1.1" 200 21159
+INFO 2025-07-31 13:03:19,040 basehttp 15388 13872 "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,045 basehttp 15388 13872 "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,048 basehttp 15388 2416 "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,048 basehttp 15388 9408 "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,050 basehttp 15388 13872 "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,052 basehttp 15388 2416 "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,052 basehttp 15388 9408 "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,056 basehttp 15388 2416 "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,057 basehttp 15388 13872 "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,059 basehttp 15388 9408 "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,060 basehttp 15388 2416 "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,068 basehttp 15388 2416 "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+INFO 2025-07-31 13:03:19,089 basehttp 15388 2416 "GET /static/rest_framework/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 304 0
+INFO 2025-07-31 13:06:18,103 autoreload 15388 14616 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 13:06:18,972 autoreload 1212 2360 Watching for file changes with StatReloader
+INFO 2025-07-31 13:08:32,084 autoreload 1212 2360 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 13:08:32,878 autoreload 11196 4336 Watching for file changes with StatReloader
+INFO 2025-07-31 13:08:36,422 basehttp 11196 5860 "GET /api/finanzas/metodos-pago/ HTTP/1.1" 200 21649
+INFO 2025-07-31 13:08:54,827 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+INFO 2025-07-31 13:08:55,652 basehttp 11196 7100 "OPTIONS /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 200 0
+WARNING 2025-07-31 13:08:55,658 log 11196 7100 Not Found: /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:08:55,658 basehttp 11196 7100 "POST /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 4744
+INFO 2025-07-31 13:09:17,952 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mo HTTP/1.1" 200 421
+WARNING 2025-07-31 13:09:18,596 log 11196 7100 Not Found: /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:09:18,597 basehttp 11196 7100 "POST /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 4744
+INFO 2025-07-31 13:11:22,818 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+WARNING 2025-07-31 13:11:23,841 log 11196 7100 Not Found: /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:11:23,841 basehttp 11196 7100 "POST /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 4744
+INFO 2025-07-31 13:11:36,599 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=mov HTTP/1.1" 200 421
+WARNING 2025-07-31 13:11:38,820 log 11196 7100 Not Found: /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:11:38,820 basehttp 11196 7100 "POST /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 4744
+INFO 2025-07-31 13:13:00,730 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+WARNING 2025-07-31 13:13:01,818 log 11196 7100 Not Found: /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:13:01,819 basehttp 11196 7100 "POST /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 4744
+INFO 2025-07-31 13:13:14,277 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+WARNING 2025-07-31 13:13:15,175 log 11196 7100 Not Found: /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:13:15,176 basehttp 11196 7100 "POST /apihttp://localhost:8000/api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 4744
+INFO 2025-07-31 13:15:21,737 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+WARNING 2025-07-31 13:15:22,649 log 11196 7100 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:15:22,649 basehttp 11196 7100 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 13:15:33,857 basehttp 11196 7100 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+WARNING 2025-07-31 13:15:34,922 log 11196 7100 Not Found: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:15:34,923 basehttp 11196 7100 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 404 51
+INFO 2025-07-31 13:17:14,545 autoreload 11196 4336 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 13:17:15,411 autoreload 5496 5124 Watching for file changes with StatReloader
+INFO 2025-07-31 13:19:40,548 autoreload 5496 5124 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 13:19:41,527 autoreload 3984 3776 Watching for file changes with StatReloader
+INFO 2025-07-31 13:19:53,870 basehttp 3984 3340 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+INFO 2025-07-31 13:19:54,834 basehttp 3984 3340 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 201 369
+WARNING 2025-07-31 13:19:54,836 log 3984 3340 Conflict: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:19:54,836 basehttp 3984 3340 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 409 66
+INFO 2025-07-31 13:20:08,733 basehttp 3984 3340 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:20:08,744 basehttp 3984 3340 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:20:16,125 basehttp 3984 3340 "OPTIONS /api/finanzas/metodos-pago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:20:16,125 basehttp 3984 15124 "OPTIONS /api/finanzas/metodos-pago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:20:16,138 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/ HTTP/1.1" 200 369
+INFO 2025-07-31 13:20:16,148 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/ HTTP/1.1" 200 369
+INFO 2025-07-31 13:20:21,318 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:20:21,324 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:20:23,006 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 362
+INFO 2025-07-31 13:20:23,020 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 362
+INFO 2025-07-31 13:20:24,636 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:20:24,636 basehttp 3984 15124 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:21:07,429 basehttp 3984 7840 "GET /admin/ HTTP/1.1" 200 112203
+INFO 2025-07-31 13:21:24,013 basehttp 3984 2568 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89682
+INFO 2025-07-31 13:21:24,059 basehttp 3984 2568 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+WARNING 2025-07-31 13:42:20,460 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/buscar_reutilizar/
+WARNING 2025-07-31 13:42:20,460 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 401 172
+WARNING 2025-07-31 13:42:22,590 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/buscar_reutilizar/
+WARNING 2025-07-31 13:42:22,590 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 401 172
+WARNING 2025-07-31 13:42:23,878 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/buscar_reutilizar/
+WARNING 2025-07-31 13:42:23,878 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 401 172
+WARNING 2025-07-31 13:42:27,075 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 13:42:27,075 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 13:42:27,075 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 13:42:27,075 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 13:42:29,170 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 13:42:29,170 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 13:42:29,172 log 3984 8596 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 13:42:29,172 basehttp 3984 8596 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+INFO 2025-07-31 13:42:36,185 auth_views 3984 8596 LoginView received username: mromero, password: ***
+INFO 2025-07-31 13:42:36,933 auth_views 3984 8596 Authenticate result: mromero
+INFO 2025-07-31 13:42:38,259 auth_views 3984 8596 Successful login for user: mromero
+INFO 2025-07-31 13:42:38,286 basehttp 3984 8596 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 13:42:38,301 basehttp 3984 8596 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 13:42:38,329 basehttp 3984 8596 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 13:42:38,338 basehttp 3984 15324 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 13:42:43,691 basehttp 3984 15324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:42:43,700 basehttp 3984 15324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:42:50,737 basehttp 3984 15324 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444&nombre_metodo=movi HTTP/1.1" 200 421
+INFO 2025-07-31 13:47:58,411 basehttp 3984 84 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-07-31 13:47:58,422 basehttp 3984 84 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 421
+WARNING 2025-07-31 13:48:09,557 log 3984 84 Conflict: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 13:48:09,557 basehttp 3984 84 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 409 66
+INFO 2025-07-31 13:48:14,952 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:48:14,964 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:48:22,948 basehttp 3984 15420 "GET /admin/finanzas/metodopago/add/ HTTP/1.1" 200 90661
+INFO 2025-07-31 13:48:22,978 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:48:42,843 basehttp 3984 15420 "POST /admin/finanzas/metodopago/add/ HTTP/1.1" 302 0
+INFO 2025-07-31 13:48:42,897 basehttp 3984 15420 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90617
+INFO 2025-07-31 13:48:42,928 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:48:48,301 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:48:48,311 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 784
+INFO 2025-07-31 13:48:51,253 basehttp 3984 84 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 786
+INFO 2025-07-31 13:49:06,911 basehttp 3984 84 "OPTIONS /api/finanzas/metodos-pago/fb3b6b61-02b8-49af-aaf1-6c4afa621543/reutilizar/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:49:07,286 basehttp 3984 84 "POST /api/finanzas/metodos-pago/fb3b6b61-02b8-49af-aaf1-6c4afa621543/reutilizar/ HTTP/1.1" 201 364
+WARNING 2025-07-31 13:49:07,293 log 3984 84 Conflict: /api/finanzas/metodos-pago/fb3b6b61-02b8-49af-aaf1-6c4afa621543/reutilizar/
+WARNING 2025-07-31 13:49:07,293 basehttp 3984 84 "POST /api/finanzas/metodos-pago/fb3b6b61-02b8-49af-aaf1-6c4afa621543/reutilizar/ HTTP/1.1" 409 66
+INFO 2025-07-31 13:49:16,006 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1149
+INFO 2025-07-31 13:49:16,017 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1149
+INFO 2025-07-31 13:49:22,713 basehttp 3984 84 "OPTIONS /api/finanzas/metodos-pago/8d5edd6d-2c6d-4294-ba55-544947c51a29/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:49:22,724 basehttp 3984 84 "GET /api/finanzas/metodos-pago/8d5edd6d-2c6d-4294-ba55-544947c51a29/ HTTP/1.1" 200 364
+INFO 2025-07-31 13:49:22,724 basehttp 3984 84 "GET /api/finanzas/metodos-pago/8d5edd6d-2c6d-4294-ba55-544947c51a29/ HTTP/1.1" 200 364
+INFO 2025-07-31 13:49:24,375 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1149
+INFO 2025-07-31 13:49:24,376 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1149
+INFO 2025-07-31 13:49:31,811 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1149
+INFO 2025-07-31 13:49:31,819 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1149
+INFO 2025-07-31 13:49:37,473 basehttp 3984 15420 "GET /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 200 91123
+INFO 2025-07-31 13:49:37,499 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:49:41,539 basehttp 3984 15420 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90963
+INFO 2025-07-31 13:49:41,576 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:49:47,456 basehttp 3984 15420 "GET /admin/finanzas/metodopago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/change/ HTTP/1.1" 200 91131
+INFO 2025-07-31 13:49:47,482 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:49:49,022 basehttp 3984 15420 "GET /admin/finanzas/metodopago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/delete/ HTTP/1.1" 200 84267
+INFO 2025-07-31 13:49:49,281 basehttp 3984 15420 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-07-31 13:49:50,556 basehttp 3984 15420 "POST /admin/finanzas/metodopago/df328d9a-3da8-40b0-bd69-2f2ec57d81d0/delete/ HTTP/1.1" 302 0
+INFO 2025-07-31 13:49:50,617 basehttp 3984 15420 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90527
+INFO 2025-07-31 13:49:50,640 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:49:57,455 basehttp 3984 15420 "GET /admin/finanzas/metodopago/8d5edd6d-2c6d-4294-ba55-544947c51a29/change/ HTTP/1.1" 200 91129
+INFO 2025-07-31 13:49:57,486 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:49:59,512 basehttp 3984 15420 "GET /admin/finanzas/metodopago/8d5edd6d-2c6d-4294-ba55-544947c51a29/delete/ HTTP/1.1" 200 84267
+INFO 2025-07-31 13:50:01,022 basehttp 3984 15420 "POST /admin/finanzas/metodopago/8d5edd6d-2c6d-4294-ba55-544947c51a29/delete/ HTTP/1.1" 302 0
+INFO 2025-07-31 13:50:01,088 basehttp 3984 15420 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89887
+INFO 2025-07-31 13:50:01,117 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:50:08,386 basehttp 3984 15420 "GET /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 200 91123
+INFO 2025-07-31 13:50:08,412 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:50:12,927 basehttp 3984 15420 "POST /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 302 0
+INFO 2025-07-31 13:50:12,968 basehttp 3984 15420 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89974
+INFO 2025-07-31 13:50:12,994 basehttp 3984 15420 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:50:17,769 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 13:50:17,778 basehttp 3984 84 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 52
+INFO 2025-07-31 13:50:22,454 basehttp 3984 84 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 1151
+INFO 2025-07-31 13:50:32,421 basehttp 3984 84 "POST /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/reutilizar/ HTTP/1.1" 201 364
+WARNING 2025-07-31 13:50:32,440 log 3984 84 Conflict: /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/reutilizar/
+WARNING 2025-07-31 13:50:32,441 basehttp 3984 84 "POST /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/reutilizar/ HTTP/1.1" 409 66
+INFO 2025-07-31 13:53:47,951 basehttp 3984 8972 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-07-31 13:53:47,951 basehttp 3984 7096 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-07-31 13:53:47,957 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 13:53:47,957 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 13:55:31,079 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 1151
+INFO 2025-07-31 13:56:00,164 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 1151
+INFO 2025-07-31 13:57:45,543 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 1151
+INFO 2025-07-31 13:58:29,892 basehttp 3984 3932 "GET /api/finanzas/metodos-pago/?nombre_metodo=zelle&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1516
+INFO 2025-07-31 13:58:29,896 basehttp 3984 8972 "OPTIONS /api/finanzas/metodos-pago/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:58:29,912 basehttp 3984 8972 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 362
+INFO 2025-07-31 13:58:29,935 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 779
+INFO 2025-07-31 13:58:29,948 basehttp 3984 8972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 779
+INFO 2025-07-31 13:58:33,797 basehttp 3984 8972 "OPTIONS /api/finanzas/metodos-pago/71b29823-5570-42cf-958c-5d0e2c60a646/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:58:33,797 basehttp 3984 7096 "OPTIONS /api/finanzas/metodos-pago/71b29823-5570-42cf-958c-5d0e2c60a646/ HTTP/1.1" 200 0
+INFO 2025-07-31 13:58:33,810 basehttp 3984 7096 "GET /api/finanzas/metodos-pago/71b29823-5570-42cf-958c-5d0e2c60a646/ HTTP/1.1" 200 362
+INFO 2025-07-31 13:58:33,820 basehttp 3984 7096 "GET /api/finanzas/metodos-pago/71b29823-5570-42cf-958c-5d0e2c60a646/ HTTP/1.1" 200 362
+INFO 2025-07-31 13:58:36,843 basehttp 3984 7096 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 779
+INFO 2025-07-31 13:58:36,859 basehttp 3984 7096 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 779
+INFO 2025-07-31 13:58:40,422 basehttp 3984 15320 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90960
+INFO 2025-07-31 13:58:40,447 basehttp 3984 15320 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:58:48,910 basehttp 3984 15320 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 13:58:49,871 basehttp 3984 15320 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 13:58:49,921 basehttp 3984 15320 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 13:58:49,955 basehttp 3984 15320 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 13:58:57,460 basehttp 3984 7096 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 13:58:57,467 basehttp 3984 7096 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 14:32:01,976 basehttp 3984 8148 "OPTIONS /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:01,976 basehttp 3984 15216 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:01,976 basehttp 3984 15092 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:01,976 basehttp 3984 16096 "OPTIONS /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:02,003 basehttp 3984 15092 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 14:32:02,012 basehttp 3984 8148 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 14:32:02,016 basehttp 3984 15092 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 14:32:02,027 basehttp 3984 8148 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 14:32:21,859 basehttp 3984 8148 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 14:32:21,867 basehttp 3984 8148 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 14:32:33,247 basehttp 3984 8148 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:33,250 basehttp 3984 16096 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:33,250 basehttp 3984 15092 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:33,252 basehttp 3984 15216 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-07-31 14:32:33,270 basehttp 3984 1900 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 14:32:33,281 basehttp 3984 8148 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-07-31 14:32:33,287 basehttp 3984 1900 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 14:32:33,296 basehttp 3984 15216 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3187
+INFO 2025-07-31 14:32:33,299 basehttp 3984 15092 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-07-31 14:32:33,314 basehttp 3984 15216 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3187
+INFO 2025-07-31 14:32:38,828 basehttp 3984 15216 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 14:32:38,836 basehttp 3984 15216 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 416
+INFO 2025-07-31 14:32:43,137 basehttp 3984 8644 "GET /admin/finanzas/ HTTP/1.1" 200 11557
+INFO 2025-07-31 14:32:46,410 basehttp 3984 8644 "GET /admin/finanzas/tasacambio/ HTTP/1.1" 200 91559
+INFO 2025-07-31 14:32:46,438 basehttp 3984 8644 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:33:06,525 basehttp 3984 8644 "GET /admin/finanzas/ HTTP/1.1" 200 11557
+INFO 2025-07-31 14:33:09,441 basehttp 3984 8644 "GET /admin/finanzas/moneda/ HTTP/1.1" 200 90069
+INFO 2025-07-31 14:33:09,474 basehttp 3984 8644 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:33:15,791 basehttp 3984 8644 "GET /admin/finanzas/moneda/11111111-1111-1111-1111-111111111111/change/ HTTP/1.1" 200 95995
+INFO 2025-07-31 14:33:15,821 basehttp 3984 8644 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:36:38,698 autoreload 3984 3776 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:36:39,610 autoreload 13396 10616 Watching for file changes with StatReloader
+INFO 2025-07-31 14:36:57,901 autoreload 13396 10616 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:36:58,694 autoreload 7076 3456 Watching for file changes with StatReloader
+INFO 2025-07-31 14:40:04,813 basehttp 7076 7672 "GET /api/finanzas/metodos-pago/?nombre_metodo=Zelle&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:40:14,748 autoreload 7076 3456 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:40:15,587 autoreload 14980 10396 Watching for file changes with StatReloader
+INFO 2025-07-31 14:40:43,630 autoreload 14980 10396 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:40:44,424 autoreload 3104 6384 Watching for file changes with StatReloader
+INFO 2025-07-31 14:40:51,325 basehttp 3104 15244 "GET /api/finanzas/metodos-pago/?nombre_metodo=sele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:40:51,667 basehttp 3104 10868 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 14:40:51,692 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:40:51,702 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:40:54,580 basehttp 3104 8168 "OPTIONS /api/finanzas/metodos-pago/1c8780a6-e399-48eb-af03-d22f0c0e7a40/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:40:54,580 basehttp 3104 10868 "OPTIONS /api/finanzas/metodos-pago/1c8780a6-e399-48eb-af03-d22f0c0e7a40/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:40:54,591 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/1c8780a6-e399-48eb-af03-d22f0c0e7a40/ HTTP/1.1" 200 378
+INFO 2025-07-31 14:40:54,601 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/1c8780a6-e399-48eb-af03-d22f0c0e7a40/ HTTP/1.1" 200 378
+INFO 2025-07-31 14:40:56,664 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:40:56,680 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:41:01,463 basehttp 3104 2152 "GET /admin/finanzas/moneda/ HTTP/1.1" 200 90069
+INFO 2025-07-31 14:41:01,495 basehttp 3104 2152 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:41:02,991 basehttp 3104 2152 "GET /admin/finanzas/ HTTP/1.1" 200 11557
+INFO 2025-07-31 14:41:05,895 basehttp 3104 2152 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90959
+INFO 2025-07-31 14:41:05,934 basehttp 3104 2152 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:41:14,794 basehttp 3104 2152 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 14:41:16,011 basehttp 3104 2152 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 14:41:16,061 basehttp 3104 2152 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 14:41:16,089 basehttp 3104 2152 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:41:20,173 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:41:20,185 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:41:30,043 basehttp 3104 3684 "GET /api/finanzas/metodos-pago/?nombre_metodo=zele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:41:30,061 basehttp 3104 10868 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 14:41:30,081 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:41:30,091 basehttp 3104 10868 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:41:33,556 basehttp 3104 10868 "OPTIONS /api/finanzas/metodos-pago/9fd72917-6a04-4101-ad2f-8131f9947d31/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:41:33,556 basehttp 3104 8168 "OPTIONS /api/finanzas/metodos-pago/9fd72917-6a04-4101-ad2f-8131f9947d31/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:41:33,561 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/9fd72917-6a04-4101-ad2f-8131f9947d31/ HTTP/1.1" 200 378
+INFO 2025-07-31 14:41:33,577 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/9fd72917-6a04-4101-ad2f-8131f9947d31/ HTTP/1.1" 200 378
+INFO 2025-07-31 14:41:41,430 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:41:41,447 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+WARNING 2025-07-31 14:42:52,939 log 3104 8168 Unauthorized: /api/finanzas/metodos-pago/buscar_reutilizar/
+WARNING 2025-07-31 14:42:52,939 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 401 172
+INFO 2025-07-31 14:43:01,954 basehttp 3104 8168 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:43:01,954 auth_views 3104 8168 LoginView received username: mromero, password: ***
+INFO 2025-07-31 14:43:02,699 auth_views 3104 8168 Authenticate result: mromero
+INFO 2025-07-31 14:43:02,715 auth_views 3104 8168 Successful login for user: mromero
+INFO 2025-07-31 14:43:02,730 basehttp 3104 8168 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 14:43:02,730 basehttp 3104 8168 "OPTIONS /api/core/usuarios/me/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:43:02,746 basehttp 3104 8168 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 14:43:02,757 basehttp 3104 8168 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:43:02,757 basehttp 3104 10868 "OPTIONS /api/core/sucursales/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:43:02,777 basehttp 3104 10868 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 14:43:02,785 basehttp 3104 8168 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 14:43:07,997 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:43:08,007 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:43:10,439 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 1201
+INFO 2025-07-31 14:43:21,203 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:43:21,213 basehttp 3104 8168 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:47:08,538 autoreload 3104 6384 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:47:09,395 autoreload 9824 2184 Watching for file changes with StatReloader
+INFO 2025-07-31 14:47:37,480 autoreload 9824 2184 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:47:38,286 autoreload 14468 15636 Watching for file changes with StatReloader
+INFO 2025-07-31 14:47:50,331 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:47:50,341 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:47:54,029 basehttp 14468 6020 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90959
+INFO 2025-07-31 14:47:54,053 basehttp 14468 6020 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:47:59,819 basehttp 14468 6020 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 14:48:00,735 basehttp 14468 6020 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 14:48:00,785 basehttp 14468 6020 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 14:48:00,808 basehttp 14468 6020 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:48:02,369 basehttp 14468 6020 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 14:48:02,402 basehttp 14468 6020 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:48:04,428 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:48:04,437 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:48:11,590 basehttp 14468 10788 "GET /api/finanzas/metodos-pago/?nombre_metodo=zele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:48:11,607 basehttp 14468 12456 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 14:48:11,622 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:48:11,635 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:49:05,531 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 1201
+INFO 2025-07-31 14:49:09,895 basehttp 14468 12456 "OPTIONS /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:49:09,912 basehttp 14468 12456 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 201 386
+WARNING 2025-07-31 14:49:09,916 log 14468 12456 Conflict: /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/
+WARNING 2025-07-31 14:49:09,916 basehttp 14468 12456 "POST /api/finanzas/metodos-pago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/reutilizar/ HTTP/1.1" 409 83
+INFO 2025-07-31 14:49:13,785 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1199
+INFO 2025-07-31 14:49:13,792 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1199
+INFO 2025-07-31 14:49:21,388 basehttp 14468 12456 "OPTIONS /api/finanzas/metodos-pago/eb129603-49be-4e98-b4e0-b9769908bf71/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:49:21,398 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/eb129603-49be-4e98-b4e0-b9769908bf71/ HTTP/1.1" 200 386
+INFO 2025-07-31 14:49:21,406 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/eb129603-49be-4e98-b4e0-b9769908bf71/ HTTP/1.1" 200 386
+INFO 2025-07-31 14:49:25,660 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1199
+INFO 2025-07-31 14:49:25,670 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1199
+INFO 2025-07-31 14:49:30,346 basehttp 14468 6020 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 91605
+INFO 2025-07-31 14:49:30,381 basehttp 14468 6020 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:49:39,779 basehttp 14468 6020 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84576
+INFO 2025-07-31 14:49:41,019 basehttp 14468 6020 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 14:49:41,062 basehttp 14468 6020 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90461
+INFO 2025-07-31 14:49:41,087 basehttp 14468 6020 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:49:44,296 basehttp 14468 6020 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 14:49:44,331 basehttp 14468 6020 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:49:48,490 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:49:48,502 basehttp 14468 12456 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:51:14,906 autoreload 14468 15636 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:51:15,806 autoreload 16088 9704 Watching for file changes with StatReloader
+INFO 2025-07-31 14:51:29,671 autoreload 16088 9704 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:51:30,488 autoreload 15528 15896 Watching for file changes with StatReloader
+INFO 2025-07-31 14:51:38,085 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:51:38,094 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:51:45,192 basehttp 15528 13488 "GET /api/finanzas/metodos-pago/?nombre_metodo=zele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:51:45,224 basehttp 15528 11200 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 14:51:45,243 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:51:45,252 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:51:49,458 basehttp 15528 11200 "OPTIONS /api/finanzas/metodos-pago/9fedc83b-c772-4360-a5fb-50198ad1efd5/ HTTP/1.1" 200 0
+INFO 2025-07-31 14:51:49,476 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/9fedc83b-c772-4360-a5fb-50198ad1efd5/ HTTP/1.1" 200 378
+INFO 2025-07-31 14:51:49,484 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/9fedc83b-c772-4360-a5fb-50198ad1efd5/ HTTP/1.1" 200 378
+INFO 2025-07-31 14:51:51,227 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:51:51,236 basehttp 15528 11200 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:53:33,863 autoreload 15528 15896 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:53:34,747 autoreload 15276 8604 Watching for file changes with StatReloader
+INFO 2025-07-31 14:53:45,420 autoreload 15276 8604 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 14:53:46,210 autoreload 8908 14968 Watching for file changes with StatReloader
+INFO 2025-07-31 14:54:23,118 basehttp 8908 7076 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90959
+INFO 2025-07-31 14:54:23,146 basehttp 8908 7076 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:54:27,636 basehttp 8908 7076 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 14:54:28,533 basehttp 8908 7076 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 14:54:28,586 basehttp 8908 7076 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 14:54:28,617 basehttp 8908 7076 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:54:30,544 basehttp 8908 7076 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 14:54:30,578 basehttp 8908 7076 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:54:34,627 basehttp 8908 5076 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:54:34,636 basehttp 8908 5076 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:54:41,514 basehttp 8908 12716 "GET /api/finanzas/metodos-pago/?nombre_metodo=zele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:54:41,530 basehttp 8908 5076 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 14:54:41,547 basehttp 8908 5076 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:54:41,560 basehttp 8908 5076 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:54:47,874 basehttp 8908 7076 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90959
+INFO 2025-07-31 14:54:47,895 basehttp 8908 7076 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:54:51,460 basehttp 8908 7076 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 14:54:52,441 basehttp 8908 7076 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 14:54:52,485 basehttp 8908 7076 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 14:54:52,514 basehttp 8908 7076 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:54:54,576 basehttp 8908 7076 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 14:54:54,600 basehttp 8908 7076 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:57:04,317 autoreload 8908 14968 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 14:57:05,184 autoreload 6856 3024 Watching for file changes with StatReloader
+INFO 2025-07-31 14:58:32,872 autoreload 6856 3024 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 14:58:33,645 autoreload 7320 2496 Watching for file changes with StatReloader
+INFO 2025-07-31 14:58:37,155 basehttp 7320 9832 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 14:58:37,184 basehttp 7320 9832 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 14:58:41,110 basehttp 7320 14740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:58:41,119 basehttp 7320 14740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 14:58:47,233 basehttp 7320 12532 "GET /api/finanzas/metodos-pago/?nombre_metodo=zele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 14:58:47,257 basehttp 7320 14740 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 14:58:47,270 basehttp 7320 14740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 14:58:47,287 basehttp 7320 14740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 15:19:01,053 basehttp 7320 14944 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90959
+INFO 2025-07-31 15:19:01,081 basehttp 7320 14944 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 15:19:04,751 basehttp 7320 14944 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 15:19:05,768 basehttp 7320 14944 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 15:19:05,818 basehttp 7320 14944 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 15:19:05,844 basehttp 7320 14944 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 15:19:08,401 basehttp 7320 14944 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 15:19:08,437 basehttp 7320 14944 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 15:19:10,883 basehttp 7320 1932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 15:19:10,897 basehttp 7320 1932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 15:25:46,226 autoreload 7320 2496 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 15:25:47,125 autoreload 16100 13556 Watching for file changes with StatReloader
+INFO 2025-07-31 15:27:47,238 autoreload 16100 13556 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 15:27:48,071 autoreload 2992 15856 Watching for file changes with StatReloader
+INFO 2025-07-31 15:28:15,097 autoreload 2992 15856 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 15:28:15,915 autoreload 4264 15740 Watching for file changes with StatReloader
+INFO 2025-07-31 15:29:04,541 autoreload 4264 15740 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 15:29:05,321 autoreload 10184 8676 Watching for file changes with StatReloader
+INFO 2025-07-31 15:29:15,583 basehttp 10184 14856 "GET /api/finanzas/metodos-pago/?nombre_metodo=zele&tipo_metodo=ELECTRONICO HTTP/1.1" 200 1584
+INFO 2025-07-31 15:29:15,931 basehttp 10184 7972 "POST /api/finanzas/metodos-pago/ HTTP/1.1" 201 378
+INFO 2025-07-31 15:29:15,957 basehttp 10184 7972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 15:29:15,975 basehttp 10184 7972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 812
+INFO 2025-07-31 15:29:21,968 basehttp 10184 6204 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90959
+INFO 2025-07-31 15:29:21,995 basehttp 10184 6204 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 15:29:25,945 basehttp 10184 6204 "POST /admin/finanzas/metodopago/ HTTP/1.1" 200 84309
+INFO 2025-07-31 15:29:26,929 basehttp 10184 6204 "POST /admin/finanzas/metodopago/ HTTP/1.1" 302 0
+INFO 2025-07-31 15:29:26,975 basehttp 10184 6204 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90460
+INFO 2025-07-31 15:29:27,001 basehttp 10184 6204 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 15:29:29,245 basehttp 10184 6204 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90319
+INFO 2025-07-31 15:29:29,276 basehttp 10184 6204 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 15:29:35,566 basehttp 10184 7972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 15:29:35,573 basehttp 10184 7972 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 433
+INFO 2025-07-31 16:12:07,042 autoreload 10184 8676 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 16:12:07,937 autoreload 4808 13348 Watching for file changes with StatReloader
+INFO 2025-07-31 16:14:02,918 autoreload 4808 13348 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 16:14:03,743 autoreload 12892 3140 Watching for file changes with StatReloader
+INFO 2025-07-31 16:15:10,316 autoreload 12892 3140 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 16:15:11,129 autoreload 2184 14348 Watching for file changes with StatReloader
+INFO 2025-07-31 16:16:09,102 autoreload 2184 14348 C:\Users\PC\innovaerp\backend\apps\finanzas\admin.py changed, reloading.
+INFO 2025-07-31 16:16:09,985 autoreload 15796 7680 Watching for file changes with StatReloader
+INFO 2025-07-31 16:17:05,622 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90313
+INFO 2025-07-31 16:17:05,649 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:08,493 basehttp 15796 4464 "GET /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 200 92927
+INFO 2025-07-31 16:17:08,522 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:16,172 basehttp 15796 4464 "POST /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 302 0
+INFO 2025-07-31 16:17:16,215 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90609
+INFO 2025-07-31 16:17:16,239 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:19,779 basehttp 15796 4464 "GET /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 200 92943
+INFO 2025-07-31 16:17:19,803 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:24,573 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90313
+INFO 2025-07-31 16:17:24,595 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:26,259 basehttp 15796 4464 "GET /admin/finanzas/metodopago/fb3b6b61-02b8-49af-aaf1-6c4afa621543/change/ HTTP/1.1" 200 92933
+INFO 2025-07-31 16:17:26,286 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:29,191 basehttp 15796 4464 "POST /admin/finanzas/metodopago/fb3b6b61-02b8-49af-aaf1-6c4afa621543/change/ HTTP/1.1" 302 0
+INFO 2025-07-31 16:17:29,232 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90609
+INFO 2025-07-31 16:17:29,257 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:30,830 basehttp 15796 4464 "GET /admin/finanzas/metodopago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/change/ HTTP/1.1" 200 92935
+INFO 2025-07-31 16:17:30,864 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:34,280 basehttp 15796 4464 "POST /admin/finanzas/metodopago/a0a8e7b4-97dc-49a5-83da-1734ab4afe18/change/ HTTP/1.1" 302 0
+INFO 2025-07-31 16:17:34,328 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 90609
+INFO 2025-07-31 16:17:34,355 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:36,747 basehttp 15796 4464 "GET /admin/finanzas/metodopago/7fc59e9c-1bee-4eaf-902e-3c8ebd97d151/change/ HTTP/1.1" 200 92930
+INFO 2025-07-31 16:17:36,783 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:38,481 basehttp 15796 4464 "GET /admin/finanzas/metodopago/7fc59e9c-1bee-4eaf-902e-3c8ebd97d151/delete/ HTTP/1.1" 200 84267
+INFO 2025-07-31 16:17:39,416 basehttp 15796 4464 "POST /admin/finanzas/metodopago/7fc59e9c-1bee-4eaf-902e-3c8ebd97d151/delete/ HTTP/1.1" 302 0
+INFO 2025-07-31 16:17:39,463 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89893
+INFO 2025-07-31 16:17:39,487 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:47,851 basehttp 15796 4464 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 16:17:47,881 basehttp 15796 4464 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:17:53,197 basehttp 15796 13288 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-07-31 16:17:53,197 basehttp 15796 15164 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+WARNING 2025-07-31 16:17:53,209 log 15796 15164 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 16:17:53,210 basehttp 15796 15164 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 16:17:53,213 log 15796 15164 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 16:17:53,214 basehttp 15796 15164 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+INFO 2025-07-31 16:17:59,722 autoreload 15796 7680 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 16:18:00,697 autoreload 8668 6368 Watching for file changes with StatReloader
+WARNING 2025-07-31 16:18:02,483 log 8668 7904 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 16:18:02,483 log 8668 1212 Unauthorized: /api/finanzas/monedas-empresa-activas/
+WARNING 2025-07-31 16:18:02,484 basehttp 8668 7904 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:02,485 basehttp 8668 1212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:02,488 log 8668 1212 Unauthorized: /api/finanzas/monedas-empresa-activas/
+WARNING 2025-07-31 16:18:02,489 log 8668 7904 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 16:18:02,490 basehttp 8668 7904 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:02,490 basehttp 8668 1212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:05,238 log 8668 1212 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 16:18:05,239 log 8668 7904 Unauthorized: /api/finanzas/monedas-empresa-activas/
+WARNING 2025-07-31 16:18:05,239 basehttp 8668 1212 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:05,239 basehttp 8668 7904 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:05,246 log 8668 7904 Unauthorized: /api/finanzas/monedas/
+WARNING 2025-07-31 16:18:05,247 log 8668 1212 Unauthorized: /api/finanzas/monedas-empresa-activas/
+WARNING 2025-07-31 16:18:05,248 basehttp 8668 7904 "GET /api/finanzas/monedas/ HTTP/1.1" 401 172
+WARNING 2025-07-31 16:18:05,249 basehttp 8668 1212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 401 172
+INFO 2025-07-31 16:18:11,626 auth_views 8668 1212 LoginView received username: mromero, password: ***
+INFO 2025-07-31 16:18:12,360 auth_views 8668 1212 Authenticate result: mromero
+INFO 2025-07-31 16:18:12,382 auth_views 8668 1212 Successful login for user: mromero
+INFO 2025-07-31 16:18:12,395 basehttp 8668 1212 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 16:18:12,408 basehttp 8668 1212 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 16:18:12,436 basehttp 8668 1212 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 16:18:12,447 basehttp 8668 7904 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 16:18:19,154 basehttp 8668 7904 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:18:19,163 basehttp 8668 1212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:18:19,168 basehttp 8668 7904 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:18:19,181 basehttp 8668 1212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:18:21,626 basehttp 8668 1212 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:18:21,640 basehttp 8668 1212 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:18:25,647 basehttp 8668 1212 "OPTIONS /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:18:25,650 basehttp 8668 1212 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 16:18:25,665 basehttp 8668 1212 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 16:18:28,113 basehttp 8668 1212 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:18:28,131 basehttp 8668 1212 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:18:32,110 basehttp 8668 1212 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:18:32,119 basehttp 8668 7904 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:18:32,123 basehttp 8668 1212 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:18:32,136 basehttp 8668 7904 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:18:33,612 basehttp 8668 7904 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:18:33,621 basehttp 8668 7904 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:18:42,610 autoreload 8668 6368 C:\Users\PC\innovaerp\backend\apps\finanzas\admin.py changed, reloading.
+INFO 2025-07-31 16:18:43,426 autoreload 13656 1408 Watching for file changes with StatReloader
+WARNING 2025-07-31 16:19:05,659 log 13656 14736 Bad Request: /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/
+WARNING 2025-07-31 16:19:05,663 basehttp 13656 14736 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 400 85
+WARNING 2025-07-31 16:19:08,956 log 13656 14736 Bad Request: /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/
+WARNING 2025-07-31 16:19:08,958 basehttp 13656 14736 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 400 85
+INFO 2025-07-31 16:19:23,006 basehttp 13656 14736 "OPTIONS /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+ERROR 2025-07-31 16:19:23,140 log 13656 14736 Internal Server Error: /api/finanzas/metodos-pago/buscar_reutilizar/
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\innovaerp\backend\apps\finanzas\views.py", line 132, in buscar_reutilizar
+    return self.get_paginated_response(serializer.data)
+                                       ^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\serializers.py", line 797, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\serializers.py", line 251, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\serializers.py", line 715, in to_representation
+    return [
+           ^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\serializers.py", line 716, in <listcomp>
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py", line 98, in to_representation
+    rep = super().to_representation(instance)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\serializers.py", line 540, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\rest_framework\fields.py", line 1870, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py", line 158, in get_aplicado
+    from rapidfuzz.fuzz import ratio
+ModuleNotFoundError: No module named 'rapidfuzz'
+ERROR 2025-07-31 16:19:23,157 basehttp 13656 14736 "GET /api/finanzas/metodos-pago/buscar_reutilizar/?id_empresa_actual=44444444-4444-4444-4444-444444444444 HTTP/1.1" 500 25844
+INFO 2025-07-31 16:19:27,044 basehttp 13656 14736 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:19:27,064 basehttp 13656 14736 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:21:25,919 basehttp 13656 4336 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:21:25,919 basehttp 13656 16212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:21:25,934 basehttp 13656 4336 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:21:25,934 basehttp 13656 16212 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:21:35,848 basehttp 13656 16212 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:21:35,853 basehttp 13656 4336 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:21:35,865 basehttp 13656 16212 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:21:35,866 basehttp 13656 4336 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:21:43,819 basehttp 13656 4336 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:21:43,827 basehttp 13656 4336 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:23:59,844 basehttp 13656 4336 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:23:59,854 basehttp 13656 4336 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:29:56,921 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:29:56,931 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:30:04,207 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:30:04,220 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:33:18,948 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:34:57,857 log 13656 14784 Bad Request: /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/
+WARNING 2025-07-31 16:34:57,858 basehttp 13656 14784 "PATCH /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 400 85
+INFO 2025-07-31 16:35:03,597 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:35:03,607 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:35:31,636 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 16:35:31,646 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 16:35:36,101 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:35:36,101 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:37:43,937 basehttp 13656 14784 "OPTIONS /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-07-31 16:37:43,937 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:37:43,953 log 13656 14784 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 16:37:43,953 basehttp 13656 14784 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+INFO 2025-07-31 16:38:50,713 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:38:50,723 log 13656 14784 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 16:38:50,724 basehttp 13656 14784 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+INFO 2025-07-31 16:38:50,735 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:38:50,743 log 13656 14784 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 16:38:50,744 basehttp 13656 14784 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+INFO 2025-07-31 16:38:53,455 basehttp 13656 14784 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:38:53,458 basehttp 13656 16280 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:38:53,458 basehttp 13656 6064 "OPTIONS /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:38:53,458 basehttp 13656 10460 "OPTIONS /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:38:53,467 basehttp 13656 14784 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:38:53,479 basehttp 13656 6064 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:38:53,479 basehttp 13656 14784 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:38:53,492 basehttp 13656 6064 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+WARNING 2025-07-31 16:38:55,736 log 13656 14784 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 16:38:55,738 basehttp 13656 14784 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+WARNING 2025-07-31 16:38:55,744 log 13656 10460 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+INFO 2025-07-31 16:38:55,746 basehttp 13656 6064 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:38:55,746 basehttp 13656 10460 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+INFO 2025-07-31 16:38:55,750 basehttp 13656 6064 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:38:57,524 log 13656 10460 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 16:38:57,527 basehttp 13656 10460 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+WARNING 2025-07-31 16:38:57,533 log 13656 10460 Not Found: /api/finanzas/metodos-pago-empresa-activas/
+INFO 2025-07-31 16:38:57,533 basehttp 13656 6064 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 16:38:57,533 basehttp 13656 10460 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 404 26135
+INFO 2025-07-31 16:38:57,543 basehttp 13656 14784 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:41:12,984 autoreload 13656 1408 C:\Users\PC\innovaerp\backend\apps\finanzas\urls.py changed, reloading.
+INFO 2025-07-31 16:41:13,815 autoreload 12316 11700 Watching for file changes with StatReloader
+INFO 2025-07-31 16:47:26,293 autoreload 12316 11700 C:\Users\PC\innovaerp\backend\apps\finanzas\models\metodo_pago_empresa_activa.py changed, reloading.
+INFO 2025-07-31 16:47:27,027 autoreload 15648 4936 Watching for file changes with StatReloader
+INFO 2025-07-31 16:58:04,949 autoreload 15648 4936 C:\Users\PC\innovaerp\backend\apps\core\models.py changed, reloading.
+INFO 2025-07-31 16:58:05,764 autoreload 8448 2176 Watching for file changes with StatReloader
+INFO 2025-07-31 16:58:28,401 autoreload 8448 2176 C:\Users\PC\innovaerp\backend\apps\core\models.py changed, reloading.
+INFO 2025-07-31 16:58:29,354 autoreload 7680 13848 Watching for file changes with StatReloader
+INFO 2025-07-31 16:58:30,766 basehttp 7680 1692 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 16:58:30,808 basehttp 7680 1692 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 16:58:34,117 basehttp 7680 14968 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 52
+INFO 2025-07-31 16:58:34,120 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:34,135 basehttp 7680 14968 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 52
+INFO 2025-07-31 16:58:34,138 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:38,067 basehttp 7680 14932 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:58:38,081 basehttp 7680 14932 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 16:58:38,084 basehttp 7680 14968 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:58:38,096 basehttp 7680 14968 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 16:58:40,471 basehttp 7680 14968 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:58:40,471 basehttp 7680 14932 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:58:40,486 basehttp 7680 14932 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 16:58:40,496 basehttp 7680 14932 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 16:58:41,530 basehttp 7680 14968 "OPTIONS /api/finanzas/monedas/activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:58:41,530 basehttp 7680 14932 "OPTIONS /api/finanzas/monedas/activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:58:41,545 basehttp 7680 14932 "GET /api/finanzas/monedas/activas/ HTTP/1.1" 200 1011
+INFO 2025-07-31 16:58:41,558 basehttp 7680 14932 "GET /api/finanzas/monedas/activas/ HTTP/1.1" 200 1011
+INFO 2025-07-31 16:58:45,065 basehttp 7680 14932 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 16:58:45,075 basehttp 7680 14932 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 16:58:49,359 basehttp 7680 14968 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 52
+INFO 2025-07-31 16:58:49,375 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:49,388 basehttp 7680 14968 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 52
+INFO 2025-07-31 16:58:49,390 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:51,011 basehttp 7680 14932 "OPTIONS /api/finanzas/metodos-pago-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:58:51,028 basehttp 7680 14932 "POST /api/finanzas/metodos-pago-empresa-activas/ HTTP/1.1" 201 125
+WARNING 2025-07-31 16:58:52,393 log 7680 14932 Bad Request: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 16:58:52,394 basehttp 7680 14932 "POST /api/finanzas/metodos-pago-empresa-activas/ HTTP/1.1" 400 80
+INFO 2025-07-31 16:58:54,852 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:54,856 basehttp 7680 14968 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 177
+INFO 2025-07-31 16:58:54,864 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:54,867 basehttp 7680 14968 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 177
+INFO 2025-07-31 16:58:55,726 basehttp 7680 14968 "OPTIONS /api/finanzas/metodos-pago-empresa-activas/1/ HTTP/1.1" 200 0
+INFO 2025-07-31 16:58:55,743 basehttp 7680 14968 "PATCH /api/finanzas/metodos-pago-empresa-activas/1/ HTTP/1.1" 200 124
+INFO 2025-07-31 16:58:58,097 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 16:58:58,097 basehttp 7680 14968 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:58:58,108 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 16:58:58,108 basehttp 7680 14968 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:59:28,221 basehttp 7680 14968 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 16:59:28,230 basehttp 7680 14968 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 16:59:30,533 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 16:59:30,533 basehttp 7680 14968 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:59:30,544 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 16:59:30,549 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:59:35,724 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 16:59:35,724 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 16:59:35,745 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 16:59:35,746 basehttp 7680 9740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:00:01,739 basehttp 7680 9740 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:00:01,759 basehttp 7680 9740 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:00:01,761 basehttp 7680 14932 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:00:01,774 basehttp 7680 14932 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:00:12,586 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:00:12,587 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:00:12,599 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:00:12,601 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:00:22,645 basehttp 7680 14932 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:00:22,656 basehttp 7680 9740 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:00:22,662 basehttp 7680 14932 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:00:22,673 basehttp 7680 9740 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:04:24,129 basehttp 7680 9740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:04:24,130 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:04:24,146 basehttp 7680 9740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:04:24,148 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:04:32,039 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:04:32,039 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:04:32,058 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:04:32,075 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:04:37,951 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:04:37,952 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:04:40,388 basehttp 7680 14932 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:04:40,388 basehttp 7680 9740 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:04:40,407 basehttp 7680 14932 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:04:40,409 basehttp 7680 9740 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+WARNING 2025-07-31 17:18:19,002 log 7680 15056 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 17:18:19,004 log 7680 12428 Unauthorized: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 17:18:19,004 basehttp 7680 15056 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:18:19,004 basehttp 7680 12428 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:18:19,004 log 7680 15056 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 17:18:19,009 log 7680 12428 Unauthorized: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 17:18:19,010 basehttp 7680 15056 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:18:19,010 basehttp 7680 12428 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:24:06,762 log 7680 16100 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 17:24:06,764 log 7680 13548 Unauthorized: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 17:24:06,764 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:24:06,765 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:24:06,767 log 7680 16100 Unauthorized: /api/finanzas/metodos-pago/
+WARNING 2025-07-31 17:24:06,768 log 7680 13548 Unauthorized: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 17:24:06,769 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 401 172
+WARNING 2025-07-31 17:24:06,769 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 401 172
+INFO 2025-07-31 17:24:16,616 basehttp 7680 13548 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-31 17:24:16,616 auth_views 7680 13548 LoginView received username: mromero, password: ***
+INFO 2025-07-31 17:24:17,312 auth_views 7680 13548 Authenticate result: mromero
+INFO 2025-07-31 17:24:17,344 auth_views 7680 13548 Successful login for user: mromero
+INFO 2025-07-31 17:24:17,344 basehttp 7680 13548 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 17:24:17,344 basehttp 7680 13548 "OPTIONS /api/core/usuarios/me/ HTTP/1.1" 200 0
+INFO 2025-07-31 17:24:17,361 basehttp 7680 13548 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 17:24:17,381 basehttp 7680 13548 "OPTIONS /api/core/sucursales/ HTTP/1.1" 200 0
+INFO 2025-07-31 17:24:17,395 basehttp 7680 16100 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 17:24:17,395 basehttp 7680 13548 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 17:24:22,105 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:22,105 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:24:22,114 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:24:22,115 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:23,258 basehttp 7680 13548 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:24:23,269 basehttp 7680 13548 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:24:23,275 basehttp 7680 13324 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:24:23,289 basehttp 7680 13324 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:24:24,788 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:24,788 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:24:24,796 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:24:24,796 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:28,389 basehttp 7680 13548 "OPTIONS /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 0
+INFO 2025-07-31 17:24:28,389 basehttp 7680 13324 "OPTIONS /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 0
+INFO 2025-07-31 17:24:28,401 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:28,410 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:50,247 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:24:50,259 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:50,273 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:24:50,276 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:24:54,974 basehttp 7680 13324 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:24:54,980 basehttp 7680 13548 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:24:54,986 basehttp 7680 13324 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:24:54,996 basehttp 7680 13548 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:25:03,674 basehttp 7680 13548 "OPTIONS /api/finanzas/monedas/?limit=1000 HTTP/1.1" 200 0
+INFO 2025-07-31 17:25:03,677 basehttp 7680 13324 "OPTIONS /api/finanzas/monedas/b6eb6444-85e9-4eee-b901-d9493ad20557/ HTTP/1.1" 200 0
+INFO 2025-07-31 17:25:03,678 basehttp 7680 16100 "OPTIONS /api/finanzas/monedas/?limit=1000 HTTP/1.1" 200 0
+INFO 2025-07-31 17:25:03,678 basehttp 7680 13548 "OPTIONS /api/finanzas/monedas/b6eb6444-85e9-4eee-b901-d9493ad20557/ HTTP/1.1" 200 0
+INFO 2025-07-31 17:25:03,694 basehttp 7680 16100 "GET /api/finanzas/monedas/b6eb6444-85e9-4eee-b901-d9493ad20557/ HTTP/1.1" 200 320
+INFO 2025-07-31 17:25:03,694 basehttp 7680 13324 "GET /api/finanzas/monedas/?limit=1000 HTTP/1.1" 200 1332
+INFO 2025-07-31 17:25:03,710 basehttp 7680 16100 "GET /api/finanzas/monedas/?limit=1000 HTTP/1.1" 200 1332
+INFO 2025-07-31 17:25:03,710 basehttp 7680 13324 "GET /api/finanzas/monedas/b6eb6444-85e9-4eee-b901-d9493ad20557/ HTTP/1.1" 200 320
+INFO 2025-07-31 17:25:15,560 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:25:15,560 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:25:15,576 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:25:15,590 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:25:18,099 basehttp 7680 16100 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:25:18,110 basehttp 7680 13324 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:25:18,112 basehttp 7680 16100 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:25:18,126 basehttp 7680 13324 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:25:27,679 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:25:27,680 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:25:27,692 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:25:27,708 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:25:45,405 basehttp 7680 5092 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 17:25:45,444 basehttp 7680 5092 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 17:25:57,493 basehttp 7680 13324 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:25:57,502 basehttp 7680 16100 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:25:57,506 basehttp 7680 13324 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:25:57,518 basehttp 7680 16100 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:25:59,209 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:25:59,209 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:25:59,217 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:25:59,222 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:04,677 basehttp 7680 13324 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:26:04,684 basehttp 7680 13548 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:26:04,690 basehttp 7680 13324 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1332
+INFO 2025-07-31 17:26:04,700 basehttp 7680 13548 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 879
+INFO 2025-07-31 17:26:06,090 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:06,099 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:06,105 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:26:06,113 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:26:17,461 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:17,461 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:26:17,474 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:26:17,478 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:33,251 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:26:33,254 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:33,267 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:33,267 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:26:35,591 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:35,593 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:26:35,608 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:35,608 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+WARNING 2025-07-31 17:26:45,859 log 7680 13548 Bad Request: /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/
+WARNING 2025-07-31 17:26:45,859 basehttp 7680 13548 "PUT /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 400 60
+INFO 2025-07-31 17:26:52,188 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:26:52,190 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:52,196 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:26:52,199 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:55,440 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:26:55,442 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:26:55,448 basehttp 7680 13324 "GET /api/finanzas/metodos-pago/fdddee45-d888-4b8c-895c-4337bb4d323c/ HTTP/1.1" 200 329
+INFO 2025-07-31 17:26:55,453 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?limit=1000 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:27:08,883 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:27:08,883 basehttp 7680 13324 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:27:08,892 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:27:08,897 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:28:06,634 basehttp 7680 5092 "GET /admin/finanzas/metodopago/fdddee45-d888-4b8c-895c-4337bb4d323c/change/ HTTP/1.1" 200 92943
+INFO 2025-07-31 17:28:06,665 basehttp 7680 5092 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 17:28:10,180 basehttp 7680 5092 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 17:30:44,276 basehttp 7680 5092 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 17:30:44,306 basehttp 7680 5092 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 17:30:46,163 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:30:46,163 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:30:46,176 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 176
+INFO 2025-07-31 17:30:46,178 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:30:56,128 basehttp 7680 13548 "POST /api/finanzas/metodos-pago-empresa-activas/ HTTP/1.1" 201 125
+INFO 2025-07-31 17:30:58,703 basehttp 7680 5092 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 17:30:58,733 basehttp 7680 5092 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+WARNING 2025-07-31 17:31:01,986 log 7680 13548 Bad Request: /api/finanzas/metodos-pago-empresa-activas/
+WARNING 2025-07-31 17:31:01,986 basehttp 7680 13548 "POST /api/finanzas/metodos-pago-empresa-activas/ HTTP/1.1" 400 80
+INFO 2025-07-31 17:31:03,840 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 302
+INFO 2025-07-31 17:31:03,841 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:31:03,853 basehttp 7680 13548 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:31:03,853 basehttp 7680 16100 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 302
+INFO 2025-07-31 17:31:05,343 basehttp 7680 16100 "OPTIONS /api/finanzas/metodos-pago-empresa-activas/2/ HTTP/1.1" 200 0
+INFO 2025-07-31 17:31:05,362 basehttp 7680 16100 "PATCH /api/finanzas/metodos-pago-empresa-activas/2/ HTTP/1.1" 200 124
+INFO 2025-07-31 17:31:06,789 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 301
+INFO 2025-07-31 17:31:06,789 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:31:06,806 basehttp 7680 16100 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 1046
+INFO 2025-07-31 17:31:06,806 basehttp 7680 13548 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 301
+INFO 2025-07-31 17:40:28,207 autoreload 7680 13848 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 17:40:29,118 autoreload 13820 12456 Watching for file changes with StatReloader
+INFO 2025-07-31 17:42:29,476 autoreload 13820 12456 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 17:42:30,199 autoreload 15844 1080 Watching for file changes with StatReloader
+INFO 2025-07-31 17:43:29,303 autoreload 15844 1080 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 17:43:29,971 autoreload 15896 12980 Watching for file changes with StatReloader
+INFO 2025-07-31 17:49:49,264 autoreload 15896 12980 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 17:49:49,980 autoreload 9128 2868 Watching for file changes with StatReloader
+INFO 2025-07-31 19:43:04,969 autoreload 9128 2868 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 19:43:06,024 autoreload 9720 4236 Watching for file changes with StatReloader
+INFO 2025-07-31 19:43:16,469 autoreload 9720 4236 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-07-31 19:43:17,279 autoreload 14780 10304 Watching for file changes with StatReloader
+INFO 2025-07-31 19:44:21,973 autoreload 14780 10304 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 19:44:22,796 autoreload 8168 6224 Watching for file changes with StatReloader
+INFO 2025-07-31 19:44:36,496 autoreload 8168 6224 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 19:44:37,283 autoreload 16816 9844 Watching for file changes with StatReloader
+INFO 2025-07-31 19:44:56,396 autoreload 16816 9844 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 19:44:57,185 autoreload 5264 14784 Watching for file changes with StatReloader
+INFO 2025-07-31 19:45:04,412 autoreload 5264 14784 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-07-31 19:45:05,219 autoreload 16920 6564 Watching for file changes with StatReloader
+INFO 2025-07-31 19:45:36,259 autoreload 16920 6564 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 19:45:37,062 autoreload 17380 1992 Watching for file changes with StatReloader
+INFO 2025-07-31 19:45:55,061 autoreload 17380 1992 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 19:45:55,877 autoreload 15124 15160 Watching for file changes with StatReloader
+INFO 2025-07-31 19:46:12,799 autoreload 15124 15160 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 19:46:13,624 autoreload 5720 15328 Watching for file changes with StatReloader
+INFO 2025-07-31 19:46:20,845 autoreload 5720 15328 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-07-31 19:46:21,640 autoreload 16636 1940 Watching for file changes with StatReloader
+INFO 2025-07-31 19:47:08,918 autoreload 16636 1940 C:\Users\PC\innovaerp\backend\apps\finanzas\admin.py changed, reloading.
+INFO 2025-07-31 19:47:09,737 autoreload 15640 5736 Watching for file changes with StatReloader
+INFO 2025-07-31 19:47:19,312 autoreload 15640 5736 C:\Users\PC\innovaerp\backend\apps\finanzas\admin.py changed, reloading.
+INFO 2025-07-31 19:47:20,136 autoreload 6480 17324 Watching for file changes with StatReloader
+INFO 2025-07-31 19:47:34,252 basehttp 6480 15996 "GET /admin/finanzas/metodopago/ HTTP/1.1" 200 89683
+INFO 2025-07-31 19:47:34,295 basehttp 6480 15996 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 19:47:36,113 basehttp 6480 15996 "GET /admin/finanzas/ HTTP/1.1" 200 11557
+ERROR 2025-07-31 19:47:37,856 log 6480 15996 Internal Server Error: /admin/finanzas/tipoimpuesto/
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: finanzas_tipoimpuesto.empresa_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\views\decorators\cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\utils\decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\contrib\admin\options.py", line 2163, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\query.py", line 366, in __len__
+    self._fetch_all()
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\models\sql\compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\PC\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\django\db\backends\sqlite3\base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: finanzas_tipoimpuesto.empresa_id
+ERROR 2025-07-31 19:47:37,861 basehttp 6480 15996 "GET /admin/finanzas/tipoimpuesto/ HTTP/1.1" 500 190579
+INFO 2025-07-31 19:48:52,387 basehttp 6480 15996 "GET /admin/finanzas/tipoimpuesto/ HTTP/1.1" 200 85880
+INFO 2025-07-31 19:48:52,417 basehttp 6480 15996 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 19:48:56,664 basehttp 6480 15996 "GET /admin/finanzas/tipoimpuesto/add/ HTTP/1.1" 200 92794
+INFO 2025-07-31 19:48:56,702 basehttp 6480 15996 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 19:49:04,355 basehttp 6480 15996 "GET /admin/finanzas/tipoimpuesto/ HTTP/1.1" 200 85880
+INFO 2025-07-31 19:49:04,383 basehttp 6480 15996 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-07-31 19:49:11,236 basehttp 6480 10892 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-07-31 19:49:11,238 auth_views 6480 10892 LoginView received username: mromero, password: ***
+INFO 2025-07-31 19:49:11,962 auth_views 6480 10892 Authenticate result: mromero
+INFO 2025-07-31 19:49:11,997 auth_views 6480 10892 Successful login for user: mromero
+INFO 2025-07-31 19:49:11,997 basehttp 6480 10892 "POST /api/auth/login/ HTTP/1.1" 200 1245
+INFO 2025-07-31 19:49:12,012 basehttp 6480 10892 "OPTIONS /api/core/usuarios/me/ HTTP/1.1" 200 0
+INFO 2025-07-31 19:49:12,012 basehttp 6480 10892 "GET /api/core/usuarios/me/ HTTP/1.1" 200 655
+INFO 2025-07-31 19:49:12,031 basehttp 6480 10892 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-07-31 19:49:12,031 basehttp 6480 17048 "OPTIONS /api/core/sucursales/ HTTP/1.1" 200 0
+INFO 2025-07-31 19:49:12,045 basehttp 6480 17048 "GET /api/core/empresas/ HTTP/1.1" 200 636
+INFO 2025-07-31 19:49:12,045 basehttp 6480 10892 "GET /api/core/sucursales/ HTTP/1.1" 200 761
+INFO 2025-07-31 19:49:17,986 basehttp 6480 17048 "OPTIONS /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 19:49:17,986 basehttp 6480 10892 "OPTIONS /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-07-31 19:49:17,996 basehttp 6480 10892 "GET /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 52
+INFO 2025-07-31 19:49:18,005 basehttp 6480 10892 "GET /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 52
+INFO 2025-07-31 19:49:22,634 basehttp 6480 10892 "GET /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 52
+INFO 2025-07-31 19:49:22,649 basehttp 6480 10892 "GET /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 52
+INFO 2025-07-31 19:49:30,566 basehttp 6480 10892 "GET /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 52
+INFO 2025-07-31 19:49:30,585 basehttp 6480 10892 "GET /api/finanzas/tipos-impuesto-empresa-activas/ HTTP/1.1" 200 52

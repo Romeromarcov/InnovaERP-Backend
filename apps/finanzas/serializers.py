@@ -1,8 +1,26 @@
+
+from rest_framework import serializers
+from .models import MetodoPagoEmpresaActiva, TipoImpuestoEmpresaActiva
+
+class TipoImpuestoEmpresaActivaSerializer(serializers.ModelSerializer):
+    empresa_nombre = serializers.CharField(source='empresa.nombre_comercial', read_only=True)
+    tipo_impuesto_nombre = serializers.CharField(source='tipo_impuesto.nombre_impuesto', read_only=True)
+    tipo_impuesto_codigo = serializers.CharField(source='tipo_impuesto.codigo_impuesto', read_only=True)
+
+    class Meta:
+        model = TipoImpuestoEmpresaActiva
+        fields = ['id', 'empresa', 'empresa_nombre', 'tipo_impuesto', 'tipo_impuesto_nombre', 'tipo_impuesto_codigo', 'activa']
+        read_only_fields = ['empresa_nombre', 'tipo_impuesto_nombre', 'tipo_impuesto_codigo']
+
+class MetodoPagoEmpresaActivaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MetodoPagoEmpresaActiva
+        fields = ['id', 'empresa', 'metodo_pago', 'activa']
 from rest_framework import serializers
 from .models import (
     Moneda, TasaCambio, MetodoPago, TipoImpuesto, ConfiguracionImpuesto,
     RetencionImpuesto, TransaccionFinanciera, MovimientoCajaBanco, Caja,
-    CuentaBancariaEmpresa, MonedaEmpresaActiva
+    CuentaBancariaEmpresa, MonedaEmpresaActiva, TipoImpuestoEmpresaActiva
 )
 
 
@@ -84,15 +102,154 @@ class TasaCambioSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ('moneda_origen_nombre', 'moneda_destino_nombre', 'usuario_registro_username')
 
+from rest_framework.reverse import reverse
+
 class MetodoPagoSerializer(serializers.ModelSerializer):
+    url = serializers.SerializerMethodField()
+    aplicado = serializers.SerializerMethodField()
+
     class Meta:
         model = MetodoPago
         fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        user = self.context.get('request').user if self.context.get('request') else None
+        if not getattr(user, 'es_superusuario_innova', False):
+            rep.pop('es_generico', None)
+            rep.pop('empresa', None)
+            rep.pop('es_publico', None)
+        return rep
+
+    def validate(self, data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Solo superusuario puede modificar métodos genéricos
+        if self.instance and getattr(self.instance, 'es_generico', False) and not getattr(user, 'es_superusuario_innova', False):
+            raise serializers.ValidationError('No puede modificar un método de pago genérico del sistema.')
+        # Solo superusuario puede marcar como genérico o público o cambiar empresa
+        if (data.get('es_generico') or data.get('es_publico') or data.get('empresa')) and not getattr(user, 'es_superusuario_innova', False):
+            raise serializers.ValidationError('Solo el superusuario puede crear o modificar métodos de pago genéricos, públicos o de otra empresa.')
+        # Validar unicidad de nombre_metodo por empresa y tipo_metodo si no es genérico
+        es_generico = data.get('es_generico', getattr(self.instance, 'es_generico', False))
+        empresa = data.get('empresa', getattr(self.instance, 'empresa', None))
+        nombre_metodo = data.get('nombre_metodo', getattr(self.instance, 'nombre_metodo', None))
+        tipo_metodo = data.get('tipo_metodo', getattr(self.instance, 'tipo_metodo', None))
+        from .models import MetodoPago
+        if not es_generico and empresa and nombre_metodo and tipo_metodo:
+            qs = MetodoPago.objects.filter(nombre_metodo=nombre_metodo, es_generico=False, empresa=empresa, tipo_metodo=tipo_metodo)
+            if self.instance:
+                qs = qs.exclude(pk=self.instance.pk)
+            if qs.exists():
+                raise serializers.ValidationError({'nombre_metodo': 'Ya existe un método de pago con este nombre para esta empresa y tipo.'})
+        return data
+
+    def create(self, validated_data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Si no es superusuario, fuerza empresa y flags
+        if not getattr(user, 'es_superusuario_innova', False):
+            empresas = user.empresas.all()
+            validated_data['empresa'] = empresas.first() if empresas.exists() else None
+            validated_data['es_generico'] = False
+            validated_data['es_publico'] = False
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Si no es superusuario, no puede cambiar empresa ni flags
+        if not getattr(user, 'es_superusuario_innova', False):
+            validated_data.pop('empresa', None)
+            validated_data.pop('es_generico', None)
+            validated_data.pop('es_publico', None)
+        return super().update(instance, validated_data)
+
+    def get_url(self, obj):
+        request = self.context.get('request')
+        return reverse('metodopago-detail', args=[obj.id_metodo_pago], request=request)
+
+    def get_aplicado(self, obj):
+        # El id_empresa_actual se pasa por context desde la view
+        id_empresa_actual = self.context.get('id_empresa_actual')
+        if not id_empresa_actual:
+            return False
+        # Buscar si existe un método similar (fuzzy) para la empresa actual usando rapidfuzz
+        from .models import MetodoPago
+        from rapidfuzz.fuzz import ratio
+        from rapidfuzz.distance import Levenshtein
+        import unicodedata
+        def normalizar(s):
+            s = s.lower().replace(' ', '')
+            s = ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
+            return s
+        nombre_actual = normalizar(obj.nombre_metodo)
+        metodos_empresa = MetodoPago.objects.filter(
+            empresa=id_empresa_actual,
+            tipo_metodo=obj.tipo_metodo
+        )
+        for mp in metodos_empresa:
+            nombre_db = normalizar(mp.nombre_metodo)
+            sim = ratio(nombre_actual, nombre_db)
+            dist = Levenshtein.distance(nombre_actual, nombre_db)
+            if (
+                sim >= 55 or
+                dist <= 3 or
+                nombre_actual in nombre_db or
+                nombre_db in nombre_actual
+            ):
+                return True
+        return False
 
 class TipoImpuestoSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoImpuesto
         fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        user = self.context.get('request').user if self.context.get('request') else None
+        if not getattr(user, 'es_superusuario_innova', False):
+            rep.pop('es_generico', None)
+            rep.pop('empresa', None)
+            rep.pop('es_publico', None)
+        return rep
+
+    def validate(self, data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Solo superusuario puede modificar tipos genéricos
+        if self.instance and getattr(self.instance, 'es_generico', False) and not getattr(user, 'es_superusuario_innova', False):
+            raise serializers.ValidationError('No puede modificar un tipo de impuesto genérico del sistema.')
+        # Solo superusuario puede marcar como genérico o público o cambiar empresa
+        if (data.get('es_generico') or data.get('es_publico') or data.get('empresa')) and not getattr(user, 'es_superusuario_innova', False):
+            raise serializers.ValidationError('Solo el superusuario puede crear o modificar tipos de impuesto genéricos, públicos o de otra empresa.')
+        # Validar unicidad de codigo_impuesto por empresa si no es genérico
+        es_generico = data.get('es_generico', getattr(self.instance, 'es_generico', False))
+        empresa = data.get('empresa', getattr(self.instance, 'empresa', None))
+        codigo_impuesto = data.get('codigo_impuesto', getattr(self.instance, 'codigo_impuesto', None))
+        if not es_generico:
+            qs = TipoImpuesto.objects.filter(codigo_impuesto=codigo_impuesto, es_generico=False, empresa=empresa)
+            if self.instance:
+                qs = qs.exclude(pk=self.instance.pk)
+            if qs.exists():
+                raise serializers.ValidationError({'codigo_impuesto': 'Ya existe un tipo de impuesto con este código para esta empresa.'})
+        return data
+
+    def create(self, validated_data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Si no es superusuario, fuerza empresa y flags
+        if not getattr(user, 'es_superusuario_innova', False):
+            empresas = user.empresas.all()
+            validated_data['empresa'] = empresas.first() if empresas.exists() else None
+            validated_data['es_generico'] = False
+            validated_data['es_publico'] = False
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        user = self.context['request'].user if 'request' in self.context else None
+        # Si no es superusuario, no puede cambiar empresa ni flags
+        if not getattr(user, 'es_superusuario_innova', False):
+            validated_data.pop('empresa', None)
+            validated_data.pop('es_generico', None)
+            validated_data.pop('es_publico', None)
+        return super().update(instance, validated_data)
 
 class ConfiguracionImpuestoSerializer(serializers.ModelSerializer):
     class Meta:
