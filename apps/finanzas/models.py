@@ -1,42 +1,6 @@
 
-from django.db import models
 import uuid
-
-# Relación para activar/desactivar tipos de impuesto por empresa
-class TipoImpuestoEmpresaActiva(models.Model):
-    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='tipos_impuesto_empresa_activas')
-    tipo_impuesto = models.ForeignKey('TipoImpuesto', on_delete=models.CASCADE, related_name='empresas_activas')
-    activa = models.BooleanField(default=True)
-    class Meta:
-        unique_together = ('empresa', 'tipo_impuesto')
-        verbose_name = 'Tipo de impuesto activo por empresa'
-        verbose_name_plural = 'Tipos de impuesto activos por empresa'
-    def __str__(self):
-        return f"{self.tipo_impuesto.nombre_impuesto} - {self.empresa.nombre_comercial or self.empresa.nombre_legal} ({'Activa' if self.activa else 'Inactiva'})"
-
-# Relación para activar/desactivar métodos de pago por empresa
-class MetodoPagoEmpresaActiva(models.Model):
-    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='metodos_pago_empresa_activas')
-    metodo_pago = models.ForeignKey('MetodoPago', on_delete=models.CASCADE, related_name='empresas_activas')
-    activa = models.BooleanField(default=True)
-    class Meta:
-        unique_together = ('empresa', 'metodo_pago')
-        verbose_name = 'Método de pago activo por empresa'
-        verbose_name_plural = 'Métodos de pago activos por empresa'
-    def __str__(self):
-        return f"{self.metodo_pago.nombre_metodo} - {self.empresa.nombre_comercial or self.empresa.nombre_legal} ({'Activa' if self.activa else 'Inactiva'})"
-
-# Relación para activar/desactivar monedas por empresa
-class MonedaEmpresaActiva(models.Model):
-    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='monedas_activas')
-    moneda = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='empresas_activas')
-    activa = models.BooleanField(default=True)
-    class Meta:
-        unique_together = ('empresa', 'moneda')
-        verbose_name = 'Moneda activa por empresa'
-        verbose_name_plural = 'Monedas activas por empresa'
-    def __str__(self):
-        return f"{self.moneda.codigo_iso} - {self.empresa.nombre_comercial or self.empresa.nombre_legal} ({'Activa' if self.activa else 'Inactiva'})"
+from django.db import models
 
 class Moneda(models.Model):
     id_moneda = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -48,6 +12,8 @@ class Moneda(models.Model):
     tipo_moneda = models.CharField(max_length=10, choices=TIPO_MONEDA_CHOICES, default='fiat')
     codigo_iso = models.CharField(max_length=5, unique=True)  # Ej: 'USD', 'EUR', 'VES', 'USDT', 'WBTC'
     nombre = models.CharField(max_length=50)
+    pais_codigo_iso = models.CharField(max_length=3, null=True, blank=True, verbose_name="Código ISO del País")
+    pais_nombre = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nombre del País")
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
     tipo_operacion = models.CharField(max_length=50, null=True, blank=True)
@@ -56,20 +22,32 @@ class Moneda(models.Model):
     decimales = models.IntegerField(default=2)
     activo = models.BooleanField(default=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
-    # NUEVOS CAMPOS PARA MULTI-TENANT Y VISIBILIDAD
     es_generica = models.BooleanField(default=False, help_text="Si es True, es una moneda global del sistema, no editable por usuarios normales.")
     es_publica = models.BooleanField(default=False, help_text="Si es True, la moneda es visible para todas las empresas.")
     empresa = models.ForeignKey('core.Empresa', null=True, blank=True, on_delete=models.CASCADE, related_name='monedas_empresa', help_text="Empresa propietaria de la moneda. Null si es genérica.")
-
     def __str__(self):
         return f"{self.nombre} ({self.codigo_iso})"
 
+# Modelo para métodos de pago activos por empresa
+class MetodoPagoEmpresaActiva(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='metodos_pago_activos')
+    metodo_pago = models.ForeignKey('MetodoPago', on_delete=models.CASCADE, related_name='empresas_activas')
+    activa = models.BooleanField(default=True)
+
+# Modelo para monedas activas por empresa
+class MonedaEmpresaActiva(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='monedas_activas')
+    moneda = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='empresas_activas')
+    activa = models.BooleanField(default=True)
+
+
 class TasaCambio(models.Model):
     id_tasa_cambio = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    # Para tipo_tasa='OFICIAL_BCV', id_empresa puede ser null (tasa global)
     id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, null=True, blank=True, help_text="Para OFICIAL_BCV puede ser null y será global para todas las empresas.")
-    id_moneda_origen = models.ForeignKey(Moneda, related_name='tasa_origen', on_delete=models.CASCADE)
-    id_moneda_destino = models.ForeignKey(Moneda, related_name='tasa_destino', on_delete=models.CASCADE)
+    id_moneda_origen = models.ForeignKey('Moneda', related_name='tasa_origen', on_delete=models.CASCADE)
+    id_moneda_destino = models.ForeignKey('Moneda', related_name='tasa_destino', on_delete=models.CASCADE)
     tipo_tasa = models.CharField(max_length=20, choices=[
         ('OFICIAL_BCV', 'Oficial BCV'),
         ('ESPECIAL_USUARIO', 'Especial Usuario'),
@@ -85,6 +63,7 @@ class TasaCambio(models.Model):
     tipo_operacion = models.CharField(max_length=50, null=True, blank=True)
     fecha_cierre_estimada = models.DateField(null=True, blank=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+
 
 class MetodoPago(models.Model):
     id_metodo_pago = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -106,60 +85,6 @@ class MetodoPago(models.Model):
     es_generico = models.BooleanField(default=False, help_text="Si es True, es un método global del sistema, no editable por usuarios normales.")
     es_publico = models.BooleanField(default=False, help_text="Si es True, el método es visible para todas las empresas.")
 
-class TipoImpuesto(models.Model):
-    id_tipo_impuesto = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    empresa = models.ForeignKey('core.Empresa', null=True, blank=True, on_delete=models.CASCADE, related_name='tipos_impuesto_empresa', help_text="Empresa propietaria del tipo de impuesto. Null si es genérico.")
-    referencia_externa = models.CharField(max_length=100, null=True, blank=True)
-    documento_json = models.JSONField(null=True, blank=True)
-    nombre_impuesto = models.CharField(max_length=100)
-    codigo_impuesto = models.CharField(max_length=20, unique=True)
-    es_retencion = models.BooleanField(default=False)
-    activo = models.BooleanField(default=True)
-    es_generico = models.BooleanField(default=False, help_text="Si es True, es un tipo de impuesto global del sistema, no editable por usuarios normales.")
-    es_publico = models.BooleanField(default=False, help_text="Si es True, el tipo de impuesto es visible para todas las empresas.")
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.nombre_impuesto} ({self.codigo_impuesto})"
-
-class ConfiguracionImpuesto(models.Model):
-    id_configuracion_impuesto = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE)
-    referencia_externa = models.CharField(max_length=100, null=True, blank=True)
-    documento_json = models.JSONField(null=True, blank=True)
-    id_tipo_impuesto = models.ForeignKey(TipoImpuesto, on_delete=models.CASCADE)
-    porcentaje_tasa = models.DecimalField(max_digits=5, decimal_places=2)
-    fecha_inicio_vigencia = models.DateField()
-    fecha_fin_vigencia = models.DateField(null=True, blank=True)
-    es_default_venta = models.BooleanField(default=False)
-    es_default_compra = models.BooleanField(default=False)
-    activo = models.BooleanField(default=True)
-
-
-# MODELOS FALTANTES AGREGADOS - FINANZAS
-
-class RetencionImpuesto(models.Model):
-    id_retencion_impuesto = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, related_name='retenciones_impuesto')
-    id_tipo_impuesto = models.ForeignKey('TipoImpuesto', on_delete=models.CASCADE, related_name='retenciones')
-    monto_base_retencion = models.DecimalField(max_digits=18, decimal_places=2)
-    porcentaje_retencion = models.DecimalField(max_digits=5, decimal_places=2)
-    monto_retenido = models.DecimalField(max_digits=18, decimal_places=2)
-    fecha_retencion = models.DateField()
-    numero_comprobante_retencion = models.CharField(max_length=100, unique=True, null=True, blank=True)
-    id_documento_origen = models.UUIDField(null=True, blank=True)
-    nombre_modelo_origen = models.CharField(max_length=100, null=True, blank=True)
-    id_usuario_registro = models.ForeignKey('core.Usuarios', on_delete=models.CASCADE, related_name='retenciones_registradas')
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        db_table = 'finanzas_retencion_impuesto'
-        verbose_name = 'Retención de Impuesto'
-        verbose_name_plural = 'Retenciones de Impuesto'
-
-    def __str__(self):
-        return f"Retención {self.numero_comprobante_retencion} - {self.monto_retenido}"
-
 
 class TransaccionFinanciera(models.Model):
     TIPOS_TRANSACCION = [
@@ -174,6 +99,9 @@ class TransaccionFinanciera(models.Model):
     tipo_transaccion = models.CharField(max_length=20, choices=TIPOS_TRANSACCION)
     monto_transaccion = models.DecimalField(max_digits=18, decimal_places=2)
     id_moneda_transaccion = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='transacciones_moneda')
+    id_moneda_base = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='transacciones_base', help_text="Moneda base de la empresa para la transacción.", null=True, blank=True)
+    id_moneda_pais_empresa = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='transacciones_pais_empresa', help_text="Moneda país de la empresa para la transacción.", null=True, blank=True)
+    monto_moneda_pais = models.DecimalField(max_digits=18, decimal_places=2, null=True, blank=True, help_text="Monto equivalente en moneda país de la empresa.")
     monto_base_empresa = models.DecimalField(max_digits=18, decimal_places=2)
     id_metodo_pago = models.ForeignKey('MetodoPago', on_delete=models.CASCADE, related_name='transacciones')
     referencia_pago = models.CharField(max_length=100, null=True, blank=True)

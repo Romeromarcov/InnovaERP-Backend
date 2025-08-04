@@ -7,9 +7,28 @@ class BaseModelSerializer(serializers.ModelSerializer):
         return super().validate(data)
 from .models import Empresa, Sucursal, Departamento, Usuarios, Roles, Permisos, RolPermisos, UsuarioRoles, RegistroAuditoria
 class EmpresaSerializer(BaseModelSerializer):
+    def validate(self, data):
+        # Validación: la moneda país debe coincidir con el país de la empresa y el país de la moneda
+        id_moneda_pais = data.get('id_moneda_pais', getattr(self.instance, 'id_moneda_pais', None))
+        pais_empresa = data.get('pais_codigo_iso', getattr(self.instance, 'pais_codigo_iso', None))
+        if id_moneda_pais and pais_empresa:
+            from apps.finanzas.models import Moneda
+            try:
+                moneda = Moneda.objects.get(id_moneda=id_moneda_pais.id_moneda if hasattr(id_moneda_pais, 'id_moneda') else id_moneda_pais)
+                if moneda.pais_codigo_iso != pais_empresa:
+                    raise serializers.ValidationError({
+                        'id_moneda_pais': f"La moneda seleccionada ({moneda.codigo_iso}) no corresponde al país de la empresa ({pais_empresa})."
+                    })
+            except Moneda.DoesNotExist:
+                raise serializers.ValidationError({'id_moneda_pais': 'La moneda país seleccionada no existe.'})
+        return super().validate(data)
+    id_moneda_pais = serializers.UUIDField(source='id_moneda_pais.id_moneda', read_only=True)
+    moneda_pais_codigo_iso = serializers.CharField(source='id_moneda_pais.codigo_iso', read_only=True)
+    moneda_pais_nombre = serializers.CharField(source='id_moneda_pais.nombre', read_only=True)
     class Meta:
         model = Empresa
         fields = '__all__'
+        extra_fields = ['id_moneda_pais', 'moneda_pais_codigo_iso', 'moneda_pais_nombre']
 
 class SucursalSerializer(BaseModelSerializer):
     id_sucursal = serializers.UUIDField(read_only=True)

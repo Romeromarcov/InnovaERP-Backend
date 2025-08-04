@@ -40,6 +40,7 @@ urlpatterns = [
     # path('api/crm/', include('apps.crm.urls')),
     # path('api/rrhh/', include('apps.rrhh.urls')),
     path('api/auditoria/', include('apps.auditoria.urls')),
+    path('api/fiscal/', include('apps.fiscal.urls')),
 ]
 
 # Serve media files in development

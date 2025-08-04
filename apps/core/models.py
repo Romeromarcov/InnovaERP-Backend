@@ -13,7 +13,7 @@ from django.utils import timezone
 # Por ahora, asumimos que 'finanzas' será una app hermana en 'apps/'.
 
 # 0. Importaciones para FKs a otros módulos (se asumen que existirán)
-# from apps.finanzas.models import Moneda # Descomentar cuando la app 'finanzas' esté lista
+from apps.finanzas.models import Moneda # Moneda ya está disponible en finanzas
 # from apps.rrhh.models import Empleado # Descomentar cuando la app 'rrhh' esté lista
 
 
@@ -33,6 +33,9 @@ class Empresa(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Registro")
     activo = models.BooleanField(default=True, verbose_name="Activo") # Indica si la empresa está activa en InnovaERP.
     id_moneda_base = models.ForeignKey('finanzas.Moneda', on_delete=models.SET_NULL, db_column='id_moneda_base', blank=True, null=True, related_name='empresas_base', verbose_name="Moneda Base")
+    id_moneda_pais = models.ForeignKey('finanzas.Moneda', on_delete=models.SET_NULL, db_column='id_moneda_pais', blank=True, null=True, related_name='empresas_moneda_pais', verbose_name="Moneda del País")
+    pais_codigo_iso = models.CharField(max_length=3, null=True, blank=True, verbose_name="Código ISO del País")
+    pais_nombre = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nombre del País")
     referencia_externa = models.CharField(max_length=100, null=True, blank=True)
     documento_json = models.JSONField(null=True, blank=True)
     tipo_operacion = models.CharField(max_length=50, null=True, blank=True)

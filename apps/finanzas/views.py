@@ -1,25 +1,6 @@
 
 from rest_framework import permissions
 from apps.core.viewsets import BaseModelViewSet
-from .models import TipoImpuestoEmpresaActiva
-from .serializers import TipoImpuestoEmpresaActivaSerializer
-
-class TipoImpuestoEmpresaActivaViewSet(BaseModelViewSet):
-    queryset = TipoImpuestoEmpresaActiva.objects.all()
-    serializer_class = TipoImpuestoEmpresaActivaSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        context['request'] = self.request
-        return context
-
-    def get_queryset(self):
-        user = self.request.user
-        if getattr(user, 'es_superusuario_innova', False):
-            return TipoImpuestoEmpresaActiva.objects.all()
-        empresas = user.empresas.all()
-        return TipoImpuestoEmpresaActiva.objects.filter(empresa__in=empresas)
 from .models import MetodoPagoEmpresaActiva
 from .serializers import MetodoPagoEmpresaActivaSerializer
 # ViewSet para MetodoPagoEmpresaActiva
@@ -42,14 +23,12 @@ class MetodoPagoEmpresaActivaViewSet(viewsets.ModelViewSet):
 from rest_framework import viewsets
 from django.db import models
 from .models import (
-    Moneda, TasaCambio, MetodoPago, TipoImpuesto, ConfiguracionImpuesto,
-    RetencionImpuesto, TransaccionFinanciera, MovimientoCajaBanco, Caja,
+    Moneda, TasaCambio, MetodoPago, TransaccionFinanciera, MovimientoCajaBanco, Caja,
     CuentaBancariaEmpresa, MonedaEmpresaActiva
 )
 from .serializers import (
     MonedaSerializer, TasaCambioSerializer, MetodoPagoSerializer,
-    TipoImpuestoSerializer, ConfiguracionImpuestoSerializer,
-    RetencionImpuestoSerializer, TransaccionFinancieraSerializer,
+    TransaccionFinancieraSerializer,
     MovimientoCajaBancoSerializer, CajaSerializer, CuentaBancariaEmpresaSerializer,
     MonedaEmpresaActivaSerializer
 )
@@ -226,23 +205,25 @@ class MetodoPagoViewSet(BaseModelViewSet):
         serializer = self.get_serializer(nuevo)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class TipoImpuestoViewSet(BaseModelViewSet):
-    queryset = TipoImpuesto.objects.all()
-    serializer_class = TipoImpuestoSerializer
-
-class ConfiguracionImpuestoViewSet(BaseModelViewSet):
-    queryset = ConfiguracionImpuesto.objects.all()
-    serializer_class = ConfiguracionImpuestoSerializer
-
-
-class RetencionImpuestoViewSet(BaseModelViewSet):
-    queryset = RetencionImpuesto.objects.all()
-    serializer_class = RetencionImpuestoSerializer
-
-
 class TransaccionFinancieraViewSet(BaseModelViewSet):
     queryset = TransaccionFinanciera.objects.all()
     serializer_class = TransaccionFinancieraSerializer
+
+
+    def get_queryset(self):
+        user = self.request.user
+        # Superusuario ve todas
+        if getattr(user, 'es_superusuario_innova', False):
+            return TransaccionFinanciera.objects.all()
+        empresas_usuario = user.empresas.all()
+        # Filtrar por empresa si se pasa id_empresa como query param
+        id_empresa = self.request.query_params.get('id_empresa')
+        qs = TransaccionFinanciera.objects.all()
+        if id_empresa:
+            qs = qs.filter(empresa_id=id_empresa)
+        elif empresas_usuario.exists():
+            qs = qs.filter(empresa_id__in=empresas_usuario.values_list('id_empresa', flat=True))
+        return qs
 
 
 class MovimientoCajaBancoViewSet(BaseModelViewSet):

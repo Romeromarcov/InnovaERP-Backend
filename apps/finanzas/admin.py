@@ -1,8 +1,6 @@
 from django.contrib import admin
-from .models import (
-    Moneda, TasaCambio, MetodoPago, TipoImpuesto, ConfiguracionImpuesto,
-    RetencionImpuesto, TransaccionFinanciera, Caja, CuentaBancariaEmpresa, MovimientoCajaBanco
-)
+from .models import Moneda, TasaCambio, MetodoPago, TransaccionFinanciera, Caja, CuentaBancariaEmpresa, MovimientoCajaBanco, MonedaEmpresaActiva, MetodoPagoEmpresaActiva
+
 
 
 @admin.register(Moneda)
@@ -29,34 +27,12 @@ class MetodoPagoAdmin(admin.ModelAdmin):
     readonly_fields = ('id_metodo_pago', 'fecha_creacion')
 
 
-@admin.register(TipoImpuesto)
-class TipoImpuestoAdmin(admin.ModelAdmin):
-    list_display = ('nombre_impuesto', 'codigo_impuesto', 'es_retencion', 'empresa', 'activo', 'fecha_creacion')
-    list_filter = ('es_retencion', 'activo', 'empresa')
-    search_fields = ('nombre_impuesto', 'codigo_impuesto')
-    readonly_fields = ('id_tipo_impuesto', 'fecha_creacion')
-
-
-@admin.register(ConfiguracionImpuesto)
-class ConfiguracionImpuestoAdmin(admin.ModelAdmin):
-    list_display = ('id_tipo_impuesto', 'porcentaje_tasa', 'fecha_inicio_vigencia', 'fecha_fin_vigencia', 'es_default_venta', 'es_default_compra', 'activo')
-    list_filter = ('es_default_venta', 'es_default_compra', 'activo', 'id_empresa')
-    search_fields = ('id_tipo_impuesto__nombre_impuesto',)
-    readonly_fields = ('id_configuracion_impuesto',)
-
-# Registraciones agregadas automáticamente
-
-@admin.register(RetencionImpuesto)
-class RetencionImpuestoAdmin(admin.ModelAdmin):
-    list_display = ['numero_comprobante_retencion', 'monto_retenido', 'fecha_retencion']
-    search_fields = ['numero_comprobante_retencion']
 
 @admin.register(TransaccionFinanciera)
 class TransaccionFinancieraAdmin(admin.ModelAdmin):
-    list_display = ['tipo_transaccion', 'monto_transaccion', 'fecha_hora_transaccion']
-    search_fields = ['descripcion']
+    list_display = ['id_transaccion', 'tipo_transaccion', 'monto_transaccion', 'id_empresa', 'id_moneda_transaccion', 'id_metodo_pago', 'fecha_hora_transaccion', 'referencia_pago', 'descripcion', 'id_usuario_registro', 'fecha_creacion']
+    search_fields = ['id_transaccion', 'referencia_pago', 'descripcion']
 
-@admin.register(Caja)
 class CajaAdmin(admin.ModelAdmin):
     list_display = ['nombre', 'saldo_actual', 'activa']
     search_fields = ['nombre_caja']
@@ -70,3 +46,20 @@ class CuentaBancariaEmpresaAdmin(admin.ModelAdmin):
 class MovimientoCajaBancoAdmin(admin.ModelAdmin):
     list_display = ['tipo_movimiento', 'monto', 'fecha_movimiento']
     search_fields = ['concepto', 'referencia']
+
+@admin.register(MonedaEmpresaActiva)
+class MonedaEmpresaActivaAdmin(admin.ModelAdmin):
+    list_display = ('empresa', 'moneda', 'activa')
+    list_filter = ('empresa', 'activa')
+    search_fields = ('empresa__nombre', 'moneda__nombre', 'moneda__codigo_iso')
+    readonly_fields = ('id',)
+
+@admin.register(MetodoPagoEmpresaActiva)
+class MetodoPagoEmpresaActivaAdmin(admin.ModelAdmin):
+    def metodo_pago_nombre(self, obj):
+        return getattr(obj.metodo_pago, 'nombre_metodo', str(obj.metodo_pago))
+
+    list_display = ('empresa', 'metodo_pago_nombre', 'activa')
+    list_filter = ('empresa', 'activa')
+    search_fields = ('empresa__nombre', 'metodo_pago__nombre_metodo')
+    readonly_fields = ('id',)

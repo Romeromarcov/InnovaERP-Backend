@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     # Apps ERP
     'apps.core',
     'apps.finanzas',
+    'apps.fiscal',
     'apps.contabilidad',
     'apps.gastos',
     'apps.nomina',

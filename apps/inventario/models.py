@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
-from apps.finanzas.models import Moneda, ConfiguracionImpuesto
+from apps.finanzas.models import Moneda
+from apps.fiscal.models import ConfiguracionImpuesto
 
 class UnidadMedida(models.Model):
     id_unidad_medida = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

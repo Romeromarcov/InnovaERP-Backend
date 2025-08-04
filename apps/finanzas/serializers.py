@@ -1,34 +1,49 @@
 
 from rest_framework import serializers
-from .models import MetodoPagoEmpresaActiva, TipoImpuestoEmpresaActiva
+from .models import MetodoPagoEmpresaActiva
 
-class TipoImpuestoEmpresaActivaSerializer(serializers.ModelSerializer):
-    empresa_nombre = serializers.CharField(source='empresa.nombre_comercial', read_only=True)
-    tipo_impuesto_nombre = serializers.CharField(source='tipo_impuesto.nombre_impuesto', read_only=True)
-    tipo_impuesto_codigo = serializers.CharField(source='tipo_impuesto.codigo_impuesto', read_only=True)
 
-    class Meta:
-        model = TipoImpuestoEmpresaActiva
-        fields = ['id', 'empresa', 'empresa_nombre', 'tipo_impuesto', 'tipo_impuesto_nombre', 'tipo_impuesto_codigo', 'activa']
-        read_only_fields = ['empresa_nombre', 'tipo_impuesto_nombre', 'tipo_impuesto_codigo']
 
 class MetodoPagoEmpresaActivaSerializer(serializers.ModelSerializer):
+    metodo_pago = serializers.UUIDField(source='metodo_pago.id_metodo_pago')
+    nombre = serializers.CharField(source='metodo_pago.nombre_metodo', read_only=True)
+
+    def create(self, validated_data):
+        request = self.context.get('request')
+        if request and not validated_data.get('empresa'):
+            user = request.user
+            empresas = getattr(user, 'empresas', None)
+            if empresas and empresas.exists():
+                validated_data['empresa'] = empresas.first()
+
+        metodo_pago_value = validated_data.pop('metodo_pago', None)
+        if isinstance(metodo_pago_value, dict) and 'id_metodo_pago' in metodo_pago_value:
+            metodo_pago_uuid = metodo_pago_value['id_metodo_pago']
+        else:
+            metodo_pago_uuid = metodo_pago_value
+        if metodo_pago_uuid:
+            from .models import MetodoPago
+            validated_data['metodo_pago'] = MetodoPago.objects.get(id_metodo_pago=metodo_pago_uuid)
+
+        return super().create(validated_data)
+
     class Meta:
         model = MetodoPagoEmpresaActiva
-        fields = ['id', 'empresa', 'metodo_pago', 'activa']
+        fields = ['id', 'empresa', 'metodo_pago', 'activa', 'nombre']
 from rest_framework import serializers
 from .models import (
-    Moneda, TasaCambio, MetodoPago, TipoImpuesto, ConfiguracionImpuesto,
-    RetencionImpuesto, TransaccionFinanciera, MovimientoCajaBanco, Caja,
-    CuentaBancariaEmpresa, MonedaEmpresaActiva, TipoImpuestoEmpresaActiva
+    Moneda, TasaCambio, MetodoPago, TransaccionFinanciera, MovimientoCajaBanco, Caja,
+    CuentaBancariaEmpresa, MonedaEmpresaActiva
 )
 
 
 class MonedaSerializer(serializers.ModelSerializer):
+    pais_codigo_iso = serializers.CharField(read_only=True)
+    pais_nombre = serializers.CharField(read_only=True)
     class Meta:
         model = Moneda
         fields = '__all__'
-        read_only_fields = []
+        read_only_fields = ['pais_codigo_iso', 'pais_nombre']
 
     def to_representation(self, instance):
         # Oculta campos sensibles para usuarios normales
@@ -198,76 +213,81 @@ class MetodoPagoSerializer(serializers.ModelSerializer):
                 return True
         return False
 
-class TipoImpuestoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TipoImpuesto
-        fields = '__all__'
-
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        user = self.context.get('request').user if self.context.get('request') else None
-        if not getattr(user, 'es_superusuario_innova', False):
-            rep.pop('es_generico', None)
-            rep.pop('empresa', None)
-            rep.pop('es_publico', None)
-        return rep
-
-    def validate(self, data):
-        user = self.context['request'].user if 'request' in self.context else None
-        # Solo superusuario puede modificar tipos genéricos
-        if self.instance and getattr(self.instance, 'es_generico', False) and not getattr(user, 'es_superusuario_innova', False):
-            raise serializers.ValidationError('No puede modificar un tipo de impuesto genérico del sistema.')
-        # Solo superusuario puede marcar como genérico o público o cambiar empresa
-        if (data.get('es_generico') or data.get('es_publico') or data.get('empresa')) and not getattr(user, 'es_superusuario_innova', False):
-            raise serializers.ValidationError('Solo el superusuario puede crear o modificar tipos de impuesto genéricos, públicos o de otra empresa.')
-        # Validar unicidad de codigo_impuesto por empresa si no es genérico
-        es_generico = data.get('es_generico', getattr(self.instance, 'es_generico', False))
-        empresa = data.get('empresa', getattr(self.instance, 'empresa', None))
-        codigo_impuesto = data.get('codigo_impuesto', getattr(self.instance, 'codigo_impuesto', None))
-        if not es_generico:
-            qs = TipoImpuesto.objects.filter(codigo_impuesto=codigo_impuesto, es_generico=False, empresa=empresa)
-            if self.instance:
-                qs = qs.exclude(pk=self.instance.pk)
-            if qs.exists():
-                raise serializers.ValidationError({'codigo_impuesto': 'Ya existe un tipo de impuesto con este código para esta empresa.'})
-        return data
-
-    def create(self, validated_data):
-        user = self.context['request'].user if 'request' in self.context else None
-        # Si no es superusuario, fuerza empresa y flags
-        if not getattr(user, 'es_superusuario_innova', False):
-            empresas = user.empresas.all()
-            validated_data['empresa'] = empresas.first() if empresas.exists() else None
-            validated_data['es_generico'] = False
-            validated_data['es_publico'] = False
-        return super().create(validated_data)
-
-    def update(self, instance, validated_data):
-        user = self.context['request'].user if 'request' in self.context else None
-        # Si no es superusuario, no puede cambiar empresa ni flags
-        if not getattr(user, 'es_superusuario_innova', False):
-            validated_data.pop('empresa', None)
-            validated_data.pop('es_generico', None)
-            validated_data.pop('es_publico', None)
-        return super().update(instance, validated_data)
-
-class ConfiguracionImpuestoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ConfiguracionImpuesto
-        fields = '__all__'
-
-
-class RetencionImpuestoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RetencionImpuesto
-        fields = '__all__'
-
-
 class TransaccionFinancieraSerializer(serializers.ModelSerializer):
+    id_empresa_nombre = serializers.CharField(source='id_empresa.nombre_comercial', read_only=True)
+    id_usuario_registro_username = serializers.CharField(source='id_usuario_registro.username', read_only=True)
+    id = serializers.UUIDField(source='id_transaccion', read_only=True)
+    id_moneda_transaccion__codigo_iso = serializers.CharField(source='id_moneda_transaccion.codigo_iso', read_only=True)
+    id_moneda_base__codigo_iso = serializers.CharField(source='id_moneda_base.codigo_iso', read_only=True)
+    id_moneda_pais_empresa__codigo_iso = serializers.CharField(source='id_moneda_pais_empresa.codigo_iso', read_only=True)
+    id_metodo_pago__nombre_metodo = serializers.CharField(source='id_metodo_pago.nombre_metodo', read_only=True)
+    id_usuario_registro__username = serializers.CharField(source='id_usuario_registro.username', read_only=True)
+    tasa_cambio = serializers.CharField(write_only=True, required=False)
+    monto_base = serializers.CharField(write_only=True, required=False)
+    monto_moneda_pais = serializers.DecimalField(max_digits=18, decimal_places=2, required=False, allow_null=True)
+
     class Meta:
         model = TransaccionFinanciera
-        fields = '__all__'
+        fields = ['id', 'id_transaccion', 'id_empresa', 'id_empresa_nombre', 'fecha_hora_transaccion', 'tipo_transaccion', 'monto_transaccion', 'id_moneda_transaccion', 'id_moneda_base', 'id_moneda_pais_empresa', 'monto_moneda_pais', 'monto_base_empresa', 'id_metodo_pago', 'referencia_pago', 'descripcion', 'id_usuario_registro', 'id_usuario_registro_username', 'fecha_creacion', 'id_moneda_transaccion__codigo_iso', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'id_metodo_pago__nombre_metodo', 'id_usuario_registro__username', 'tasa_cambio', 'monto_base']
+        extra_fields = ['tasa_cambio', 'monto_base', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'monto_moneda_pais']
+        read_only_fields = ('id', 'id_moneda_transaccion__codigo_iso', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'id_metodo_pago__nombre_metodo', 'id_usuario_registro__username')
 
+    def create(self, validated_data):
+        # Mapear monto_base del frontend a monto_base_empresa del modelo
+        monto_base = validated_data.pop('monto_base', None)
+        if monto_base is not None:
+            validated_data['monto_base_empresa'] = monto_base
+        # El campo tasa_cambio solo se usa para validación, no se guarda
+        validated_data.pop('tasa_cambio', None)
+        # Asignar usuario autenticado si no viene en el payload
+        request = self.context.get('request')
+        if request and not validated_data.get('id_usuario_registro'):
+            user = request.user
+            validated_data['id_usuario_registro'] = user
+        # Asignar empresa si no viene en el payload y el usuario tiene empresas
+        if request and not validated_data.get('id_empresa'):
+            user = request.user
+            empresas = getattr(user, 'empresas', None)
+            if empresas and empresas.exists():
+                validated_data['id_empresa'] = empresas.first()
+        # Convertir id_moneda_transaccion, id_moneda_base y id_metodo_pago a instancias si vienen como UUID
+        from .models import Moneda, MetodoPago, TasaCambio
+        for moneda_field in ['id_moneda_transaccion', 'id_moneda_base']:
+            moneda_value = validated_data.get(moneda_field)
+            if isinstance(moneda_value, str):
+                try:
+                    validated_data[moneda_field] = Moneda.objects.get(id_moneda=moneda_value)
+                except Moneda.DoesNotExist:
+                    validated_data[moneda_field] = None
+        metodo_value = validated_data.get('id_metodo_pago')
+        if isinstance(metodo_value, str):
+            validated_data['id_metodo_pago'] = MetodoPago.objects.get(id_metodo_pago=metodo_value)
+
+        # Obtener moneda país desde la empresa
+        empresa = validated_data.get('id_empresa')
+        if empresa and hasattr(empresa, 'id_moneda_pais') and empresa.id_moneda_pais:
+            validated_data['id_moneda_pais_empresa'] = empresa.id_moneda_pais
+        else:
+            validated_data['id_moneda_pais_empresa'] = None
+
+        # Calcular monto_moneda_pais usando la tasa de cambio del día
+        moneda_base = validated_data.get('id_moneda_base')
+        moneda_pais = validated_data.get('id_moneda_pais_empresa')
+        monto_base_empresa = validated_data.get('monto_base_empresa')
+        monto_moneda_pais = None
+        if moneda_base and moneda_pais and monto_base_empresa:
+            from datetime import date
+            hoy = date.today()
+            tasa = TasaCambio.objects.filter(
+                id_moneda_origen=moneda_base,
+                id_moneda_destino=moneda_pais,
+                fecha_tasa=hoy
+            ).order_by('-fecha_tasa').first()
+            if tasa:
+                monto_moneda_pais = float(monto_base_empresa) * float(tasa.valor_tasa)
+        validated_data['monto_moneda_pais'] = monto_moneda_pais
+
+        return super().create(validated_data)
 
 class MovimientoCajaBancoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -294,20 +314,45 @@ class CuentaBancariaEmpresaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
 class MonedaEmpresaActivaSerializer(serializers.ModelSerializer):
+    empresa_nombre = serializers.CharField(source='empresa.nombre_comercial', read_only=True)
+    moneda_codigo_iso = serializers.CharField(source='moneda.codigo_iso', read_only=True)
+    moneda_nombre = serializers.CharField(source='moneda.nombre', read_only=True)
+    moneda = serializers.UUIDField(source='moneda.id_moneda')
+    es_base = serializers.SerializerMethodField()
+
+    def get_es_base(self, obj):
+        # Lógica: la moneda base de la empresa es la que está marcada como base en core
+        # Suponiendo que Empresa tiene un campo moneda_base (ForeignKey a Moneda)
+        empresa = getattr(obj, 'empresa', None)
+        moneda = getattr(obj, 'moneda', None)
+        if empresa and moneda:
+            return getattr(empresa, 'moneda_base_id', None) == getattr(moneda, 'id_moneda', None)
+        return False
+
     def create(self, validated_data):
+        # Asignar empresa si no viene en el payload (opcional, según tu lógica)
         request = self.context.get('request')
         if request and not validated_data.get('empresa'):
             user = request.user
             empresas = getattr(user, 'empresas', None)
             if empresas and empresas.exists():
                 validated_data['empresa'] = empresas.first()
+
+        # Obtener la instancia de Moneda usando el UUID recibido
+        moneda_value = validated_data.pop('moneda', None)
+        if isinstance(moneda_value, dict) and 'id_moneda' in moneda_value:
+            moneda_uuid = moneda_value['id_moneda']
+        else:
+            moneda_uuid = moneda_value
+        if moneda_uuid:
+            from .models import Moneda
+            validated_data['moneda'] = Moneda.objects.get(id_moneda=moneda_uuid)
+
         return super().create(validated_data)
-    empresa_nombre = serializers.CharField(source='empresa.nombre_comercial', read_only=True)
-    moneda_codigo_iso = serializers.CharField(source='moneda.codigo_iso', read_only=True)
-    moneda_nombre = serializers.CharField(source='moneda.nombre', read_only=True)
 
     class Meta:
         model = MonedaEmpresaActiva
-        fields = ['id', 'empresa', 'empresa_nombre', 'moneda', 'moneda_codigo_iso', 'moneda_nombre', 'activa']
-        read_only_fields = ['empresa', 'empresa_nombre', 'moneda_codigo_iso', 'moneda_nombre']
+        fields = ['id', 'empresa', 'empresa_nombre', 'moneda', 'moneda_codigo_iso', 'moneda_nombre', 'activa', 'es_base']
+        read_only_fields = ['empresa', 'empresa_nombre', 'moneda_codigo_iso', 'moneda_nombre', 'es_base']
