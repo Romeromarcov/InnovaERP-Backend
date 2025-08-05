@@ -44,8 +44,48 @@ class CuentaBancariaEmpresaAdmin(admin.ModelAdmin):
 
 @admin.register(MovimientoCajaBanco)
 class MovimientoCajaBancoAdmin(admin.ModelAdmin):
-    list_display = ['tipo_movimiento', 'monto', 'fecha_movimiento']
+    list_display = ['tipo_movimiento', 'monto', 'fecha_movimiento', 'id_moneda', 'id_caja', 'id_cuenta_bancaria', 'id_empresa', 'id_usuario_registro']
     search_fields = ['concepto', 'referencia']
+
+    actions = ['crear_ajuste']
+
+    def crear_ajuste(self, request, queryset):
+        from django import forms
+        from apps.core.models import Empresa, Usuarios
+        from apps.finanzas.models import Moneda, Caja, CuentaBancariaEmpresa
+        from apps.finanzas.ajustes import crear_ajuste_caja_banco
+        class AjusteCajaBancoForm(forms.Form):
+            empresa = forms.ModelChoiceField(queryset=Empresa.objects.all())
+            monto = forms.DecimalField(max_digits=18, decimal_places=2)
+            moneda = forms.ModelChoiceField(queryset=Moneda.objects.all())
+            caja = forms.ModelChoiceField(queryset=Caja.objects.all(), required=False)
+            cuenta_bancaria = forms.ModelChoiceField(queryset=CuentaBancariaEmpresa.objects.all(), required=False)
+            usuario = forms.ModelChoiceField(queryset=Usuarios.objects.all())
+            motivo = forms.CharField(max_length=255, required=False)
+            tipo_ajuste = forms.ChoiceField(choices=[('POSITIVO', 'Ajuste Positivo'), ('NEGATIVO', 'Ajuste Negativo')])
+            referencia = forms.CharField(max_length=100, required=False)
+
+        if 'apply' in request.POST:
+            form = AjusteCajaBancoForm(request.POST)
+            if form.is_valid():
+                crear_ajuste_caja_banco(
+                    empresa=form.cleaned_data['empresa'],
+                    monto=form.cleaned_data['monto'],
+                    moneda=form.cleaned_data['moneda'],
+                    caja=form.cleaned_data['caja'],
+                    cuenta_bancaria=form.cleaned_data['cuenta_bancaria'],
+                    usuario=form.cleaned_data['usuario'],
+                    motivo=form.cleaned_data['motivo'],
+                    tipo_ajuste=form.cleaned_data['tipo_ajuste'],
+                    referencia=form.cleaned_data['referencia'],
+                )
+                self.message_user(request, "Ajuste creado correctamente.")
+                return None
+        else:
+            form = AjusteCajaBancoForm()
+        from django.shortcuts import render
+        return render(request, 'admin/ajuste_caja_banco.html', {'form': form})
+    crear_ajuste.short_description = "Crear ajuste de caja/banco"
 
 @admin.register(MonedaEmpresaActiva)
 class MonedaEmpresaActivaAdmin(admin.ModelAdmin):

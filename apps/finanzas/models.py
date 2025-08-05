@@ -90,7 +90,6 @@ class TransaccionFinanciera(models.Model):
     TIPOS_TRANSACCION = [
         ('INGRESO', 'Ingreso'),
         ('EGRESO', 'Egreso'),
-        ('TRANSFERENCIA', 'Transferencia'),
     ]
 
     id_transaccion = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -106,6 +105,16 @@ class TransaccionFinanciera(models.Model):
     id_metodo_pago = models.ForeignKey('MetodoPago', on_delete=models.CASCADE, related_name='transacciones')
     referencia_pago = models.CharField(max_length=100, null=True, blank=True)
     descripcion = models.TextField(null=True, blank=True)
+    tipo_documento_asociado = models.CharField(max_length=20, choices=[
+        ('COMPRA', 'Compra'),
+        ('VENTA', 'Venta'),
+        ('GASTO', 'Gasto'),
+        ('NOMINA', 'Nómina'),
+        ('AJUSTE', 'Ajuste'),
+    ], null=True, blank=True)
+    nro_documento_asociado = models.CharField(max_length=100, null=True, blank=True)
+    id_caja = models.ForeignKey('Caja', on_delete=models.SET_NULL, null=True, blank=True, related_name='transacciones_financieras')
+    id_cuenta_bancaria = models.ForeignKey('CuentaBancariaEmpresa', on_delete=models.SET_NULL, null=True, blank=True, related_name='transacciones_financieras')
     id_usuario_registro = models.ForeignKey('core.Usuarios', on_delete=models.CASCADE, related_name='transacciones_registradas')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
@@ -184,6 +193,8 @@ class MovimientoCajaBanco(models.Model):
         ('EGRESO', 'Egreso'),
         ('TRANSFERENCIA_ENTRADA', 'Transferencia Entrada'),
         ('TRANSFERENCIA_SALIDA', 'Transferencia Salida'),
+        ('AJUSTE_POSITIVO', 'Ajuste Positivo'),
+        ('AJUSTE_NEGATIVO', 'Ajuste Negativo'),
     ]
 
     id_movimiento = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

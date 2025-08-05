@@ -17643,3 +17643,186 @@ INFO 2025-08-04 01:06:25,967 basehttp 12948 2044 "GET /api/finanzas/transaccione
 INFO 2025-08-04 01:06:25,981 basehttp 12948 2044 "GET /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/ HTTP/1.1" 200 977
 INFO 2025-08-04 01:06:45,928 basehttp 12948 2044 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 3735
 INFO 2025-08-04 01:06:45,952 basehttp 12948 2044 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 3735
+INFO 2025-08-04 08:29:46,986 autoreload 14076 13040 Watching for file changes with StatReloader
+WARNING 2025-08-04 08:30:13,675 log 14076 3456 Not Found: /api/
+WARNING 2025-08-04 08:30:13,675 basehttp 14076 3456 "GET /api/ HTTP/1.1" 404 4612
+WARNING 2025-08-04 08:30:13,683 log 14076 14136 Not Found: /api/
+WARNING 2025-08-04 08:30:13,683 basehttp 14076 14136 "GET /api/ HTTP/1.1" 404 4612
+INFO 2025-08-04 08:30:15,608 basehttp 14076 8484 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:15,608 auth_views 14076 8484 LoginView received username: admin, password: ***
+INFO 2025-08-04 08:30:16,343 auth_views 14076 8484 Authenticate result: admin
+INFO 2025-08-04 08:30:16,472 auth_views 14076 8484 Successful login for user: admin
+INFO 2025-08-04 08:30:16,511 basehttp 14076 8484 "POST /api/auth/login/ HTTP/1.1" 200 1260
+INFO 2025-08-04 08:30:16,514 basehttp 14076 8484 "OPTIONS /api/core/usuarios/me/ HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:16,529 basehttp 14076 8484 "GET /api/core/usuarios/me/ HTTP/1.1" 200 670
+INFO 2025-08-04 08:30:16,532 basehttp 14076 8484 "OPTIONS /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:16,541 basehttp 14076 8484 "GET /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 2
+INFO 2025-08-04 08:30:16,552 basehttp 14076 8484 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:16,559 basehttp 14076 8484 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 08:30:39,607 basehttp 14076 8484 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:39,609 basehttp 14076 8484 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:39,609 basehttp 14076 8484 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:39,609 basehttp 14076 8484 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:39,609 basehttp 14076 8484 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:39,609 basehttp 14076 8484 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:39,631 basehttp 14076 8484 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-08-04 08:30:39,656 basehttp 14076 8484 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1247
+INFO 2025-08-04 08:30:39,676 basehttp 14076 8484 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3756
+INFO 2025-08-04 08:30:39,693 basehttp 14076 8484 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-08-04 08:30:39,699 basehttp 14076 8484 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1247
+INFO 2025-08-04 08:30:39,726 basehttp 14076 8484 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3756
+INFO 2025-08-04 08:30:43,969 basehttp 14076 8484 "OPTIONS /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:43,969 basehttp 14076 1476 "OPTIONS /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 08:30:43,991 basehttp 14076 1476 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 3735
+INFO 2025-08-04 08:30:44,013 basehttp 14076 8484 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 3735
+INFO 2025-08-04 21:49:45,481 autoreload 11300 3584 Watching for file changes with StatReloader
+WARNING 2025-08-04 21:50:03,676 log 11300 2300 Not Found: /api/
+WARNING 2025-08-04 21:50:03,676 basehttp 11300 2300 "GET /api/ HTTP/1.1" 404 4612
+WARNING 2025-08-04 21:50:03,683 log 11300 11656 Not Found: /api/
+WARNING 2025-08-04 21:50:03,683 basehttp 11300 11656 "GET /api/ HTTP/1.1" 404 4612
+INFO 2025-08-04 21:50:06,861 basehttp 11300 6840 "GET /admin/ HTTP/1.1" 200 116753
+INFO 2025-08-04 21:50:06,928 basehttp 11300 6840 "GET /admin/ HTTP/1.1" 200 116753
+WARNING 2025-08-04 21:50:07,020 log 11300 6840 Not Found: /favicon.ico
+WARNING 2025-08-04 21:50:07,020 basehttp 11300 6840 "GET /favicon.ico HTTP/1.1" 404 4633
+INFO 2025-08-04 21:50:08,196 basehttp 11300 2856 "OPTIONS /api/auth/login/ HTTP/1.1" 200 0
+INFO 2025-08-04 21:50:08,196 auth_views 11300 2856 LoginView received username: admin, password: ***
+INFO 2025-08-04 21:50:08,925 auth_views 11300 2856 Authenticate result: admin
+INFO 2025-08-04 21:50:09,050 auth_views 11300 2856 Successful login for user: admin
+INFO 2025-08-04 21:50:09,058 basehttp 11300 2856 "POST /api/auth/login/ HTTP/1.1" 200 1260
+INFO 2025-08-04 21:50:09,061 basehttp 11300 2856 "OPTIONS /api/core/usuarios/me/ HTTP/1.1" 200 0
+INFO 2025-08-04 21:50:09,073 basehttp 11300 2856 "GET /api/core/usuarios/me/ HTTP/1.1" 200 670
+INFO 2025-08-04 21:50:09,077 basehttp 11300 2856 "OPTIONS /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 0
+INFO 2025-08-04 21:50:09,083 basehttp 11300 2856 "GET /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 2
+INFO 2025-08-04 21:50:09,095 basehttp 11300 2856 "OPTIONS /api/core/empresas/ HTTP/1.1" 200 0
+INFO 2025-08-04 21:50:09,100 basehttp 11300 2856 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 21:50:14,674 basehttp 11300 2856 "OPTIONS /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 21:50:14,674 basehttp 11300 6028 "OPTIONS /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 21:50:14,715 basehttp 11300 6028 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 3735
+INFO 2025-08-04 21:50:14,738 basehttp 11300 2856 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 3735
+INFO 2025-08-04 22:12:44,362 autoreload 11300 3584 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-08-04 22:12:45,258 autoreload 9372 9160 Watching for file changes with StatReloader
+INFO 2025-08-04 22:13:13,257 autoreload 9372 9160 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-08-04 22:13:14,125 autoreload 5108 11124 Watching for file changes with StatReloader
+INFO 2025-08-04 22:14:44,139 autoreload 5108 11124 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-08-04 22:14:45,068 autoreload 10008 2832 Watching for file changes with StatReloader
+INFO 2025-08-04 22:15:39,247 autoreload 10008 2832 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-08-04 22:15:40,047 autoreload 9608 6980 Watching for file changes with StatReloader
+INFO 2025-08-04 22:16:15,645 autoreload 9608 6980 C:\Users\PC\innovaerp\backend\apps\finanzas\views.py changed, reloading.
+INFO 2025-08-04 22:16:16,445 autoreload 9956 13232 Watching for file changes with StatReloader
+INFO 2025-08-04 22:46:09,718 autoreload 9956 13232 C:\Users\PC\innovaerp\backend\apps\tesoreria\models.py changed, reloading.
+INFO 2025-08-04 22:46:10,614 autoreload 4356 3596 Watching for file changes with StatReloader
+INFO 2025-08-04 22:48:10,323 autoreload 4356 3596 C:\Users\PC\innovaerp\backend\apps\tesoreria\models.py changed, reloading.
+INFO 2025-08-04 22:48:11,139 autoreload 3824 10956 Watching for file changes with StatReloader
+INFO 2025-08-04 23:03:27,521 autoreload 3824 10956 C:\Users\PC\innovaerp\backend\apps\finanzas\models.py changed, reloading.
+INFO 2025-08-04 23:03:28,464 autoreload 7656 2060 Watching for file changes with StatReloader
+INFO 2025-08-04 23:03:53,055 autoreload 7656 2060 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-08-04 23:03:53,899 autoreload 1260 8648 Watching for file changes with StatReloader
+INFO 2025-08-04 23:05:51,777 autoreload 1260 8648 C:\Users\PC\innovaerp\backend\apps\finanzas\serializers.py changed, reloading.
+INFO 2025-08-04 23:05:52,621 autoreload 6484 10632 Watching for file changes with StatReloader
+INFO 2025-08-04 23:07:29,598 autoreload 6484 10632 C:\Users\PC\innovaerp\backend\apps\finanzas\admin.py changed, reloading.
+INFO 2025-08-04 23:07:30,481 autoreload 9052 13024 Watching for file changes with StatReloader
+INFO 2025-08-04 23:07:57,366 autoreload 9052 13024 C:\Users\PC\innovaerp\backend\apps\finanzas\urls.py changed, reloading.
+INFO 2025-08-04 23:07:58,262 autoreload 11044 5648 Watching for file changes with StatReloader
+INFO 2025-08-04 23:08:31,587 autoreload 11044 5648 C:\Users\PC\innovaerp\backend\apps\finanzas\admin.py changed, reloading.
+INFO 2025-08-04 23:08:32,388 autoreload 4944 10104 Watching for file changes with StatReloader
+INFO 2025-08-04 23:10:27,895 autoreload 4944 10104 C:\Users\PC\innovaerp\backend\apps\tesoreria\models.py changed, reloading.
+INFO 2025-08-04 23:10:28,755 autoreload 9376 10964 Watching for file changes with StatReloader
+INFO 2025-08-04 23:10:35,073 autoreload 9376 10964 C:\Users\PC\innovaerp\backend\apps\tesoreria\models.py changed, reloading.
+INFO 2025-08-04 23:10:35,976 autoreload 5160 5840 Watching for file changes with StatReloader
+INFO 2025-08-04 23:11:26,024 basehttp 5160 12268 "GET /admin/finanzas/moneda/ HTTP/1.1" 200 92782
+INFO 2025-08-04 23:11:26,087 basehttp 5160 12268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-08-04 23:11:28,185 basehttp 5160 12268 "GET /admin/finanzas/moneda/11111111-1111-1111-1111-111111111111/change/ HTTP/1.1" 200 100513
+INFO 2025-08-04 23:11:28,217 basehttp 5160 12268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-08-04 23:11:54,116 basehttp 5160 12268 "GET /admin/ HTTP/1.1" 200 116753
+INFO 2025-08-04 23:12:00,073 basehttp 5160 12268 "GET /admin/core/usuarios/ HTTP/1.1" 200 92233
+INFO 2025-08-04 23:12:00,113 basehttp 5160 12268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-08-04 23:12:01,553 basehttp 5160 12268 "GET /admin/core/usuarios/eaee6149-7365-4a38-9c68-5072ab4c788d/change/ HTTP/1.1" 200 156910
+INFO 2025-08-04 23:12:01,583 basehttp 5160 8344 "GET /static/admin/js/SelectBox.js HTTP/1.1" 304 0
+INFO 2025-08-04 23:12:01,583 basehttp 5160 9576 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 304 0
+INFO 2025-08-04 23:12:01,588 basehttp 5160 12268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-08-04 23:12:01,656 basehttp 5160 12268 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 304 0
+INFO 2025-08-04 23:12:18,280 basehttp 5160 12268 "GET /admin/core/usuarios/ HTTP/1.1" 200 92233
+INFO 2025-08-04 23:12:18,315 basehttp 5160 12268 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-08-04 23:12:29,472 basehttp 5160 11196 "OPTIONS /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/ HTTP/1.1" 200 0
+INFO 2025-08-04 23:12:29,472 basehttp 5160 7600 "OPTIONS /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/ HTTP/1.1" 200 0
+WARNING 2025-08-04 23:12:29,491 log 5160 7600 Unauthorized: /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/
+WARNING 2025-08-04 23:12:29,492 basehttp 5160 7600 "GET /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/ HTTP/1.1" 401 172
+WARNING 2025-08-04 23:12:29,494 log 5160 7600 Unauthorized: /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/
+WARNING 2025-08-04 23:12:29,495 basehttp 5160 7600 "GET /api/finanzas/transacciones-financieras/f2647a3b-dc5d-43f2-9f86-223c014fc48d/ HTTP/1.1" 401 172
+WARNING 2025-08-04 23:12:40,120 log 5160 10812 Not Found: /api/
+WARNING 2025-08-04 23:12:40,121 basehttp 5160 10812 "GET /api/ HTTP/1.1" 404 4612
+WARNING 2025-08-04 23:12:40,130 log 5160 12424 Not Found: /api/
+WARNING 2025-08-04 23:12:40,131 basehttp 5160 12424 "GET /api/ HTTP/1.1" 404 4612
+INFO 2025-08-04 23:12:41,570 auth_views 5160 7600 LoginView received username: admin, password: ***
+INFO 2025-08-04 23:12:42,304 auth_views 5160 7600 Authenticate result: admin
+INFO 2025-08-04 23:12:42,320 auth_views 5160 7600 Successful login for user: admin
+INFO 2025-08-04 23:12:42,337 basehttp 5160 7600 "POST /api/auth/login/ HTTP/1.1" 200 1260
+INFO 2025-08-04 23:12:42,352 basehttp 5160 7600 "GET /api/core/usuarios/me/ HTTP/1.1" 200 670
+INFO 2025-08-04 23:12:42,367 basehttp 5160 7600 "GET /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 2
+INFO 2025-08-04 23:12:42,388 basehttp 5160 7600 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 23:12:50,656 basehttp 5160 11196 "OPTIONS /api/core/usuarios/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 23:12:50,657 basehttp 5160 7600 "OPTIONS /api/core/usuarios/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 23:12:50,672 basehttp 5160 7600 "GET /api/core/usuarios/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 722
+INFO 2025-08-04 23:12:50,687 basehttp 5160 7600 "GET /api/core/usuarios/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 722
+INFO 2025-08-04 23:12:52,938 basehttp 5160 11196 "GET /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 2
+INFO 2025-08-04 23:12:52,948 basehttp 5160 7600 "GET /api/core/usuarios/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 722
+INFO 2025-08-04 23:12:52,948 basehttp 5160 5988 "GET /api/core/departamentos/ HTTP/1.1" 200 52
+INFO 2025-08-04 23:12:52,954 basehttp 5160 9696 "GET /api/core/sucursales/ HTTP/1.1" 200 395
+INFO 2025-08-04 23:12:52,956 basehttp 5160 11196 "GET /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 2
+INFO 2025-08-04 23:12:52,964 basehttp 5160 12196 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 23:12:52,974 basehttp 5160 3040 "GET /api/core/departamentos/ HTTP/1.1" 200 52
+INFO 2025-08-04 23:12:52,982 basehttp 5160 7656 "GET /api/core/sucursales/ HTTP/1.1" 200 395
+INFO 2025-08-04 23:12:52,985 basehttp 5160 7600 "GET /api/core/usuarios/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 722
+INFO 2025-08-04 23:12:52,986 basehttp 5160 13016 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 23:14:21,744 autoreload 5160 5840 C:\Users\PC\innovaerp\backend\apps\tesoreria\models.py changed, reloading.
+INFO 2025-08-04 23:14:22,628 autoreload 7400 1772 Watching for file changes with StatReloader
+INFO 2025-08-04 23:14:26,790 autoreload 7400 1772 C:\Users\PC\innovaerp\backend\apps\tesoreria\models.py changed, reloading.
+INFO 2025-08-04 23:14:27,622 autoreload 11592 7344 Watching for file changes with StatReloader
+INFO 2025-08-04 23:15:15,569 basehttp 11592 9932 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 4143
+INFO 2025-08-04 23:15:15,604 basehttp 11592 9932 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 4143
+INFO 2025-08-04 23:35:33,521 basehttp 11592 11636 "GET /admin/ HTTP/1.1" 200 116753
+WARNING 2025-08-04 23:38:07,927 log 11592 10064 Not Found: /api/
+WARNING 2025-08-04 23:38:07,927 basehttp 11592 10064 "GET /api/ HTTP/1.1" 404 4612
+WARNING 2025-08-04 23:38:07,943 log 11592 9016 Not Found: /api/
+WARNING 2025-08-04 23:38:07,943 basehttp 11592 9016 "GET /api/ HTTP/1.1" 404 4612
+INFO 2025-08-04 23:38:09,981 auth_views 11592 10208 LoginView received username: admin, password: ***
+INFO 2025-08-04 23:38:10,705 auth_views 11592 10208 Authenticate result: admin
+INFO 2025-08-04 23:38:10,723 auth_views 11592 10208 Successful login for user: admin
+INFO 2025-08-04 23:38:10,741 basehttp 11592 10208 "POST /api/auth/login/ HTTP/1.1" 200 1260
+INFO 2025-08-04 23:38:10,757 basehttp 11592 10208 "GET /api/core/usuarios/me/ HTTP/1.1" 200 670
+INFO 2025-08-04 23:38:10,767 basehttp 11592 10208 "GET /api/core/usuario_roles/?id_usuario=eaee6149-7365-4a38-9c68-5072ab4c788d HTTP/1.1" 200 2
+INFO 2025-08-04 23:38:10,782 basehttp 11592 10208 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 23:38:14,599 basehttp 11592 10208 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 4143
+INFO 2025-08-04 23:38:14,620 basehttp 11592 12848 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 4143
+INFO 2025-08-04 23:38:22,487 basehttp 11592 12848 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 23:38:22,493 basehttp 11592 10208 "OPTIONS /api/finanzas/monedas-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:22,493 basehttp 11592 10208 "OPTIONS /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:22,498 basehttp 11592 12848 "GET /api/core/empresas/ HTTP/1.1" 200 820
+INFO 2025-08-04 23:38:22,498 basehttp 11592 10208 "GET /api/finanzas/monedas-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 836
+INFO 2025-08-04 23:38:22,498 basehttp 11592 12848 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 412
+INFO 2025-08-04 23:38:47,848 basehttp 11592 12848 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:47,849 basehttp 11592 10208 "OPTIONS /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:47,856 basehttp 11592 13036 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 412
+INFO 2025-08-04 23:38:47,861 basehttp 11592 12848 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 815
+INFO 2025-08-04 23:38:47,868 basehttp 11592 13036 "GET /api/finanzas/metodos-pago-empresa-activas/?empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 412
+INFO 2025-08-04 23:38:47,871 basehttp 11592 12848 "GET /api/finanzas/metodos-pago/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0 HTTP/1.1" 200 815
+INFO 2025-08-04 23:38:49,017 basehttp 11592 13036 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:49,018 basehttp 11592 12848 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:49,020 basehttp 11592 12848 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:49,020 basehttp 11592 9496 "OPTIONS /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:49,021 basehttp 11592 10208 "OPTIONS /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:49,023 basehttp 11592 13036 "OPTIONS /api/finanzas/monedas/ HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:49,049 basehttp 11592 12848 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1247
+INFO 2025-08-04 23:38:49,049 basehttp 11592 9496 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-08-04 23:38:49,058 basehttp 11592 10208 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3756
+INFO 2025-08-04 23:38:49,068 basehttp 11592 12848 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1247
+INFO 2025-08-04 23:38:49,072 basehttp 11592 9496 "GET /api/finanzas/tasa-oficial-bcv/?moneda_origen=USD&moneda_destino=VES HTTP/1.1" 200 625
+INFO 2025-08-04 23:38:49,082 basehttp 11592 13036 "GET /api/finanzas/tasas-cambio/?id_empresa=44444444-4444-4444-4444-444444444444&limit=10&offset=0&ordering=-fecha_tasa HTTP/1.1" 200 3756
+INFO 2025-08-04 23:38:50,280 basehttp 11592 13036 "OPTIONS /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:50,281 basehttp 11592 9496 "OPTIONS /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 0
+INFO 2025-08-04 23:38:50,290 basehttp 11592 12848 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1247
+INFO 2025-08-04 23:38:50,298 basehttp 11592 9496 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 836
+INFO 2025-08-04 23:38:50,312 basehttp 11592 9496 "GET /api/finanzas/monedas-empresa-activas/ HTTP/1.1" 200 836
+INFO 2025-08-04 23:38:50,314 basehttp 11592 12848 "GET /api/finanzas/monedas/ HTTP/1.1" 200 1247
+INFO 2025-08-04 23:38:52,779 basehttp 11592 12848 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 4143
+INFO 2025-08-04 23:38:52,797 basehttp 11592 9496 "GET /api/finanzas/transacciones-financieras/?id_empresa=44444444-4444-4444-4444-444444444444 HTTP/1.1" 200 4143

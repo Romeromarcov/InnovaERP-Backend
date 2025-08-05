@@ -4,6 +4,7 @@ from .views_extra.tasa_oficial_bcv import TasaCambioOficialBCVView
 from .views import MonedaViewSet, TasaCambioViewSet, MetodoPagoViewSet, \
     TransaccionFinancieraViewSet, \
     MovimientoCajaBancoViewSet, CajaViewSet, CuentaBancariaEmpresaViewSet, MonedaEmpresaActivaViewSet, MetodoPagoEmpresaActivaViewSet
+from .views_ajustes import AjusteCajaBancoViewSet
 
 router = DefaultRouter()
 router.register(r'monedas', MonedaViewSet)
@@ -15,6 +16,7 @@ router.register(r'cajas', CajaViewSet)
 router.register(r'cuentas-bancarias-empresa', CuentaBancariaEmpresaViewSet)
 router.register(r'monedas-empresa-activas', MonedaEmpresaActivaViewSet)
 router.register(r'metodos-pago-empresa-activas', MetodoPagoEmpresaActivaViewSet, basename='metodos-pago-empresa-activas')
+router.register(r'ajustes-caja-banco', AjusteCajaBancoViewSet, basename='ajustes-caja-banco')
 
 
 

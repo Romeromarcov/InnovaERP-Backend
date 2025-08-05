@@ -228,7 +228,7 @@ class TransaccionFinancieraSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TransaccionFinanciera
-        fields = ['id', 'id_transaccion', 'id_empresa', 'id_empresa_nombre', 'fecha_hora_transaccion', 'tipo_transaccion', 'monto_transaccion', 'id_moneda_transaccion', 'id_moneda_base', 'id_moneda_pais_empresa', 'monto_moneda_pais', 'monto_base_empresa', 'id_metodo_pago', 'referencia_pago', 'descripcion', 'id_usuario_registro', 'id_usuario_registro_username', 'fecha_creacion', 'id_moneda_transaccion__codigo_iso', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'id_metodo_pago__nombre_metodo', 'id_usuario_registro__username', 'tasa_cambio', 'monto_base']
+        fields = ['id', 'id_transaccion', 'id_empresa', 'id_empresa_nombre', 'fecha_hora_transaccion', 'tipo_transaccion', 'monto_transaccion', 'id_moneda_transaccion', 'id_moneda_base', 'id_moneda_pais_empresa', 'monto_moneda_pais', 'monto_base_empresa', 'id_metodo_pago', 'referencia_pago', 'descripcion', 'tipo_documento_asociado', 'nro_documento_asociado', 'id_caja', 'id_cuenta_bancaria', 'id_usuario_registro', 'id_usuario_registro_username', 'fecha_creacion', 'id_moneda_transaccion__codigo_iso', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'id_metodo_pago__nombre_metodo', 'id_usuario_registro__username', 'tasa_cambio', 'monto_base']
         extra_fields = ['tasa_cambio', 'monto_base', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'monto_moneda_pais']
         read_only_fields = ('id', 'id_moneda_transaccion__codigo_iso', 'id_moneda_base__codigo_iso', 'id_moneda_pais_empresa__codigo_iso', 'id_metodo_pago__nombre_metodo', 'id_usuario_registro__username')
 
@@ -251,7 +251,7 @@ class TransaccionFinancieraSerializer(serializers.ModelSerializer):
             if empresas and empresas.exists():
                 validated_data['id_empresa'] = empresas.first()
         # Convertir id_moneda_transaccion, id_moneda_base y id_metodo_pago a instancias si vienen como UUID
-        from .models import Moneda, MetodoPago, TasaCambio
+        from .models import Moneda, MetodoPago, TasaCambio, MovimientoCajaBanco, Caja, CuentaBancariaEmpresa
         for moneda_field in ['id_moneda_transaccion', 'id_moneda_base']:
             moneda_value = validated_data.get(moneda_field)
             if isinstance(moneda_value, str):
@@ -287,7 +287,35 @@ class TransaccionFinancieraSerializer(serializers.ModelSerializer):
                 monto_moneda_pais = float(monto_base_empresa) * float(tasa.valor_tasa)
         validated_data['monto_moneda_pais'] = monto_moneda_pais
 
-        return super().create(validated_data)
+        # Crear la transacción financiera
+        transaccion = super().create(validated_data)
+
+        # Validar que toda transacción tenga documento asociado (null=True para migración)
+        if 'tipo_documento_asociado' not in validated_data:
+            validated_data['tipo_documento_asociado'] = None
+        if 'nro_documento_asociado' not in validated_data:
+            validated_data['nro_documento_asociado'] = None
+        # Crear automáticamente el MovimientoCajaBanco asociado
+        tipo_movimiento = 'INGRESO' if transaccion.tipo_transaccion == 'INGRESO' else 'EGRESO'
+        movimiento_data = {
+            'id_empresa': transaccion.id_empresa,
+            'fecha_movimiento': transaccion.fecha_hora_transaccion.date(),
+            'hora_movimiento': transaccion.fecha_hora_transaccion.time(),
+            'tipo_movimiento': tipo_movimiento,
+            'monto': transaccion.monto_transaccion,
+            'id_moneda': transaccion.id_moneda_transaccion,
+            'concepto': transaccion.descripcion or '',
+            'referencia': transaccion.referencia_pago or '',
+            'id_caja': transaccion.id_caja,
+            'id_cuenta_bancaria': transaccion.id_cuenta_bancaria,
+            'id_transaccion_financiera': transaccion,
+            'saldo_anterior': 0,  # Se puede calcular en la view/model si aplica
+            'saldo_nuevo': 0,     # Se puede calcular en la view/model si aplica
+            'id_usuario_registro': transaccion.id_usuario_registro,
+        }
+        MovimientoCajaBanco.objects.create(**movimiento_data)
+
+        return transaccion
 
 class MovimientoCajaBancoSerializer(serializers.ModelSerializer):
     class Meta:

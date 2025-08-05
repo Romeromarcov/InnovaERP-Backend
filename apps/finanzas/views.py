@@ -209,6 +209,10 @@ class TransaccionFinancieraViewSet(BaseModelViewSet):
     queryset = TransaccionFinanciera.objects.all()
     serializer_class = TransaccionFinancieraSerializer
 
+    def perform_create(self, serializer):
+        # El serializer ya crea el MovimientoCajaBanco automáticamente
+        serializer.save()
+
 
     def get_queryset(self):
         user = self.request.user
