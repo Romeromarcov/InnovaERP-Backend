@@ -123,16 +123,6 @@ class EmpresaContribucionParafiscal(models.Model):
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField(null=True, blank=True)
 
-class PagoContribucionParafiscal(models.Model):
-    empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE)
-    contribucion = models.ForeignKey(ContribucionParafiscal, on_delete=models.CASCADE)
-    periodo = models.CharField(max_length=20)  # Ej: '2025-07'
-    monto_calculado = models.DecimalField(max_digits=18, decimal_places=2)
-    monto_pagado = models.DecimalField(max_digits=18, decimal_places=2)
-    fecha_pago = models.DateField(null=True, blank=True)
-    referencia_pago = models.CharField(max_length=100, null=True, blank=True)
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-
 class ConfiguracionRetencion(models.Model):
     empresa = models.ForeignKey('core.Empresa', on_delete=models.CASCADE, help_text="Agente de retención")
     impuesto = models.ForeignKey(Impuesto, on_delete=models.CASCADE)

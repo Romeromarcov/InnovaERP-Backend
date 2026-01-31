@@ -119,6 +119,64 @@ class Usuarios(AbstractUser):
     # id_empleado = models.ForeignKey(Empleado, on_delete=models.SET_NULL, db_column='id_empleado', blank=True, null=True, related_name='usuario_erp', verbose_name="Empleado Asociado")
     # Nota: La FK a Empleado se añadirá cuando el módulo de rrhh esté implementado.
 
+    def get_cajas_virtuales_disponibles(self, empresa=None):
+        """
+        Retorna las cajas virtuales disponibles para este usuario basado en:
+        1. Cajas físicas asignadas al usuario
+        2. Cajas virtuales asociadas a esas cajas físicas
+        3. Permisos según el tipo de caja (registradora vs matriz/gerencia)
+        
+        Args:
+            empresa: Filtrar por empresa específica (opcional)
+        
+        Returns:
+            QuerySet de cajas virtuales disponibles
+        """
+        from apps.finanzas.models import CajaFisicaUsuario, Caja
+        
+        # Obtener cajas físicas asignadas al usuario
+        cajas_fisicas_usuario = CajaFisicaUsuario.objects.filter(
+            usuario=self
+        ).select_related('caja_fisica')
+        
+        if empresa:
+            cajas_fisicas_usuario = cajas_fisicas_usuario.filter(caja_fisica__empresa=empresa)
+        
+        # Obtener IDs de cajas físicas
+        cajas_fisicas_ids = cajas_fisicas_usuario.values_list('caja_fisica', flat=True)
+        
+        # Obtener cajas virtuales asociadas a estas cajas físicas
+        cajas_virtuales = Caja.objects.filter(
+            caja_fisica__in=cajas_fisicas_ids
+        ).select_related('caja_fisica', 'moneda')
+        
+        # Aplicar filtros de permisos según tipo de caja
+        cajas_permitidas = []
+        
+        for caja_virtual in cajas_virtuales:
+            caja_fisica = caja_virtual.caja_fisica
+            if caja_fisica:
+                # Verificar permisos del usuario para esta caja física
+                asignacion = cajas_fisicas_usuario.filter(caja_fisica=caja_fisica).first()
+                if asignacion:
+                    tipo_caja = caja_virtual.tipo_caja
+                    
+                    # Cajas registradoras: cualquier usuario puede acceder
+                    if tipo_caja == 'REGISTRADORA':
+                        cajas_permitidas.append(caja_virtual.id_caja)
+                    
+                    # Cajas de gerencia y matriz: solo usuarios con permisos específicos
+                    elif tipo_caja in ['GERENCIA', 'MATRIZ']:
+                        # Aquí se pueden agregar validaciones adicionales de permisos
+                        # Por ahora, permitimos acceso si el usuario está asignado a la caja física
+                        cajas_permitidas.append(caja_virtual.id_caja)
+                    
+                    # Otros tipos
+                    else:
+                        cajas_permitidas.append(caja_virtual.id_caja)
+        
+        return Caja.objects.filter(id_caja__in=cajas_permitidas).select_related('caja_fisica', 'moneda')
+
     class Meta:
         db_table = 'usuarios' # Nombre de la tabla en la base de datos
         verbose_name = 'Usuario'
@@ -263,4 +321,172 @@ class RegistroAuditoria(models.Model):
 
     def __str__(self):
         return f"[{self.fecha_hora_accion.strftime('%Y-%m-%d %H:%M')}] {self.id_usuario.username if self.id_usuario else 'N/A'} - {self.tipo_evento} en {self.modulo_afectado}.{self.nombre_modelo_afectado} (ID: {self.id_registro_afectado})"
+
+
+# 7. Modelo de Dispositivo (Para detección automática y asociación con cajas físicas)
+class Dispositivo(models.Model):
+    """
+    Modelo para registrar dispositivos que acceden al sistema.
+    Permite detectar automáticamente dispositivos y asociarlos con cajas físicas.
+    """
+    id_dispositivo = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    # Identificación única del dispositivo
+    fingerprint = models.CharField(
+        max_length=255,
+        unique=True,
+        help_text="Hash único generado por el frontend (FingerprintJS)"
+    )
+
+    # Información técnica del dispositivo
+    user_agent = models.TextField(
+        help_text="User agent del navegador/dispositivo"
+    )
+    ip_address = models.GenericIPAddressField(
+        null=True,
+        blank=True,
+        help_text="Dirección IP del dispositivo"
+    )
+    nombre_dispositivo = models.CharField(
+        max_length=100,
+        help_text="Nombre descriptivo del dispositivo (generado automáticamente)"
+    )
+
+    # Asociación opcional con caja física
+    caja_fisica = models.OneToOneField(
+        'finanzas.CajaFisica',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='dispositivo',
+        help_text="Caja física asociada a este dispositivo"
+    )
+
+    # Contexto organizacional
+    empresa = models.ForeignKey(
+        'Empresa',
+        on_delete=models.CASCADE,
+        related_name='dispositivos',
+        help_text="Empresa a la que pertenece el dispositivo"
+    )
+    sucursal = models.ForeignKey(
+        'Sucursal',
+        on_delete=models.CASCADE,
+        related_name='dispositivos',
+        help_text="Sucursal a la que pertenece el dispositivo"
+    )
+
+    # Usuario que registró el dispositivo
+    creado_por = models.ForeignKey(
+        'Usuarios',
+        on_delete=models.CASCADE,
+        related_name='dispositivos_creados',
+        help_text="Usuario que registró este dispositivo"
+    )
+
+    # Control de flujo de creación de caja
+    preguntar_crear_caja = models.BooleanField(
+        default=True,
+        help_text="Si True, preguntar al usuario si quiere crear caja física en próximos logins"
+    )
+    ultima_pregunta_caja = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="Última vez que se preguntó sobre crear caja física"
+    )
+
+    # Estado y auditoría
+    activo = models.BooleanField(
+        default=True,
+        help_text="Si el dispositivo está activo"
+    )
+    fecha_registro = models.DateTimeField(
+        auto_now_add=True,
+        help_text="Fecha de registro del dispositivo"
+    )
+    ultimo_login = models.DateTimeField(
+        auto_now=True,
+        help_text="Último login desde este dispositivo"
+    )
+
+    class Meta:
+        db_table = 'core_dispositivo'
+        verbose_name = 'Dispositivo'
+        verbose_name_plural = 'Dispositivos'
+        unique_together = ['fingerprint', 'empresa']  # Un fingerprint por empresa
+        ordering = ['-ultimo_login']
+
+    def __str__(self):
+        return f"{self.nombre_dispositivo} - {self.empresa.nombre_comercial or self.empresa.nombre_legal}"
+
+    @property
+    def tiene_caja_fisica(self):
+        """Retorna True si el dispositivo tiene una caja física asociada"""
+        return self.caja_fisica is not None
+
+    @property
+    def puede_crear_caja_fisica(self):
+        """Retorna True si el usuario creador tiene permisos para crear cajas físicas"""
+        # Por ahora, solo superusuarios pueden crear cajas
+        return getattr(self.creado_por, 'es_superusuario_innova', False)
+
+    def marcar_no_preguntar_caja(self):
+        """Marca que no se debe volver a preguntar sobre crear caja física"""
+        self.preguntar_crear_caja = False
+        self.ultima_pregunta_caja = timezone.now()
+        self.save()
+
+    @classmethod
+    def obtener_o_crear(cls, fingerprint, user_agent, ip_address, empresa, sucursal, usuario):
+        """
+        Obtiene un dispositivo existente o crea uno nuevo.
+        """
+        dispositivo, created = cls.objects.get_or_create(
+            fingerprint=fingerprint,
+            empresa=empresa,
+            defaults={
+                'user_agent': user_agent,
+                'ip_address': ip_address,
+                'nombre_dispositivo': cls.generar_nombre_dispositivo(user_agent),
+                'sucursal': sucursal,
+                'creado_por': usuario,
+            }
+        )
+
+        # Actualizar último login
+        dispositivo.ultimo_login = timezone.now()
+        dispositivo.save()
+
+        return dispositivo, created
+
+    @staticmethod
+    def generar_nombre_dispositivo(user_agent):
+        """
+        Genera un nombre descriptivo basado en el user agent.
+        """
+        if 'Windows' in user_agent:
+            plataforma = 'Windows'
+        elif 'Mac' in user_agent or 'macOS' in user_agent:
+            plataforma = 'macOS'
+        elif 'Linux' in user_agent:
+            plataforma = 'Linux'
+        elif 'Android' in user_agent:
+            plataforma = 'Android'
+        elif 'iPhone' in user_agent or 'iPad' in user_agent:
+            plataforma = 'iOS'
+        else:
+            plataforma = 'Desconocido'
+
+        if 'Chrome' in user_agent:
+            navegador = 'Chrome'
+        elif 'Firefox' in user_agent:
+            navegador = 'Firefox'
+        elif 'Safari' in user_agent:
+            navegador = 'Safari'
+        elif 'Edge' in user_agent:
+            navegador = 'Edge'
+        else:
+            navegador = 'Navegador'
+
+        return f"{navegador} en {plataforma}"
 

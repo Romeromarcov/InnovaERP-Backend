@@ -3,12 +3,12 @@ from rest_framework import viewsets
 from .models import (
     Impuesto, ConfiguracionImpuesto, Retencion, ContribucionParafiscal,
     ImpuestoEmpresaActiva, RetencionEmpresaActiva, ContribucionEmpresaActiva,
-    EmpresaContribucionParafiscal, PagoContribucionParafiscal, ConfiguracionRetencion
+    EmpresaContribucionParafiscal, ConfiguracionRetencion
 )
 from .serializers import (
     ImpuestoSerializer, ConfiguracionImpuestoSerializer, RetencionSerializer, ContribucionParafiscalSerializer,
     ImpuestoEmpresaActivaSerializer, RetencionEmpresaActivaSerializer, ContribucionEmpresaActivaSerializer,
-    EmpresaContribucionParafiscalSerializer, PagoContribucionParafiscalSerializer, ConfiguracionRetencionSerializer
+    EmpresaContribucionParafiscalSerializer, ConfiguracionRetencionSerializer
 )
 
 class ImpuestoViewSet(viewsets.ModelViewSet):
@@ -42,10 +42,6 @@ class ContribucionEmpresaActivaViewSet(viewsets.ModelViewSet):
 class EmpresaContribucionParafiscalViewSet(viewsets.ModelViewSet):
     queryset = EmpresaContribucionParafiscal.objects.all()
     serializer_class = EmpresaContribucionParafiscalSerializer
-
-class PagoContribucionParafiscalViewSet(viewsets.ModelViewSet):
-    queryset = PagoContribucionParafiscal.objects.all()
-    serializer_class = PagoContribucionParafiscalSerializer
 
 class ConfiguracionRetencionViewSet(viewsets.ModelViewSet):
     queryset = ConfiguracionRetencion.objects.all()

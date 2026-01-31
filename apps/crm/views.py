@@ -8,6 +8,13 @@ class ClienteViewSet(BaseModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
+    def get_queryset(self):
+        queryset = Cliente.objects.all()
+        empresa_id = self.request.query_params.get('empresa')
+        if empresa_id:
+            queryset = queryset.filter(id_empresa=empresa_id)
+        return queryset
+
 class ContactoClienteViewSet(BaseModelViewSet):
     queryset = ContactoCliente.objects.all()
     serializer_class = ContactoClienteSerializer

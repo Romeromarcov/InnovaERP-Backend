@@ -1,5 +1,17 @@
 from django.db import models
 import uuid
+from django.core.exceptions import ValidationError
+import re
+
+def validar_rif(value):
+    # Validar formato RIF: Letra-Mayúscula seguida de guion y números
+    if not re.match(r'^[VJEGBP]-[0-9]+$', value):
+        raise ValidationError('RIF debe tener formato Letra-Mayúscula (V/J/E/G/B/P) seguida de guion y números.')
+
+def validar_telefono(value):
+    # Validar teléfono venezolano: 0412/0414/0416/0422/0424/0426 + 7 dígitos
+    if not re.match(r'^(0412|0414|0416|0422|0424|0426)[0-9]{7}$', value):
+        raise ValidationError('Teléfono debe comenzar con 0412, 0414, 0416, 0422, 0424 o 0426 y tener 11 dígitos.')
 
 class Cliente(models.Model):
     id_cliente = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -8,9 +20,9 @@ class Cliente(models.Model):
     documento_json = models.JSONField(null=True, blank=True)
     razon_social = models.CharField(max_length=255)
     nombre_comercial = models.CharField(max_length=255, null=True, blank=True)
-    rif = models.CharField(max_length=20, unique=True)
+    rif = models.CharField(max_length=20, unique=True, validators=[validar_rif])
     direccion = models.TextField(null=True, blank=True)
-    telefono = models.CharField(max_length=50, null=True, blank=True)
+    telefono = models.CharField(max_length=50, null=True, blank=True, validators=[validar_telefono])
     email = models.EmailField(null=True, blank=True)
     contacto = models.CharField(max_length=100, null=True, blank=True)
     activo = models.BooleanField(default=True)

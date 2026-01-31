@@ -77,31 +77,181 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 @permission_classes([AllowAny])
 def login_view(request):
     """
-    Login endpoint that returns JWT tokens
+    Login endpoint that returns JWT tokens and maneja detección de dispositivos
     """
     username = request.data.get('username')
     password = request.data.get('password')
-    logger.info(f"LoginView received username: {username}, password: {'***' if password else None}")
+    device_fingerprint = request.data.get('device_fingerprint')
+    device_user_agent = request.data.get('device_user_agent', request.META.get('HTTP_USER_AGENT', ''))
+    device_ip = request.data.get('device_ip', request.META.get('REMOTE_ADDR', ''))
+
+    logger.info(f"LoginView received username: {username}, device_fingerprint: {device_fingerprint}")
+
     if not username or not password:
         logger.warning("Username or password missing in request data")
         return Response({
             'error': 'Username and password are required'
         }, status=status.HTTP_400_BAD_REQUEST)
+
     user = authenticate(username=username, password=password)
     logger.info(f"Authenticate result: {user}")
+
     if user is not None:
         if user.is_active:
             refresh = RefreshToken.for_user(user)
             user.last_login = timezone.now()
             user.save(update_fields=['last_login'])
             logger.info(f"Successful login for user: {username}")
+
             from .serializers import UsuariosSerializer
             user_data = UsuariosSerializer(user).data
-            return Response({
+
+            # Información de dispositivo
+            dispositivo_info = None
+            sesion_abierta = False
+
+            if device_fingerprint:
+                try:
+                    # Obtener empresa y sucursal del usuario (primera empresa/sucursal asignada)
+                    empresa = user.empresas.first()
+                    sucursal = user.sucursales.first() or user.id_sucursal_predeterminada
+
+                    if empresa and sucursal:
+                        from .utils import detectar_o_registrar_dispositivo, determinar_accion_dispositivo
+
+                        # Detectar o registrar dispositivo
+                        dispositivo, dispositivo_creado = detectar_o_registrar_dispositivo(
+                            fingerprint=device_fingerprint,
+                            user_agent=device_user_agent,
+                            ip_address=device_ip,
+                            empresa=empresa,
+                            sucursal=sucursal,
+                            usuario=user
+                        )
+
+                        # Determinar acción a tomar
+                        accion_info = determinar_accion_dispositivo(dispositivo, user)
+
+                        # Serializar datos del dispositivo para evitar errores de JSON
+                        from .serializers import DispositivoSerializer
+                        dispositivo_serializado = DispositivoSerializer(dispositivo).data
+
+                        dispositivo_info = {
+                            'id_dispositivo': str(dispositivo.id_dispositivo),
+                            'nombre_dispositivo': dispositivo.nombre_dispositivo,
+                            'creado': dispositivo_creado,
+                            'accion': accion_info['accion'],
+                            'mensaje': accion_info['mensaje'],
+                            'datos': {}
+                        }
+
+                        # Serializar datos adicionales según la acción
+                        if accion_info['accion'] in ['abrir_sesion', 'abrir_sesion_automatico']:
+                            from apps.finanzas.serializers import CajaFisicaSerializer
+                            caja_fisica_serializada = CajaFisicaSerializer(accion_info['datos']['caja_fisica']).data
+                            dispositivo_info['datos'] = {
+                                'caja_fisica': caja_fisica_serializada,
+                                'dispositivo': dispositivo_serializado
+                            }
+                        elif accion_info['accion'] == 'sesion_activa':
+                            from apps.finanzas.serializers import CajaFisicaSerializer, SesionCajaFisicaSerializer
+                            caja_fisica_serializada = CajaFisicaSerializer(accion_info['datos']['caja_fisica']).data
+                            sesion_serializada = SesionCajaFisicaSerializer(accion_info['datos']['sesion']).data
+                            dispositivo_info['datos'] = {
+                                'caja_fisica': caja_fisica_serializada,
+                                'sesion': sesion_serializada
+                            }
+                        elif accion_info['accion'] == 'preguntar_caja':
+                            dispositivo_info['datos'] = {
+                                'dispositivo': dispositivo_serializado,
+                                'empresa': {
+                                    'id_empresa': str(accion_info['datos']['empresa'].id_empresa),
+                                    'nombre_comercial': accion_info['datos']['empresa'].nombre_comercial
+                                },
+                                'sucursal': {
+                                    'id_sucursal': str(accion_info['datos']['sucursal'].id_sucursal),
+                                    'nombre': accion_info['datos']['sucursal'].nombre
+                                },
+                                'user_agent': accion_info['datos']['user_agent'],
+                                'ip_address': accion_info['datos']['ip_address']
+                            }
+
+                        # Si se debe abrir sesión automáticamente
+                        if accion_info['accion'] == 'abrir_sesion_automatico':
+                            try:
+                                caja_fisica = accion_info['datos']['caja_fisica']
+                                from apps.finanzas.models import SesionCajaFisica
+
+                                sesion = SesionCajaFisica.abrir_sesion(
+                                    caja_fisica=caja_fisica,
+                                    usuario=user,
+                                    ip_address=device_ip,
+                                    user_agent=device_user_agent
+                                )
+
+                                dispositivo_info['sesion_abierta'] = {
+                                    'id_sesion': str(sesion.id_sesion),
+                                    'estado': sesion.estado,
+                                    'fecha_apertura': sesion.fecha_apertura,
+                                    'caja_fisica': {
+                                        'id_caja_fisica': str(caja_fisica.id_caja_fisica),
+                                        'nombre': caja_fisica.nombre
+                                    }
+                                }
+                                sesion_abierta = True
+
+                            except Exception as e:
+                                logger.error(f"Error abriendo sesión automáticamente: {e}")
+                                dispositivo_info['error_sesion'] = str(e)
+
+                        # Si se debe abrir sesión (modal)
+                        elif accion_info['accion'] == 'abrir_sesion':
+                            try:
+                                caja_fisica = accion_info['datos']['caja_fisica']
+                                from apps.finanzas.models import SesionCajaFisica
+
+                                sesion = SesionCajaFisica.abrir_sesion(
+                                    caja_fisica=caja_fisica,
+                                    usuario=user,
+                                    ip_address=device_ip,
+                                    user_agent=device_user_agent
+                                )
+
+                                dispositivo_info['sesion_abierta'] = {
+                                    'id_sesion': str(sesion.id_sesion),
+                                    'estado': sesion.estado,
+                                    'fecha_apertura': sesion.fecha_apertura,
+                                    'caja_fisica': {
+                                        'id_caja_fisica': str(caja_fisica.id_caja_fisica),
+                                        'nombre': caja_fisica.nombre
+                                    }
+                                }
+                                sesion_abierta = True
+
+                            except Exception as e:
+                                logger.error(f"Error abriendo sesión automáticamente: {e}")
+                                dispositivo_info['error_sesion'] = str(e)
+
+                    else:
+                        logger.warning(f"Usuario {username} no tiene empresa o sucursal asignada")
+
+                except Exception as e:
+                    logger.error(f"Error procesando dispositivo: {e}")
+                    dispositivo_info = {
+                        'error': f'Error procesando dispositivo: {str(e)}'
+                    }
+
+            response_data = {
                 'access': str(refresh.access_token),
                 'refresh': str(refresh),
                 'user': user_data
-            }, status=status.HTTP_200_OK)
+            }
+
+            if dispositivo_info:
+                response_data['dispositivo'] = dispositivo_info
+
+            return Response(response_data, status=status.HTTP_200_OK)
+
         else:
             logger.warning(f"Login attempt for inactive user: {username}")
             return Response({
@@ -260,3 +410,156 @@ def verify_token_view(request):
             'last_name': request.user.last_name,
         }
     }, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def dispositivo_accion_view(request):
+    """
+    Maneja acciones relacionadas con dispositivos (crear caja física, no preguntar más, etc.)
+    """
+    accion = request.data.get('accion')
+    id_dispositivo = request.data.get('id_dispositivo')
+
+    if not accion or not id_dispositivo:
+        return Response({
+            'error': 'Se requieren accion e id_dispositivo'
+        }, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        from .models import Dispositivo
+        dispositivo = Dispositivo.objects.get(
+            id_dispositivo=id_dispositivo,
+            creado_por=request.user
+        )
+    except Dispositivo.DoesNotExist:
+        return Response({
+            'error': 'Dispositivo no encontrado o no pertenece al usuario'
+        }, status=status.HTTP_404_NOT_FOUND)
+
+    if accion == 'crear_caja_fisica':
+        # Crear caja física para el dispositivo
+        nombre_caja = request.data.get('nombre_caja')
+        tipo_caja = request.data.get('tipo_caja', 'VENTA')
+
+        if not nombre_caja:
+            return Response({
+                'error': 'Se requiere nombre_caja para crear la caja física'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            from apps.finanzas.models import CajaFisica
+
+            # Verificar permisos
+            if not dispositivo.puede_crear_caja_fisica:
+                return Response({
+                    'error': 'No tienes permisos para crear cajas físicas'
+                }, status=status.HTTP_403_FORBIDDEN)
+
+            # Crear la caja física
+            caja_fisica = CajaFisica.objects.create(
+                nombre=nombre_caja,
+                tipo_caja=tipo_caja,
+                empresa=dispositivo.empresa,
+                sucursal=dispositivo.sucursal,
+                identificador_dispositivo=dispositivo.fingerprint,
+                activa=True,
+                nombre_dispositivo=dispositivo.nombre_dispositivo,
+                tipo_dispositivo='PC',  # Default to PC
+                requiere_sesion_activa=True
+            )
+
+            # Crear la asociación usuario-caja física
+            from apps.finanzas.models import CajaFisicaUsuario
+            CajaFisicaUsuario.objects.create(
+                usuario=request.user,
+                caja_fisica=caja_fisica,
+                puede_abrir_sesion=True,
+                puede_cerrar_sesion=True,
+                es_predeterminada=True  # Hacerla predeterminada para este usuario
+            )
+
+            # Asociar al dispositivo
+            dispositivo.caja_fisica = caja_fisica
+            dispositivo.save()
+
+            # Abrir sesión automáticamente
+            from apps.finanzas.models import SesionCajaFisica
+            sesion = SesionCajaFisica.abrir_sesion(
+                caja_fisica=caja_fisica,
+                usuario=request.user,
+                ip_address=request.META.get('REMOTE_ADDR', ''),
+                user_agent=request.META.get('HTTP_USER_AGENT', '')
+            )
+
+            return Response({
+                'success': True,
+                'mensaje': f'Caja física "{nombre_caja}" creada y sesión abierta',
+                'caja_fisica': {
+                    'id_caja_fisica': str(caja_fisica.id_caja_fisica),
+                    'nombre': caja_fisica.nombre,
+                    'tipo_caja': caja_fisica.tipo_caja
+                },
+                'sesion': {
+                    'id_sesion': str(sesion.id_sesion),
+                    'estado': sesion.estado,
+                    'fecha_apertura': sesion.fecha_apertura
+                }
+            }, status=status.HTTP_201_CREATED)
+
+        except Exception as e:
+            logger.error(f"Error creando caja física: {e}")
+            return Response({
+                'error': f'Error creando caja física: {str(e)}'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    elif accion == 'no_preguntar_caja':
+        # Marcar que no se pregunte más por caja física
+        dispositivo.marcar_no_preguntar_caja()
+        dispositivo.save()
+
+        return Response({
+            'success': True,
+            'mensaje': 'No se volverá a preguntar por caja física para este dispositivo'
+        }, status=status.HTTP_200_OK)
+
+    elif accion == 'abrir_sesion':
+        # Abrir sesión en la caja física asociada
+        if not dispositivo.tiene_caja_fisica:
+            return Response({
+                'error': 'El dispositivo no tiene caja física asociada'
+            }, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            from apps.finanzas.models import SesionCajaFisica
+            sesion = SesionCajaFisica.abrir_sesion(
+                caja_fisica=dispositivo.caja_fisica,
+                usuario=request.user,
+                ip_address=request.META.get('REMOTE_ADDR', ''),
+                user_agent=request.META.get('HTTP_USER_AGENT', '')
+            )
+
+            return Response({
+                'success': True,
+                'mensaje': f'Sesión abierta en {dispositivo.caja_fisica.nombre}',
+                'sesion': {
+                    'id_sesion': str(sesion.id_sesion),
+                    'estado': sesion.estado,
+                    'fecha_apertura': sesion.fecha_apertura,
+                    'caja_fisica': {
+                        'id_caja_fisica': str(dispositivo.caja_fisica.id_caja_fisica),
+                        'nombre': dispositivo.caja_fisica.nombre
+                    }
+                }
+            }, status=status.HTTP_200_OK)
+
+        except Exception as e:
+            logger.error(f"Error abriendo sesión: {e}")
+            return Response({
+                'error': f'Error abriendo sesión: {str(e)}'
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    else:
+        return Response({
+            'error': f'Acción "{accion}" no reconocida'
+        }, status=status.HTTP_400_BAD_REQUEST)

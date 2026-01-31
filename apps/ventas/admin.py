@@ -4,14 +4,16 @@ from .models import (
     DetallePedido,
     NotaVenta,
     DetalleNotaVenta,
-    Factura,
+    FacturaFiscal,
     Cotizacion,
     DetalleCotizacion,
-    DetalleFactura,
+    DetalleFacturaFiscal,
     NotaCreditoVenta,
     DetalleNotaCreditoVenta,
     DevolucionVenta,
-    DetalleDevolucionVenta
+    DetalleDevolucionVenta,
+    NotaCreditoFiscal,
+    DetalleNotaCreditoFiscal
 )
 
 # Register your models here.
@@ -19,7 +21,7 @@ admin.site.register(Pedido)
 admin.site.register(DetallePedido)
 admin.site.register(NotaVenta)
 admin.site.register(DetalleNotaVenta)
-admin.site.register(Factura)
+admin.site.register(FacturaFiscal)
 
 # Registraciones agregadas automáticamente
 
@@ -33,8 +35,8 @@ class DetalleCotizacionAdmin(admin.ModelAdmin):
     list_display = ['__str__']
     search_fields = ['__str__']
 
-@admin.register(DetalleFactura)
-class DetalleFacturaAdmin(admin.ModelAdmin):
+@admin.register(DetalleFacturaFiscal)
+class DetalleFacturaFiscalAdmin(admin.ModelAdmin):
     list_display = ['__str__']
     search_fields = ['__str__']
 
@@ -55,5 +57,15 @@ class DevolucionVentaAdmin(admin.ModelAdmin):
 
 @admin.register(DetalleDevolucionVenta)
 class DetalleDevolucionVentaAdmin(admin.ModelAdmin):
+    list_display = ['__str__']
+    search_fields = ['__str__']
+
+@admin.register(NotaCreditoFiscal)
+class NotaCreditoFiscalAdmin(admin.ModelAdmin):
+    list_display = ['__str__']
+    search_fields = ['__str__']
+
+@admin.register(DetalleNotaCreditoFiscal)
+class DetalleNotaCreditoFiscalAdmin(admin.ModelAdmin):
     list_display = ['__str__']
     search_fields = ['__str__']

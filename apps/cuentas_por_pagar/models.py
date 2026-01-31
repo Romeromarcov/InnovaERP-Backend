@@ -28,14 +28,4 @@ class CuentaPorPagar(models.Model):
     def __str__(self):
         return f"CxP {self.id_cxp}"
 
-class PagoCxP(models.Model):
-    id_pago_cxp = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    id_cxp = models.ForeignKey(CuentaPorPagar, related_name='pagos', on_delete=models.CASCADE)
-    fecha_pago = models.DateField()
-    monto_pagado = models.DecimalField(max_digits=18, decimal_places=4)
-    metodo_pago = models.CharField(max_length=50, null=True, blank=True)
-    referencia_externa = models.CharField(max_length=100, null=True, blank=True)
-    documento_json = models.JSONField(null=True, blank=True)
-    referencia = models.CharField(max_length=100, null=True, blank=True)
-    observaciones = models.TextField(null=True, blank=True)
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
+

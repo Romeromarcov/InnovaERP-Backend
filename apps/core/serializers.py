@@ -5,7 +5,7 @@ class BaseModelSerializer(serializers.ModelSerializer):
     def validate(self, data):
         # Lógica de validación global aquí si aplica
         return super().validate(data)
-from .models import Empresa, Sucursal, Departamento, Usuarios, Roles, Permisos, RolPermisos, UsuarioRoles, RegistroAuditoria
+from .models import Empresa, Sucursal, Departamento, Usuarios, Roles, Permisos, RolPermisos, UsuarioRoles, RegistroAuditoria, Dispositivo
 class EmpresaSerializer(BaseModelSerializer):
     def validate(self, data):
         # Validación: la moneda país debe coincidir con el país de la empresa y el país de la moneda
@@ -58,8 +58,8 @@ class DepartamentoSerializer(BaseModelSerializer):
 
 
 class UsuariosSerializer(BaseModelSerializer):
-    empresas = serializers.PrimaryKeyRelatedField(queryset=Empresa.objects.all(), many=True, required=False)
-    sucursales = serializers.PrimaryKeyRelatedField(queryset=Sucursal.objects.all(), many=True, required=False)
+    empresas = EmpresaSerializer(many=True, read_only=True)
+    sucursales = SucursalSerializer(many=True, read_only=True)
     departamentos = serializers.PrimaryKeyRelatedField(queryset=Departamento.objects.all(), many=True, required=False)
     roles = serializers.SerializerMethodField()
     es_superusuario_innova = serializers.BooleanField(required=False)
@@ -133,4 +133,38 @@ class RegistroAuditoriaSerializer(serializers.ModelSerializer):
         model = RegistroAuditoria
         fields = '__all__'
         read_only_fields = ('fecha_accion',) # La fecha de acción se genera automáticamente
+
+
+class DispositivoSerializer(BaseModelSerializer):
+    """
+    Serializer para el modelo Dispositivo.
+    """
+    # Campos relacionados
+    empresa_nombre = serializers.CharField(source='empresa.nombre_comercial', read_only=True)
+    sucursal_nombre = serializers.CharField(source='sucursal.nombre', read_only=True)
+    creado_por_username = serializers.CharField(source='creado_por.username', read_only=True)
+
+    # Información de caja física asociada (si existe)
+    caja_fisica_id = serializers.UUIDField(source='caja_fisica.id_caja_fisica', read_only=True)
+    caja_fisica_nombre = serializers.CharField(source='caja_fisica.nombre', read_only=True)
+
+    class Meta:
+        model = Dispositivo
+        fields = [
+            'id_dispositivo', 'fingerprint', 'user_agent', 'ip_address', 'nombre_dispositivo',
+            'caja_fisica', 'empresa', 'sucursal', 'creado_por',
+            'preguntar_crear_caja', 'ultima_pregunta_caja',
+            'activo', 'fecha_registro', 'ultimo_login',
+            # Campos relacionados
+            'empresa_nombre', 'sucursal_nombre', 'creado_por_username',
+            'caja_fisica_id', 'caja_fisica_nombre'
+        ]
+        read_only_fields = ['id_dispositivo', 'fecha_registro', 'ultimo_login']
+
+    def create(self, validated_data):
+        # Asegurar que el usuario que crea es el que está autenticado
+        request = self.context.get('request')
+        if request and request.user:
+            validated_data['creado_por'] = request.user
+        return super().create(validated_data)
 

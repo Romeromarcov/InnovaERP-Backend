@@ -29,6 +29,13 @@ class ProductoViewSet(BaseModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
 
+    def get_queryset(self):
+        queryset = Producto.objects.all()
+        empresa_id = self.request.query_params.get('empresa')
+        if empresa_id:
+            queryset = queryset.filter(id_empresa=empresa_id)
+        return queryset
+
 
 class VarianteProductoViewSet(BaseModelViewSet):
     queryset = VarianteProducto.objects.all()

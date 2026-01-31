@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import (
     Impuesto, ConfiguracionImpuesto, Retencion, ContribucionParafiscal,
     ImpuestoEmpresaActiva, RetencionEmpresaActiva, ContribucionEmpresaActiva,
-    EmpresaContribucionParafiscal, PagoContribucionParafiscal, ConfiguracionRetencion
+    EmpresaContribucionParafiscal, ConfiguracionRetencion
 )
 
 class ImpuestoSerializer(serializers.ModelSerializer):
@@ -199,11 +199,6 @@ class EmpresaContribucionParafiscalSerializer(serializers.ModelSerializer):
         model = EmpresaContribucionParafiscal
         fields = '__all__'
         read_only_fields = ['empresa_nombre', 'contribucion_nombre']
-
-class PagoContribucionParafiscalSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PagoContribucionParafiscal
-        fields = '__all__'
 
 class ConfiguracionRetencionSerializer(serializers.ModelSerializer):
     class Meta:

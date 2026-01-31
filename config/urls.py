@@ -31,14 +31,14 @@ urlpatterns = [
     
     # Core module endpoints
     path('api/core/', include('apps.core.urls')),
+    path('api/configuracion/', include('apps.configuracion_motor.urls')),
     
-    # Other modules (to be implemented)
-    # path('api/inventario/', include('apps.inventario.urls')),
-    # path('api/ventas/', include('apps.ventas.urls')),
-    # path('api/compras/', include('apps.compras.urls')),
+    path('api/inventario/', include('apps.inventario.urls')),
+    path('api/ventas/', include('apps.ventas.urls')),
+    path('api/compras/', include('apps.compras.urls')),
     path('api/finanzas/', include('apps.finanzas.urls')),
-    # path('api/crm/', include('apps.crm.urls')),
-    # path('api/rrhh/', include('apps.rrhh.urls')),
+    path('api/crm/', include('apps.crm.urls')),
+    path('api/rrhh/', include('apps.rrhh.urls')),
     path('api/auditoria/', include('apps.auditoria.urls')),
     path('api/fiscal/', include('apps.fiscal.urls')),
 ]

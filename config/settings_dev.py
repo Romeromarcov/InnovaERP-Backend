@@ -29,15 +29,17 @@ MIDDLEWARE = [
 
 
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 
 # Permitir frontend local como origen confiable para CSRF
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
+    "http://localhost:5174",
 ]
 
 # Si usas django-cors-headers, permite también el origen para CORS
 try:
     CORS_ALLOWED_ORIGINS.append("http://localhost:5173")
+    CORS_ALLOWED_ORIGINS.append("http://localhost:5174")
 except Exception:
-    CORS_ALLOWED_ORIGINS = ["http://localhost:5173"]
+    CORS_ALLOWED_ORIGINS = ["http://localhost:5173", "http://localhost:5174"]

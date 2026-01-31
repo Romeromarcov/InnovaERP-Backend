@@ -5,7 +5,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from . import views
 from .views import EmpresaDetailView, SucursalDetailView, DepartamentoDetailView, UsuarioDetailView
-from .auth_views import change_password_view
+from .auth_views import change_password_view, dispositivo_accion_view
 
 # Create router for ViewSets
 router = DefaultRouter()
@@ -17,11 +17,13 @@ router.register(r'usuarios', core_viewsets.UsuariosViewSet)
 router.register(r'empresas', core_viewsets.EmpresaViewSet)
 router.register(r'sucursales', core_viewsets.SucursalViewSet)
 router.register(r'departamentos', core_viewsets.DepartamentoViewSet)
+router.register(r'dispositivos', core_viewsets.DispositivoViewSet)
 
 urlpatterns = [
     # Custom endpoints que deben tener prioridad sobre el router
     path('usuarios/me/', views.me_view, name='usuarios_me'),
     path('usuarios/change_password/', change_password_view, name='usuarios_change_password'),
+    path('dispositivos/accion/', dispositivo_accion_view, name='dispositivo_accion'),
 
     # Include router URLs
     path('', include(router.urls)),

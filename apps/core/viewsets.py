@@ -1,14 +1,15 @@
 from rest_framework import viewsets, permissions, filters
 from rest_framework.pagination import PageNumberPagination
-from .models import Empresa, Sucursal, Departamento, Usuarios
-from .serializers import EmpresaSerializer, SucursalSerializer, DepartamentoSerializer, UsuariosSerializer
+from .models import Empresa, Sucursal, Departamento, Usuarios, Dispositivo
+from .serializers import EmpresaSerializer, SucursalSerializer, DepartamentoSerializer, UsuariosSerializer, DispositivoSerializer
 
 class BaseModelViewSet(viewsets.ModelViewSet):
     """ViewSet base para CRUD genérico con paginación, búsqueda y permisos estándar."""
     permission_classes = [permissions.IsAuthenticated]
     pagination_class = PageNumberPagination
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
-    search_fields = '__all__'
+    # Campos permitidos para búsqueda en modelos comunes (ajusta según tus modelos)
+    search_fields = ['razon_social', 'rif', 'telefono', 'nombre_comercial']
     ordering_fields = '__all__'
 
 
@@ -110,3 +111,27 @@ class UsuariosViewSet(BaseModelViewSet):
             return Usuarios.objects.all()
         # Por defecto, solo puede ver su propio usuario
         return Usuarios.objects.filter(id=user.id)
+
+
+class DispositivoViewSet(BaseModelViewSet):
+    """
+    ViewSet para gestión de dispositivos.
+    Permite registrar, consultar y gestionar dispositivos asociados a usuarios.
+    """
+    queryset = Dispositivo.objects.all()
+    serializer_class = DispositivoSerializer
+    search_fields = ['fingerprint', 'nombre_dispositivo', 'user_agent', 'ip_address']
+    ordering_fields = ['fecha_registro', 'ultimo_login', 'nombre_dispositivo']
+
+    def get_queryset(self):
+        user = self.request.user
+        if getattr(user, 'es_superusuario_innova', False):
+            # Superusuarios ven todos los dispositivos
+            return Dispositivo.objects.all()
+        else:
+            # Usuarios normales solo ven dispositivos que crearon
+            return Dispositivo.objects.filter(creado_por=user)
+
+    def perform_create(self, serializer):
+        # Asegurar que el dispositivo se crea para el usuario autenticado
+        serializer.save(creado_por=self.request.user)
